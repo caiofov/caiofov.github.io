@@ -2,6 +2,9 @@
     "sections": {
         "about-me": {
             "title": "About me"
+        },
+        "repositories": {
+            "title": "Repositories"
         }
     }
 }

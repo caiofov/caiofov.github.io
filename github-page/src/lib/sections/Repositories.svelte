@@ -2,4 +2,4 @@
 	import SectionTitle from '$lib/components/SectionTitle.svelte';
 </script>
 
-<SectionTitle id="about-me" />
+<SectionTitle id="repositories" />
