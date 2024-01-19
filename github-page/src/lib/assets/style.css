@@ -1,5 +1,10 @@
 :root {
-	--main-text-color: #004aad;
+	--main-text-color: black;
+	--blue-color: #004aad;
 	--gray-color: #acb7c5;
 	color: var(--main-text-color);
+}
+
+li {
+	list-style-type: none;
 }
