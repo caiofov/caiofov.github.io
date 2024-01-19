@@ -1,6 +1,13 @@
 <script lang="ts">
 	import '$lib/assets/style.css';
+	import { AboutMe, Navbar } from '$lib';
+
+	import initTranslator, { changeLocale } from '../lib/utils/translation';
+	import { onMount } from 'svelte';
+
+	initTranslator();
+	onMount(changeLocale);
 </script>
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation</p>
+<Navbar />
+<AboutMe />
