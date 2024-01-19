@@ -33,7 +33,7 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"flowbite-svelte": "^0.44.22",
+		"iconify-icon": "^1.0.8",
 		"svelte-i18n": "^4.0.0"
 	}
 }
