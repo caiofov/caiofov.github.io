@@ -1,6 +1,14 @@
-[
-    {
-        "itemId": "#about-me",
-        "icon": ""
+{
+    "about-me": {
+        "link": "#about-me",
+        "icon": "ph:user-fill"
+    },
+    "repositories": {
+        "link": "#repositories",
+        "icon": "ri:computer-fill"
+    },
+    "games": {
+        "link": "#games",
+        "icon": "ic:baseline-videogame-asset"
     }
-]
+}

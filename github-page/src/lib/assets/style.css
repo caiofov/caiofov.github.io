@@ -4,7 +4,3 @@
 	--gray-color: #acb7c5;
 	color: var(--main-text-color);
 }
-
-li {
-	list-style-type: none;
-}

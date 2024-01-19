@@ -1,27 +1,51 @@
 <script lang="ts">
-	import { Navbar, NavBrand, NavUl, NavLi, NavHamburger } from 'flowbite-svelte';
+	import 'iconify-icon';
+
 	import NavbarItems from '../assets/NavbarItems.json';
 	import { _ } from 'svelte-i18n';
-	interface Item {
-		itemId: string;
-		icon: string;
-	}
-
-	function getItemTranslation(item: Item) {
-		const id = item.itemId.replace('#', '');
-		return $_(`sections.${id}.title`);
-	}
 </script>
 
-<Navbar id="navbar">
-	<NavBrand>
-		<span>Caio de Freitas Oliveira</span>
-	</NavBrand>
-	<NavHamburger />
+<div id="navbar">
+	<span class="self-center whitespace-nowrap text-xl font-semibold dark:text-white"
+		>{'< CaioOliveira />'}</span
+	>
 
-	<NavUl>
-		{#each NavbarItems as item}
-			<NavLi href={item.itemId}>{getItemTranslation(item)}</NavLi>
+	<ul>
+		{#each Object.entries(NavbarItems) as [id, item]}
+			<li>
+				<a href={item.link}
+					><iconify-icon class="nav-icon" icon={item.icon} />{$_(`sections.${id}.title`)}</a
+				>
+			</li>
 		{/each}
-	</NavUl>
-</Navbar>
+	</ul>
+</div>
+
+<style>
+	ul {
+		display: flex;
+		list-style-type: none;
+	}
+	li {
+		margin-left: 1rem;
+	}
+	li > a {
+		align-items: center;
+		display: flex;
+		text-decoration: none;
+		color: var(--blue-color);
+		font-family: 'Courier New', Courier, monospace;
+	}
+	.nav-icon {
+		margin-right: 0.5rem;
+	}
+	li > a:hover {
+		font-weight: bold;
+		transition: cubic-bezier(0.39, 0.575, 0.565, 1);
+	}
+
+	#navbar {
+		display: flex;
+		align-items: center;
+	}
+</style>
