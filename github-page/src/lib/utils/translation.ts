@@ -1,7 +1,7 @@
 import en from '../assets/locales/en.json';
 import pt from '../assets/locales/pt.json';
 import fr from '../assets/locales/fr.json';
-import { addMessages, init, locale, getLocaleFromNavigator, dictionary } from 'svelte-i18n';
+import { addMessages, init, locale, getLocaleFromNavigator } from 'svelte-i18n';
 
 const DEFAULT_LOCALE = 'en';
 const LOCALES = { en, pt, fr };
