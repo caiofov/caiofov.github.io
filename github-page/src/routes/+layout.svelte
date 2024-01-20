@@ -8,8 +8,8 @@
 	onMount(changeLocale);
 </script>
 
+<Navbar />
 <div id="container">
-	<Navbar />
 	<slot />
 </div>
 

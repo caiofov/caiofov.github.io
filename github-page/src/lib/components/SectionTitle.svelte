@@ -19,5 +19,6 @@
 		display: flex;
 		align-items: center;
 		font-family: var(--program-font-family);
+		color: var(--blue-color);
 	}
 </style>

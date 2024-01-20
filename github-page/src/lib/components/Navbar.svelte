@@ -32,15 +32,20 @@
 
 <style>
 	#navbar {
-		width: 100%;
+		margin: 1rem 0rem;
+		padding: 1rem 3rem;
+		height: 5vh;
 		justify-content: space-between;
+		box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24);
+		border-radius: 100px;
+		border: var(--main-shadow-color) solid;
 	}
 	ul {
 		display: flex;
 		list-style-type: none;
 	}
 	li {
-		margin-left: 1rem;
+		margin-left: 10vh;
 	}
 	li > a {
 		align-items: center;
@@ -48,13 +53,18 @@
 		text-decoration: none;
 		color: var(--blue-color);
 		font-family: var(--program-font-family);
+		font-weight: bold;
+		padding-top: 0.8rem;
+		padding-bottom: 0.8rem;
+	}
+	li > a:hover {
+		border-bottom: 2px solid;
+		border-top: 2px solid;
+		border-radius: 5px;
+		transition: 0.2s;
 	}
 	.nav-icon {
 		margin-right: 0.5rem;
-	}
-	li > a:hover {
-		font-weight: bold;
-		transition: cubic-bezier(0.39, 0.575, 0.565, 1);
 	}
 
 	#navbar {
