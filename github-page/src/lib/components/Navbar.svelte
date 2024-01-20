@@ -7,8 +7,6 @@
 	import { LOCALE_KEYS } from '$lib/utils/translation';
 	import FLAGS from '$lib/assets/img/flags';
 	import NavbarItem from './NavbarItem.svelte';
-
-	let visibleDropdown = '';
 </script>
 
 <div id="navbar">
