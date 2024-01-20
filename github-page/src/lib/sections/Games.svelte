@@ -1,16 +1,25 @@
 <script lang="ts">
 	import ItchioGame from '$lib/components/ItchioGame.svelte';
 	import SectionTitle from '$lib/components/SectionTitle.svelte';
+	import gameData from '$lib/assets/data/game_data.json';
+	import { _ } from 'svelte-i18n';
 </script>
 
 <SectionTitle id="games" />
 
 <div>
-	<ItchioGame
-		title="Jornada da Mel"
-		code={'1684529'}
-		href="https://tushin.itch.io/jornada-da-mel"
-	/>
+	<h3>{$_('sections.games.labels.published')}</h3>
+	<div id="game-items">
+		{#each Object.values(gameData) as game}
+			<ItchioGame {...game} />
+		{/each}
+	</div>
 
-	<ItchioGame title=".raw mode" code={'1502241'} href="https://caiofov.itch.io/raw-mode" />
+	<h3>{$_('sections.games.labels.more')}</h3>
 </div>
+
+<style>
+	#game-items {
+		display: flex;
+	}
+</style>

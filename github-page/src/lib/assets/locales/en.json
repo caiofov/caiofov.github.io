@@ -9,6 +9,8 @@
         "games": {
             "title": "Games",
             "labels": {
+                "published": "Published",
+                "more": "More",
                 "techs": "Tools"
             }
         }
