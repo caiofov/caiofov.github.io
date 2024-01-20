@@ -1,0 +1,20 @@
+{
+    "raw-mode": {
+        "title": ".raw mode",
+        "code": "1502241",
+        "href": "https://caiofov.itch.io/raw-mode",
+        "tools": [
+            "JavaScript",
+            "Phaser"
+        ]
+    },
+    "jornada-mel": {
+        "title": "Jornada da Mel",
+        "code": "1684529",
+        "href": "https://tushin.itch.io/jornada-da-mel",
+        "tools": [
+            "JavaScript",
+            "RPGMaker MV"
+        ]
+    }
+}

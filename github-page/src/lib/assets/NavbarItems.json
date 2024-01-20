@@ -1,0 +1,31 @@
+{
+    "about-me": {
+        "link": "#about-me",
+        "icon": "ph:user-fill",
+        "items": {
+            "achievements": {
+                "link": "#achievements",
+                "icon": "mdi:medal"
+            }
+        }
+    },
+    "repositories": {
+        "link": "#repositories",
+        "icon": "ri:computer-fill",
+        "items": {}
+    },
+    "games": {
+        "link": "#games",
+        "icon": "ic:baseline-videogame-asset",
+        "items": {
+            "published": {
+                "link": "#published",
+                "icon": "material-symbols:public"
+            },
+            "more": {
+                "link": "#more",
+                "icon": "typcn:plus"
+            }
+        }
+    }
+}
