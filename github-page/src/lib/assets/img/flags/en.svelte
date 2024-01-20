@@ -1,8 +1,8 @@
 <script lang="ts">
-	import FlagIcon from './FlagIcon.svelte';
+	import FlagIcon from '../../../components/FlagIcon.svelte';
 </script>
 
-<FlagIcon viewBox="0 0 6000 3900" title="English">
+<FlagIcon locale="en" viewBox="0 0 6000 3900" title="English">
 	<rect width="6000" height="3900" fill="#b22234" />
 	<path
 		d="M0,450H7410m0,600H0m0,600H7410m0,600H0m0,600H7410m0,600H0"

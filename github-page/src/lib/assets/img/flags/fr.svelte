@@ -1,8 +1,8 @@
 <script>
-	import FlagIcon from './FlagIcon.svelte';
+	import FlagIcon from '../../../components/FlagIcon.svelte';
 </script>
 
-<FlagIcon viewBox="0 0 512 356.18">
+<FlagIcon locale="fr" viewBox="0 0 512 356.18" title="Français">
 	<path
 		fill="#E1000F"
 		d="M345.04 0h139C499.44.1 512 12.72 512 28.13v299.91c0 15.47-12.65 28.13-28.13 28.14H345.04V0zM15.11 352.95zm-9.54-8.15z"

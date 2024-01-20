@@ -1,9 +1,12 @@
 <script lang="ts">
-	export let title = '';
+	import { changeLocale } from '$lib/utils/translation';
+
+	export let title: string;
 	export let viewBox = '';
+	export let locale: string;
 </script>
 
-<svg {viewBox}>
+<svg {viewBox} on:click={() => changeLocale(locale)}>
 	<title>{title}</title>
 	<slot />
 </svg>

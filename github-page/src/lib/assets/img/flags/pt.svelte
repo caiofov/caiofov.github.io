@@ -1,8 +1,8 @@
 <script>
-	import FlagIcon from './FlagIcon.svelte';
+	import FlagIcon from '../../../components/FlagIcon.svelte';
 </script>
 
-<FlagIcon viewBox="-2100 -1470 4200 2940" title="Português">
+<FlagIcon locale="pt" viewBox="-2100 -1470 4200 2940" title="Português">
 	<defs>
 		<g id="G">
 			<clipPath id="gcut">
