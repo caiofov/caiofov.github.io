@@ -1,16 +1,27 @@
 {
     "sections": {
         "about-me": {
-            "title": "About me"
+            "title": "About me",
+            "subsections": {
+                "achievements": {
+                    "title": "Achievements"
+                }
+            }
         },
         "repositories": {
             "title": "Repositories"
         },
         "games": {
             "title": "Games",
+            "subsections": {
+                "published": {
+                    "title": "Published"
+                },
+                "more": {
+                    "title": "More"
+                }
+            },
             "labels": {
-                "published": "Published",
-                "more": "More",
                 "techs": "Tools"
             }
         }

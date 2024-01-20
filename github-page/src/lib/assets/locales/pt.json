@@ -1,16 +1,27 @@
 {
     "sections": {
         "about-me": {
-            "title": "Sobre mim"
+            "title": "Sobre mim",
+            "subsections": {
+                "achievements": {
+                    "title": "Conquistas"
+                }
+            }
         },
         "repositories": {
             "title": "Repositórios"
         },
         "games": {
             "title": "Jogos",
+            "subsections": {
+                "published": {
+                    "title": "Publicados"
+                },
+                "more": {
+                    "title": "Mais"
+                }
+            },
             "labels": {
-                "published": "Publicados",
-                "more": "Mais",
                 "techs": "Tecnologias"
             }
         }

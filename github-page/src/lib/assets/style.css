@@ -6,3 +6,12 @@
 	--program-font-family: 'Courier New', Courier, monospace;
 	color: var(--main-text-color);
 }
+
+.screen-reader {
+	position: absolute;
+	left: -10000px;
+	top: auto;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+}

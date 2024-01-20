@@ -6,6 +6,9 @@
 
 	import { LOCALE_KEYS } from '$lib/utils/translation';
 	import FLAGS from '$lib/assets/img/flags';
+	import NavbarItem from './NavbarItem.svelte';
+
+	let visibleDropdown = '';
 </script>
 
 <div id="navbar">
@@ -15,11 +18,7 @@
 
 	<ul>
 		{#each Object.entries(NavbarItems) as [id, item]}
-			<li>
-				<a href={item.link}
-					><iconify-icon class="nav-icon" icon={item.icon} />{$_(`sections.${id}.title`)}</a
-				>
-			</li>
+			<NavbarItem {item} {id} />
 		{/each}
 	</ul>
 
@@ -47,28 +46,6 @@
 	ul {
 		display: flex;
 		list-style-type: none;
-	}
-	li {
-		margin-left: 10vh;
-	}
-	li > a {
-		align-items: center;
-		display: flex;
-		text-decoration: none;
-		color: var(--blue-color);
-		font-family: var(--program-font-family);
-		font-weight: bold;
-		padding-top: 0.8rem;
-		padding-bottom: 0.8rem;
-	}
-	li > a:hover {
-		border-bottom: 2px solid;
-		border-top: 2px solid;
-		border-radius: 5px;
-		transition: 0.2s;
-	}
-	.nav-icon {
-		margin-right: 0.5rem;
 	}
 
 	#navbar {

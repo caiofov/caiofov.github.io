@@ -8,14 +8,14 @@
 <SectionTitle id="games" />
 
 <div>
-	<h3>{$_('sections.games.labels.published')}</h3>
+	<h3>{$_('sections.games.subsections.published.title')}</h3>
 	<div id="game-items">
 		{#each Object.values(gameData) as game}
 			<ItchioGame {...game} />
 		{/each}
 	</div>
 
-	<h3>{$_('sections.games.labels.more')}</h3>
+	<h3>{$_('sections.games.subsections.more.title')}</h3>
 </div>
 
 <style>
