@@ -3,6 +3,9 @@
 
 	import NavbarItems from '../assets/NavbarItems.json';
 	import { _ } from 'svelte-i18n';
+
+	import { LOCALE_KEYS } from '$lib/utils/translation';
+	import FLAGS from '$lib/assets/img/flags';
 </script>
 
 <div id="navbar">
@@ -19,9 +22,19 @@
 			</li>
 		{/each}
 	</ul>
+
+	<div id="locales">
+		{#each LOCALE_KEYS as locale}
+			<svelte:component this={FLAGS[locale]} />
+		{/each}
+	</div>
 </div>
 
 <style>
+	#navbar {
+		width: 100%;
+		justify-content: space-between;
+	}
 	ul {
 		display: flex;
 		list-style-type: none;
@@ -34,7 +47,7 @@
 		display: flex;
 		text-decoration: none;
 		color: var(--blue-color);
-		font-family: 'Courier New', Courier, monospace;
+		font-family: var(--program-font-family);
 	}
 	.nav-icon {
 		margin-right: 0.5rem;
@@ -47,5 +60,11 @@
 	#navbar {
 		display: flex;
 		align-items: center;
+	}
+
+	#locales {
+		display: flex;
+		align-items: center;
+		align-content: flex-end;
 	}
 </style>

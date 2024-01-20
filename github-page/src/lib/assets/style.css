@@ -1,6 +1,7 @@
 :root {
 	--main-text-color: black;
 	--blue-color: #004aad;
+	--main-shadow-color: rgba(0, 74, 173, 0.5);
 	--gray-color: #acb7c5;
 	--program-font-family: 'Courier New', Courier, monospace;
 	color: var(--main-text-color);

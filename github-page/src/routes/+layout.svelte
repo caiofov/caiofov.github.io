@@ -16,5 +16,6 @@
 <style>
 	#container {
 		padding-left: 2vw;
+		padding-right: 2vw;
 	}
 </style>
