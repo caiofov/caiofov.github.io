@@ -1,0 +1,1 @@
+export const env={"PUBLIC_PROJECT_DEV":"true"}
