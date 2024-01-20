@@ -2,5 +2,6 @@
 	--main-text-color: black;
 	--blue-color: #004aad;
 	--gray-color: #acb7c5;
+	--program-font-family: 'Courier New', Courier, monospace;
 	color: var(--main-text-color);
 }
