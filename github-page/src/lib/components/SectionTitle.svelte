@@ -8,5 +8,16 @@
 </script>
 
 <h2 id={`#${id}`}>
-	<iconify-icon class="nav-icon" {icon} />{$_(`sections.${id}.title`)}
+	<iconify-icon class="title-icon" {icon} />{$_(`sections.${id}.title`)}
 </h2>
+
+<style>
+	.title-icon {
+		margin-right: 1rem;
+	}
+	h2 {
+		display: flex;
+		align-items: center;
+		font-family: var(--program-font-family);
+	}
+</style>
