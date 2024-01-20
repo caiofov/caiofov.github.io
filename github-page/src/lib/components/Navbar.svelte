@@ -28,6 +28,10 @@
 			<svelte:component this={FLAGS[locale]} />
 		{/each}
 	</div>
+
+	<div class="screen-reader" aria-label={$_('labels.languages')}>
+		<!-- TODO: select language for screen readers -->
+	</div>
 </div>
 
 <style>

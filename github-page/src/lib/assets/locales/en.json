@@ -14,5 +14,8 @@
                 "techs": "Tools"
             }
         }
+    },
+    "labels": {
+        "language": "Select a language"
     }
 }

@@ -6,6 +6,7 @@
 	export let locale: string;
 </script>
 
+<!-- <option value={title}> -->
 <svg
 	{viewBox}
 	class={$localeStore == locale ? 'selected' : 'not-selected'}
@@ -14,6 +15,8 @@
 	<title>{title}</title>
 	<slot />
 </svg>
+
+<!-- </option> -->
 
 <style>
 	svg {

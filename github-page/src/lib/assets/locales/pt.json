@@ -14,5 +14,8 @@
                 "techs": "Tecnologias"
             }
         }
+    },
+    "labels": {
+        "language": "Selecione uma língua"
     }
 }
