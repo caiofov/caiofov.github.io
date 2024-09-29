@@ -1,7 +1,7 @@
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
-import LanguageSelector from "./LanguageSelector";
+import { LanguageSelector } from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
 import React, { useState, useEffect } from "react";
 
@@ -40,8 +40,8 @@ export const NavBar = () => {
         <Navbar.Toggle aria-controls="basic-navbar-nav">
           <span className="navbar-toggle-icon"></span>
         </Navbar.Toggle>
-        <Navbar.Collapse id="basic-navbar-nav justify-content-end">
-          <Nav className="ms-auto">
+        <Navbar.Collapse id="basic-navbar-nav">
+          <Nav className="ms-auto align-items-center">
             <Nav.Link className="active" href="#home">
               {t("sections.home")}
             </Nav.Link>

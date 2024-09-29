@@ -19,6 +19,9 @@
   --light-button-hover: #004494;
   --light-alert: #e63946;
   --light-navbar-background: white;
+
+  --font-family-primary: "Roboto";
+  --font-family-courier: "Courier New", Courier, monospace;
 }
 html,
 .App {
@@ -28,14 +31,14 @@ a {
   color: var(--light-link);
 }
 p {
-  font-family: "Roboto";
+  font-family: var(--font-family-primary);
   font-size: 20px;
   color: var(--light-primary);
 }
 /* TITLES */
 h1,
 .typed-h1 span {
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-family-courier);
   font-size: 48px;
   font-weight: bold;
   color: var(--light-primary);
@@ -67,11 +70,11 @@ nav.navbar {
 .navbar-brand {
   font-size: 15px;
   color: var(--light-primary) !important;
-  font-family: "Courier New", Courier, monospace;
+  font-family: var(--font-family-courier);
 }
 
 .navbar-nav a {
-  font-family: "Roboto";
+  font-family: var(--font-family-primary);
   text-decoration: none;
   transition: 0.2s ease-in-out;
   color: var(--light-primary);
@@ -88,6 +91,38 @@ nav.navbar {
   background-color: var(--light-background);
 }
 
+#language-selector .btn {
+  background-color: var(--light-navbar-background);
+  border: none;
+  margin-left: 5px;
+  padding: 0px 3px !important;
+  transition: 0.2s ease-in-out;
+}
+#language-selector .btn img {
+  height: 20px;
+  width: 20px;
+  margin: 0;
+}
+/* #language-selector .btn:hover {
+  box-shadow: 0 6px 4px rgba(90, 85, 85, 0.315);
+} */
+#language-selector .btn::after {
+  color: var(--light-primary);
+}
+#language-selector .language-item {
+  font-family: var(--font-family-primary);
+  font-size: 12px;
+}
+
+#language-selector .language-item img {
+  height: 15px;
+  width: 15px;
+  margin-right: 5px;
+}
+#language-selector .dropdown-menu {
+  box-shadow: 0 4px 12px rgba(225, 223, 223, 0.315);
+  min-width: fit-content;
+}
 /* HOME SECTION */
 
 #home-section {

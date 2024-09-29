@@ -14,6 +14,8 @@ const resources = {
   },
 };
 
+export type LanguageCode = keyof typeof resources;
+
 i18n.use(initReactI18next).init({
   resources,
   lng: "pt",
