@@ -1,0 +1,10 @@
+{
+    "sections": {
+        "home": "Home",
+        "about": "About me",
+        "education": "Education",
+        "languages": "Languages",
+        "experiences": "Experiences",
+        "projects": "Projects"
+    }
+}

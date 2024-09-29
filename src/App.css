@@ -1,38 +1,64 @@
-.App {
-  text-align: center;
+:root {
+  --dark-background: #1c1c1e;
+  --dark-primary: #f5f5f7;
+  --dark-highlight: #0a84ff;
+  --dark-secondary: #64a9ff;
+  --dark-border: #2c2c2e;
+  --dark-link: #82cfff;
+  --dark-button: #0a84ff;
+  --dark-button-hover: #007aff;
+  --dark-alert: #ef5350;
+
+  --light-background: #f7f9fc;
+  --light-primary: #1c1c1e;
+  --light-highlight: #007bff;
+  --light-secondary: #4b9cd3;
+  --light-border: #d9e2ec;
+  --light-link: #0056b3;
+  --light-button: #0056b3;
+  --light-button-hover: #004494;
+  --light-alert: #e63946;
+}
+html {
+  background-color: var(--light-background);
+}
+a {
+  color: var(--light-link);
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* NAVBAR */
+
+nav.navbar {
+  padding: 18px 0;
+  width: 100%;
+  z-index: 9999;
+}
+.navbar-scrolled {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: rgba(
+    255,
+    255,
+    255,
+    1
+  ); /* Remova a transparência ao dar scroll */
+}
+.navbar {
+  font-size: 15px;
+}
+.navbar-brand {
+  font-size: 15px;
+  font-family: "Courier New", Courier, monospace;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.navbar-nav a {
+  font-family: "Roboto";
+  text-decoration: none;
+  transition: 0.2s ease-in-out;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.navbar-nav a.active {
+  color: var(--light-button-hover);
+  font-weight: bold;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar-nav a:hover {
+  color: var(--light-button-hover);
 }
