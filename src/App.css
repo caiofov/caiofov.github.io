@@ -18,12 +18,33 @@
   --light-button: #0056b3;
   --light-button-hover: #004494;
   --light-alert: #e63946;
+  --light-navbar-background: white;
 }
-html {
+html,
+.App {
   background-color: var(--light-background);
 }
 a {
   color: var(--light-link);
+}
+p {
+  font-family: "Roboto";
+  font-size: 20px;
+  color: var(--light-primary);
+}
+/* TITLES */
+h1,
+.typed-h1 span {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 48px;
+  font-weight: bold;
+  color: var(--light-primary);
+}
+h2,
+.typed-h2 span {
+  font-family: "Courier New", Courier, monospace;
+  font-size: 28px;
+  color: var(--light-primary);
 }
 
 /* NAVBAR */
@@ -32,21 +53,20 @@ nav.navbar {
   padding: 18px 0;
   width: 100%;
   z-index: 9999;
+  background-color: var(--light-navbar-background);
+  color: var(--light-primary);
+  box-shadow: 0 4px 12px rgba(225, 223, 223, 0.315);
 }
 .navbar-scrolled {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background-color: rgba(
-    255,
-    255,
-    255,
-    1
-  ); /* Remova a transparência ao dar scroll */
+  background-color: var(--light-background);
 }
 .navbar {
   font-size: 15px;
 }
 .navbar-brand {
   font-size: 15px;
+  color: var(--light-primary) !important;
   font-family: "Courier New", Courier, monospace;
 }
 
@@ -54,11 +74,28 @@ nav.navbar {
   font-family: "Roboto";
   text-decoration: none;
   transition: 0.2s ease-in-out;
+  color: var(--light-primary);
 }
 .navbar-nav a.active {
-  color: var(--light-button-hover);
+  color: var(--light-button-hover) !important;
   font-weight: bold;
 }
 .navbar-nav a:hover {
   color: var(--light-button-hover);
+}
+
+.body-container {
+  background-color: var(--light-background);
+}
+
+/* HOME SECTION */
+
+#home-section {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+#home-left-section {
+  width: 40%;
+  margin-right: 10%;
 }

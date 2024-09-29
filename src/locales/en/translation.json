@@ -6,5 +6,7 @@
         "languages": "Languages",
         "experiences": "Experiences",
         "projects": "Projects"
-    }
+    },
+    "role": "Full-Stack Developer",
+    "home-text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pretium dignissim massa, eget volutpat velit elementum eget."
 }
