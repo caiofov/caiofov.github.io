@@ -23,7 +23,22 @@
             "name": "Idiomas"
         },
         "experiences": {
-            "name": "Experiências"
+            "name": "Experiências",
+            "milenio": {
+                "start": "junho 2022",
+                "end": "junho 2024",
+                "role": "Estagiário de Desenvolvimento"
+            },
+            "ckl": {
+                "start": "agosto 2021",
+                "end": "junho 2022",
+                "role": "Professor de Programação"
+            },
+            "codijr": {
+                "start": "abril 2021",
+                "end": "abril 2022",
+                "role": "Desenvolvedor Web"
+            }
         },
         "projects": {
             "name": "Projetos"

@@ -19,7 +19,22 @@
             "name": "Languages"
         },
         "experiences": {
-            "name": "Experiences"
+            "name": "Experiences",
+            "milenio": {
+                "start": "June 2022",
+                "end": "June 2024",
+                "role": "Development Intern"
+            },
+            "ckl": {
+                "start": "August 2021",
+                "end": "June 2022",
+                "role": "Programming Instructor"
+            },
+            "codijr": {
+                "start": "April 2021",
+                "end": "April 2022",
+                "role": "Web Developer"
+            }
         },
         "projects": {
             "name": "Projects"

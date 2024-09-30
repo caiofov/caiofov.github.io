@@ -1,0 +1,84 @@
+{
+    "milenio": {
+        "name": "Milenio Capital",
+        "experiences": {
+            "rest-api": [
+                "FastAPI",
+                "Python",
+                "TypeScript",
+                "Node",
+                "Docker",
+                "Git",
+                "Back-End",
+                "Rest API"
+            ],
+            "gantt": [
+                "TypeScript",
+                "Node",
+                "Redis",
+                "Back-End",
+                "Front-End",
+                "HTML",
+                "CSS"
+            ],
+            "feedback": [
+                "FastAPI",
+                "Python",
+                "MongoDB",
+                "TypeScript",
+                "React",
+                "Svelte",
+                "Docker",
+                "Back-End",
+                "Front-End"
+            ],
+            "automations": [
+                "Python"
+            ],
+            "powerbi": [
+                "Python",
+                "PowerBI",
+                "Microsoft Teams"
+            ],
+            "management": [
+                "FastAPI",
+                "Python",
+                "TypeScript",
+                "React",
+                "Docker",
+                "Back-End",
+                "Front-End",
+                "MySQL"
+            ],
+            "unit-test": [
+                "Python",
+                "TypeScript"
+            ]
+        }
+    },
+    "ckl": {
+        "name": "Code Kids Love",
+        "experiences": {
+            "classes": [
+                "Python"
+            ],
+            "sheets": [
+                "Google Sheets",
+                "JavaScript"
+            ],
+            "courses": []
+        }
+    },
+    "codijr": {
+        "name": "Container Digital Jr.",
+        "experiences": {
+            "dev": [
+                "PHP",
+                "Front-End",
+                "HTML",
+                "CSS",
+                "WordPress"
+            ]
+        }
+    }
+}
