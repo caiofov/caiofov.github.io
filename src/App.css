@@ -103,9 +103,7 @@ nav.navbar {
   width: 20px;
   margin: 0;
 }
-/* #language-selector .btn:hover {
-  box-shadow: 0 6px 4px rgba(90, 85, 85, 0.315);
-} */
+
 #language-selector .btn::after {
   color: var(--light-primary);
 }
@@ -133,4 +131,27 @@ nav.navbar {
 #home-left-section {
   width: 40%;
   margin-right: 10%;
+}
+
+#contact-info {
+  width: 90%;
+}
+#contact-info a,
+#contact-info i {
+  color: var(--light-primary);
+  text-decoration: none;
+  font-family: var(--font-family-primary);
+  font-style: normal;
+}
+
+#contact-info .bi::before {
+  margin-right: 5px;
+}
+
+#download-cv p {
+  font-size: 15px;
+}
+#download-cv img {
+  height: 12px;
+  margin-left: 5px;
 }

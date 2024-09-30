@@ -1,12 +1,17 @@
 {
     "sections": {
-        "home": "Início",
+        "home": {
+            "name": "Início",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pretium dignissim massa, eget volutpat velit elementum eget.",
+            "role": "Desenvolvedor Full-Stack",
+            "download-cv": "Download do CV em PDF",
+            "download-pt": "Download em português",
+            "download-en": "Download em inglês"
+        },
         "about": "Sobre mim",
         "education": "Formação",
         "languages": "Idiomas",
         "experiences": "Experiências",
         "projects": "Projetos"
-    },
-    "role": "Desenvolvedor Full-Stack",
-    "home-text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pretium dignissim massa, eget volutpat velit elementum eget."
+    }
 }

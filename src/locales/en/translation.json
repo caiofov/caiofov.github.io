@@ -1,12 +1,17 @@
 {
     "sections": {
-        "home": "Home",
+        "home": {
+            "name": "Home",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pretium dignissim massa, eget volutpat velit elementum eget.",
+            "role": "Full-Stack Developer",
+            "download-cv": "Download CV PDF",
+            "download-pt": "Download in Portuguese",
+            "download-en": "Download in English"
+        },
         "about": "About me",
         "education": "Education",
         "languages": "Languages",
         "experiences": "Experiences",
         "projects": "Projects"
-    },
-    "role": "Full-Stack Developer",
-    "home-text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pretium dignissim massa, eget volutpat velit elementum eget."
+    }
 }

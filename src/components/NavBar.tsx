@@ -43,7 +43,7 @@ export const NavBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto align-items-center">
             <Nav.Link className="active" href="#home">
-              {t("sections.home")}
+              {t("sections.home.name")}
             </Nav.Link>
             <Nav.Link href="#about-me">{t("sections.about")}</Nav.Link>
             <Nav.Link href="#experiences">{t("sections.experiences")}</Nav.Link>
