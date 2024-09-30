@@ -16,6 +16,8 @@
   --dark-button-hover: #92b5d5;
   --dark-alert: #ef5350;
   --dark-navbar-background: #134074;
+  --dark-scrollbar-background: #f1f1f11b;
+  --dark-scrollbar-handle: #888;
 
   --light-background: #f7f9fc;
   --light-primary: #1c1c1e;
@@ -49,6 +51,34 @@ p {
   font-family: var(--font-family-primary);
   font-size: 15px;
   color: var(--dark-primary);
+}
+
+section {
+  padding-top: 100px;
+}
+
+/* SCROLLBAR */
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece {
+  background: var(--dark-scrollbar-background);
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: var(--dark-scrollbar-handle);
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: var(--dark-button-hover);
 }
 /* TITLES */
 h1,
