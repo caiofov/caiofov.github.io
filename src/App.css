@@ -42,12 +42,12 @@ html,
     rgba(12, 28, 67, 1) 30%,
     rgba(2, 0, 36, 1) 100%
   );
-  min-height: 80vh;
 }
 a {
   color: var(--dark-link);
 }
-p {
+p,
+li {
   font-family: var(--font-family-primary);
   font-size: 15px;
   color: var(--dark-primary);
@@ -146,10 +146,6 @@ nav.navbar {
   color: var(--dark-button-hover);
 }
 
-.body-container {
-  /* background-color: var(--dark-background); */
-}
-
 #language-selector .btn {
   background-color: transparent;
   border: none;
@@ -216,4 +212,44 @@ nav.navbar {
 #about-me {
   display: flex;
   margin-top: 1vh;
+}
+
+/* EXPERIENCE SECTION */
+
+.experience-title h4 {
+  font-size: 15px;
+  margin: 0;
+}
+
+.experience-title {
+  opacity: 50%;
+  transition: 0.2s ease-in-out;
+  cursor: pointer;
+  margin-right: 10%;
+}
+
+.experience-title:hover {
+  opacity: 100%;
+}
+.experience-title .active {
+  opacity: 100%;
+}
+
+#experiences-body {
+  margin-top: 30px;
+  height: 200px;
+  overflow-y: scroll;
+}
+.experience-company,
+.experience-period {
+  font-size: 13px;
+  margin: 0;
+}
+.experience-skills {
+  margin-top: 5px;
+  margin-left: 1%;
+}
+.experience-skills p {
+  margin-right: 10px;
+  font-size: 13px;
 }

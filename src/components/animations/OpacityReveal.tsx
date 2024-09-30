@@ -24,14 +24,20 @@ export const OpacityReveal: React.FC<{
 
 export const OpacityRevealSequence: React.FC<{
   children: JSX.Element[];
-  delayIncrease?: number;
+  delayIncrease?: number | ((len: number) => number);
   delayInit?: number;
 }> = ({ children, delayIncrease = 0.5, delayInit = 0 }) => {
   let delay = delayInit;
+
+  let delayIcc =
+    typeof delayIncrease == "number"
+      ? delayIncrease
+      : delayIncrease(children.length);
+
   return (
     <>
       {children.map((child, idx) => {
-        delay += delayIncrease;
+        delay += delayIcc;
         return <OpacityReveal delay={delay}>{child}</OpacityReveal>;
       })}
     </>
