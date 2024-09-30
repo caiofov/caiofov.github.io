@@ -7,20 +7,18 @@ export const PopReveal: React.FC<{
   stiffness?: number;
 }> = ({ children, delay = 0, stiffness = 100 }) => {
   return (
-    <div>
-      <motion.div
-        animate={{ scale: [0, 1] }}
-        transition={{
-          times: [0, 1],
-          type: "spring",
-          stiffness: stiffness,
-          ease: "easeInOut",
-          delay: delay,
-        }}
-      >
-        {children}
-      </motion.div>
-    </div>
+    <motion.div
+      animate={{ scale: [0, 1] }}
+      transition={{
+        times: [0, 1],
+        type: "spring",
+        stiffness: stiffness,
+        ease: "easeInOut",
+        delay: delay,
+      }}
+    >
+      {children}
+    </motion.div>
   );
 };
 
