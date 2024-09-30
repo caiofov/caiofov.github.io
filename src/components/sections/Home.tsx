@@ -5,7 +5,7 @@ import { HIAnimation } from "../animations/HiAnimation";
 import { Icon } from "../Icon";
 import brazilFlag from "../../assets/brazil_flag.svg";
 import usaFlag from "../../assets/usa_flag.svg";
-import { Button, OverlayTrigger, Tooltip } from "react-bootstrap";
+import { PopReveal, PopRevealSequence } from "../animations/PopReveal";
 
 const CVLanguage: React.FC<{
   image: string;
@@ -46,17 +46,19 @@ export const Home = () => {
           id="contact-info"
           className="d-flex justify-content-between mt-4 mb-3"
         >
-          <Icon
-            iconName="linkedin"
-            href="https://www.linkedin.com/in/caio-oliveira1312/"
-            text="caio-oliveira1312"
-          />
-          <Icon
-            iconName="github"
-            href="https://www.github.com/caiofov"
-            text="caiofov"
-          />
-          <Icon iconName="envelope-fill" text="cfoviana@gmail.com" />
+          <PopRevealSequence delayIncrease={0.5}>
+            <Icon
+              iconName="linkedin"
+              href="https://www.linkedin.com/in/caio-oliveira1312/"
+              text="caio-oliveira1312"
+            />
+            <Icon
+              iconName="github"
+              href="https://www.github.com/caiofov"
+              text="caiofov"
+            />
+            <Icon iconName="envelope-fill" text="cfoviana@gmail.com" />
+          </PopRevealSequence>
         </div>
 
         <div id="download-cv" className="">
