@@ -78,7 +78,9 @@ export const Home = () => {
       </div>
 
       <div className="photo">
-        <HIAnimation width={"100%"} />
+        <PopReveal stiffness={20}>
+          <HIAnimation width={"100%"} />
+        </PopReveal>
       </div>
     </section>
   );
