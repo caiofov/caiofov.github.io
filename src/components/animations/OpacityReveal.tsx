@@ -1,15 +1,15 @@
 import { motion } from "framer-motion";
 import React from "react";
 
-export const PopReveal: React.FC<{
+export const OpacityReveal: React.FC<{
   children: JSX.Element;
   delay?: number;
   stiffness?: number;
-}> = ({ children, delay = 0, stiffness = 100 }) => {
+}> = ({ children, delay = 0, stiffness = 20 }) => {
   return (
     <div>
       <motion.div
-        animate={{ scale: [0, 1] }}
+        animate={{ opacity: [0, 1] }}
         transition={{
           times: [0, 1],
           type: "spring",
@@ -24,7 +24,7 @@ export const PopReveal: React.FC<{
   );
 };
 
-export const PopRevealSequence: React.FC<{
+export const OpacityRevealSequence: React.FC<{
   children: JSX.Element[];
   delayIncrease?: number;
   delayInit?: number;
@@ -34,7 +34,7 @@ export const PopRevealSequence: React.FC<{
     <>
       {children.map((child, idx) => {
         delay += delayIncrease;
-        return <PopReveal delay={delay}>{child}</PopReveal>;
+        return <OpacityReveal delay={delay}>{child}</OpacityReveal>;
       })}
     </>
   );

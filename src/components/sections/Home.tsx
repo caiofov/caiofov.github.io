@@ -6,6 +6,10 @@ import { Icon } from "../Icon";
 import brazilFlag from "../../assets/brazil_flag.svg";
 import usaFlag from "../../assets/usa_flag.svg";
 import { PopReveal, PopRevealSequence } from "../animations/PopReveal";
+import {
+  OpacityReveal,
+  OpacityRevealSequence,
+} from "../animations/OpacityReveal";
 
 const CVLanguage: React.FC<{
   image: string;
@@ -46,7 +50,7 @@ export const Home = () => {
           id="contact-info"
           className="d-flex justify-content-between mt-4 mb-3"
         >
-          <PopRevealSequence delayIncrease={0.5}>
+          <PopRevealSequence>
             <Icon
               iconName="linkedin"
               href="https://www.linkedin.com/in/caio-oliveira1312/"
@@ -60,21 +64,26 @@ export const Home = () => {
             <Icon iconName="envelope-fill" text="cfoviana@gmail.com" />
           </PopRevealSequence>
         </div>
-
-        <div id="download-cv" className="">
-          <p className="d-inline m-0 p-0">{t("sections.home.download-cv")}:</p>
-          <CVLanguage
-            image={brazilFlag}
-            href=""
-            tooltipText={t("sections.home.download-pt")}
-          />
-          <CVLanguage
-            image={usaFlag}
-            href=""
-            tooltipText={t("sections.home.download-en")}
-          />
-        </div>
-        <p>{t("sections.home.text")}</p>
+        <OpacityRevealSequence delayInit={1}>
+          <div id="download-cv" className="">
+            <p className="d-inline m-0 p-0">
+              {t("sections.home.download-cv")}:
+            </p>
+            <CVLanguage
+              image={brazilFlag}
+              href=""
+              tooltipText={t("sections.home.download-pt")}
+            />
+            <CVLanguage
+              image={usaFlag}
+              href=""
+              tooltipText={t("sections.home.download-en")}
+            />
+          </div>
+          <OpacityReveal>
+            <p>{t("sections.home.text")}</p>
+          </OpacityReveal>
+        </OpacityRevealSequence>
       </div>
 
       <div className="photo">
