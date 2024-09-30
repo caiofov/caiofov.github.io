@@ -7,19 +7,18 @@
   src: url(assets/fonts/montserrat/static/Montserrat-Regular.ttf);
 }
 :root {
-  --dark-background: #1c1c1e;
-  --dark-primary: #f5f5f7;
-  --dark-highlight: #0a84ff;
+  --dark-background: #0c1c43;
+  --dark-primary: #eef4ed;
   --dark-secondary: #64a9ff;
   --dark-border: #2c2c2e;
   --dark-link: #82cfff;
   --dark-button: #0a84ff;
-  --dark-button-hover: #007aff;
+  --dark-button-hover: #92b5d5;
   --dark-alert: #ef5350;
+  --dark-navbar-background: #134074;
 
   --light-background: #f7f9fc;
   --light-primary: #1c1c1e;
-  --light-highlight: #007bff;
   --light-secondary: #4b9cd3;
   --light-border: #d9e2ec;
   --light-link: #0056b3;
@@ -30,32 +29,49 @@
 
   --font-family-primary: "Roboto";
   --font-family-courier: "Courier New", Courier, monospace;
+  --font-family-sections: "Montserrat";
 }
 html,
 .App {
-  background-color: var(--light-background);
+  background: var(--dark-navbar-background);
+  background: radial-gradient(
+    circle at left top,
+    var(--dark-navbar-background) 0%,
+    rgba(12, 28, 67, 1) 30%,
+    rgba(2, 0, 36, 1) 100%
+  );
+  min-height: 80vh;
 }
 a {
-  color: var(--light-link);
+  color: var(--dark-link);
 }
 p {
   font-family: var(--font-family-primary);
-  font-size: 20px;
-  color: var(--light-primary);
+  font-size: 15px;
+  color: var(--dark-primary);
 }
 /* TITLES */
 h1,
 .typed-h1 span {
   font-family: var(--font-family-courier);
-  font-size: 48px;
+  font-size: 70px;
   font-weight: bold;
-  color: var(--light-primary);
+  color: var(--dark-primary);
 }
 h2,
 .typed-h2 span {
   font-family: "Courier New", Courier, monospace;
   font-size: 28px;
-  color: var(--light-primary);
+  color: var(--dark-primary);
+}
+
+h3,
+h4 {
+  color: var(--dark-primary) !important;
+  font-family: var(--font-family-sections);
+}
+.container {
+  background: none;
 }
 
 /* NAVBAR */
@@ -64,20 +80,20 @@ nav.navbar {
   padding: 18px 0;
   width: 100%;
   z-index: 9999;
-  background-color: var(--light-navbar-background);
-  color: var(--light-primary);
-  box-shadow: 0 4px 12px rgba(225, 223, 223, 0.315);
+  /* background-color: var(--dark-navbar-background); */
+  color: var(--dark-primary);
+  /* box-shadow: 0 4px 12px rgba(225, 223, 223, 0.315); */
 }
 .navbar-scrolled {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background-color: var(--light-background);
+  background-color: var(--dark-background);
 }
 .navbar {
-  font-size: 15px;
+  font-size: 14px;
 }
 .navbar-brand {
   font-size: 15px;
-  color: var(--light-primary) !important;
+  color: var(--dark-primary) !important;
   font-family: var(--font-family-courier);
 }
 
@@ -85,22 +101,22 @@ nav.navbar {
   font-family: var(--font-family-primary);
   text-decoration: none;
   transition: 0.2s ease-in-out;
-  color: var(--light-primary);
+  color: var(--dark-primary);
 }
 .navbar-nav a.active {
-  color: var(--light-button-hover) !important;
+  color: var(--dark-button-hover) !important;
   font-weight: bold;
 }
 .navbar-nav a:hover {
-  color: var(--light-button-hover);
+  color: var(--dark-button-hover);
 }
 
 .body-container {
-  background-color: var(--light-background);
+  /* background-color: var(--dark-background); */
 }
 
 #language-selector .btn {
-  background-color: var(--light-navbar-background);
+  background-color: transparent;
   border: none;
   margin-left: 5px;
   padding: 0px 3px !important;
@@ -113,7 +129,7 @@ nav.navbar {
 }
 
 #language-selector .btn::after {
-  color: var(--light-primary);
+  color: var(--dark-primary);
 }
 #language-selector .language-item {
   font-family: var(--font-family-primary);
@@ -132,22 +148,17 @@ nav.navbar {
 /* HOME SECTION */
 
 #home-section {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-#home-left-section {
-  width: 40%;
-  margin-right: 10%;
+  margin: 5% 5% 10% 10%;
+  align-self: center;
 }
 
 #contact-info {
-  width: 90%;
+  width: 50%;
   flex-wrap: wrap;
 }
 #contact-info a,
 #contact-info i {
-  color: var(--light-primary);
+  color: var(--dark-primary);
   text-decoration: none;
   font-family: var(--font-family-primary);
   font-style: normal;
