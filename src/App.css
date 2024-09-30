@@ -79,15 +79,20 @@ h4 {
 nav.navbar {
   padding: 18px 0;
   width: 100%;
+  height: 8%;
   z-index: 9999;
-  /* background-color: var(--dark-navbar-background); */
   color: var(--dark-primary);
-  /* box-shadow: 0 4px 12px rgba(225, 223, 223, 0.315); */
+  transition: all 01s ease-in-out;
 }
 .navbar-scrolled {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  background-color: var(--dark-background);
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  background-color: var(--dark-navbar-background);
+  opacity: 50%;
 }
+.navbar-scrolled:hover {
+  opacity: 100%;
+}
+
 .navbar {
   font-size: 14px;
 }
