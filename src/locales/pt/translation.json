@@ -27,17 +27,34 @@
             "milenio": {
                 "start": "junho 2022",
                 "end": "junho 2024",
-                "role": "Estagiário de Desenvolvimento"
+                "role": "Estagiário de Desenvolvimento",
+                "texts": {
+                    "rest-api": "Desenvolvi APIs REST utilizando Python, FastAPI, TypeScript e Node, conteinerizadas com Docker.",
+                    "gantt": "Implementei um sistema interno para visualização das atividades realizadas no GitLab da equipe em formato de gráfico de Gantt, utilizando TypeScript com Node e Redis, melhorando o acompanhamento de projetos da equipe de tecnologia em toda a empresa.",
+                    "feedback": "Desenvolvi uma aplicação para avaliação interna de funcionários utilizando Python, FastAPI, MongoDB e criptografia RSA/SHA, com conteinerização via Docker. Também atuei no front-end, implementando gráficos, formulários e edição de dados com Svelte e TypeScript.",
+                    "automations": "Implementei automações em Python, eliminando a necessidade de manipulação manual de planilhas extensas.",
+                    "powerbi": "Desenvolvi um sistema de monitoramento de métricas do PowerBI em Python com integração para envio de notificações automáticas no Microsoft Teams, facilitando a comunicação e o acompanhamento de resultados.",
+                    "management": "Criei um sistema de gerenciamento de dados internos com Python, FastAPI e MySQL e front-end em React, exibindo os dados em formato de planilha e permitindo a edição pelo usuário.",
+                    "unit-test": "Realizei testes unitários de sistemas, incluindo APIs e outros sistemas desenvolvidos em Python, além de aplicações em TypeScript."
+                }
             },
             "ckl": {
                 "start": "agosto 2021",
                 "end": "junho 2022",
-                "role": "Professor de Programação"
+                "role": "Professor de Programação",
+                "texts": {
+                    "classes": "Desenvolvi materiais didáticos e ministrei aulas de programação com Snap! e Python para crianças de 7 a 17 anos, utilizando o jogo Minecraft como uma ferramenta lúdica de aprendizagem.",
+                    "sheets": "Automatizei e otimizei o processamento de planilhas, reduzindo o esforço manual e aumentando a eficiência.",
+                    "courses": "Realizei atendimento ao cliente e auxiliei com as vendas dos cursos de programação."
+                }
             },
             "codijr": {
                 "start": "abril 2021",
                 "end": "abril 2022",
-                "role": "Desenvolvedor Web"
+                "role": "Desenvolvedor Web",
+                "texts": {
+                    "dev": "Desenvolvi temas personalizados para sites WordPress de empresas e projetos acadêmicos, utilizando HTML, CSS, Bootstrap, PHP e JavaScript."
+                }
             }
         },
         "projects": {

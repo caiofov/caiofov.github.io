@@ -23,17 +23,34 @@
             "milenio": {
                 "start": "June 2022",
                 "end": "June 2024",
-                "role": "Development Intern"
+                "role": "Development Intern",
+                "texts": {
+                    "rest-api": "Developed REST APIs utilizing Python (FastAPI), TypeScript (Node.js), and containerized the applications with Docker.",
+                    "gantt": "Implemented an internal system for visualizing GitLab activities in a Gantt chart format using TypeScript, Node.js, and Redis, significantly improving project tracking for the technology team.",
+                    "feedback": "Built an employee evaluation application using Python, FastAPI, MongoDB, and RSA/SHA encryption, containerized with Docker. Also contributed to front-end development, implementing features like data visualization, forms, and data editing with Svelte and TypeScript.",
+                    "automations": "Automated manual processes in Python, replacing the need for large spreadsheet manipulation.",
+                    "powerbi": "Developed a metric monitoring system for PowerBI in Python, with automated notifications integrated into Microsoft Teams, improving communication and result tracking.",
+                    "management": "Created an internal data management system using Python (FastAPI) and MySQL, with a React front-end, allowing users to view and edit data in a spreadsheet-like format.",
+                    "unit-test": "Conducted unit testing for systems, including APIs and other Python-based systems, as well as TypeScript applications."
+                }
             },
             "ckl": {
                 "start": "August 2021",
                 "end": "June 2022",
-                "role": "Programming Instructor"
+                "role": "Programming Instructor",
+                "texts": {
+                    "classes": "Developed educational materials and taught programming to children aged 7 to 17 using Snap! and Python. Incorporated Minecraft as a playful learning tool to make the educational process more engaging and accessible.",
+                    "sheets": "Automated and optimized spreadsheet processing, significantly reducing manual effort and improving efficiency.",
+                    "courses": "Managed customer service and assisted with course sales, providing support and guidance to enhance the customer experience."
+                }
             },
             "codijr": {
                 "start": "April 2021",
                 "end": "April 2022",
-                "role": "Web Developer"
+                "role": "Web Developer",
+                "texts": {
+                    "dev": "Developed custom WordPress themes for business websites and academic projects using HTML, CSS, Bootstrap, PHP, and JavaScript, creating responsive interfaces optimized for enhanced user experience."
+                }
             }
         },
         "projects": {
