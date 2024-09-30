@@ -135,6 +135,7 @@ nav.navbar {
 
 #contact-info {
   width: 90%;
+  flex-wrap: wrap;
 }
 #contact-info a,
 #contact-info i {
@@ -154,4 +155,11 @@ nav.navbar {
 #download-cv img {
   height: 12px;
   margin-left: 5px;
+}
+
+/* ABOUT ME SECTION */
+
+#about-me {
+  display: flex;
+  margin-top: 1vh;
 }

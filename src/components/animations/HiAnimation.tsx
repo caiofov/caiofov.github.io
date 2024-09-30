@@ -20,13 +20,13 @@ export const HIAnimation = (props: SVGProps<SVGSVGElement>) => (
         ease: "easeInOut",
       }}
     >
-      <g id="Ellipse 1" filter="url(#filter0_f_2_19)">
+      {/* <g id="Ellipse 1" filter="url(#filter0_f_2_19)">
         <ellipse cx={215.5} cy={189} rx={188.5} ry={185} fill="#D9E2EC" />
         <path
           d="M403.5 189C403.5 290.888 319.338 373.5 215.5 373.5C111.662 373.5 27.5 290.888 27.5 189C27.5 87.1123 111.662 4.5 215.5 4.5C319.338 4.5 403.5 87.1123 403.5 189Z"
           stroke="#D9E2EC"
         />
-      </g>
+      </g> */}
       <motion.g
         id="person"
         animate={{ rotate: [0, -1, 0] }}

@@ -42,10 +42,8 @@ export const NavBar = () => {
         </Navbar.Toggle>
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="ms-auto align-items-center">
-            <Nav.Link className="active" href="#home">
-              {t("sections.home.name")}
-            </Nav.Link>
-            <Nav.Link href="#about-me">{t("sections.about")}</Nav.Link>
+            <Nav.Link href="#home">{t("sections.home.name")}</Nav.Link>
+            <Nav.Link href="#about-me">{t("sections.about.name")}</Nav.Link>
             <Nav.Link href="#experiences">{t("sections.experiences")}</Nav.Link>
             <Nav.Link href="#projects">{t("sections.projects")}</Nav.Link>
             <LanguageSelector />

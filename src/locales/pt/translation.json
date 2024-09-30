@@ -8,9 +8,20 @@
             "download-pt": "Download em português",
             "download-en": "Download em inglês"
         },
-        "about": "Sobre mim",
-        "education": "Formação",
-        "languages": "Idiomas",
+        "about": {
+            "name": "Sobre mim",
+            "text": "<strong>Bacharel em Ciência da Computação pela Universidade Federal do Ceará (UFC).</strong> Possuo experiência no desenvolvimento de <strong>APIs REST</strong> com <strong>Python</strong> (principalmente usando <strong>FastAPI</strong>,  além de experiência com <strong>Django</strong>) e <strong>TypeScript</strong>, utilizando <strong>Node.js</strong> e <strong>Express.js</strong>. Também tenho vivência com tecnologias front-end, como <strong>React</strong> e <strong>Svelte</strong>, além de conhecimento em bancos de dados relacionais (<strong>PostgreSQL</strong>, <strong>MySQL</strong>) e não relacionais (<strong>MongoDB</strong>)."
+        },
+        "education": {
+            "name": "Formação",
+            "course": "Bacharelado em Ciência da Computação",
+            "ufc": "Universidade Federal do Ceará",
+            "start": "Março 2020",
+            "end": "Setembro 2024"
+        },
+        "languages": {
+            "name": "Idiomas"
+        },
         "experiences": "Experiências",
         "projects": "Projetos"
     }

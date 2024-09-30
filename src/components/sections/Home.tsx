@@ -48,7 +48,7 @@ export const Home = () => {
         </div>
         <div
           id="contact-info"
-          className="d-flex justify-content-between mt-4 mb-3"
+          className="d-flex justify-content-between mt-4 mb-3 align-items-center"
         >
           <PopRevealSequence>
             <Icon

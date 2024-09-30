@@ -8,9 +8,16 @@
             "download-pt": "Download in Portuguese",
             "download-en": "Download in English"
         },
-        "about": "About me",
-        "education": "Education",
-        "languages": "Languages",
+        "about": {
+            "name": "About me",
+            "text": "<strong>Bachelor's Degree in Computer Science at the Federal University of Ceará (UFC).</strong> I have solid experience building REST APIs with <strong>Python</strong> (mainly using <strong>FastAPI</strong>, and also with experience in <strong>Django</strong>) and <strong>TypeScript</strong>, and I’ve worked with front-end technologies like <strong>React</strong> and <strong>Svelte</strong>. I also have a good understanding of both relational (<strong>PostgreSQL</strong>, <strong>MySQL</strong>) and non-relational databases (<strong>MongoDB</strong>)."
+        },
+        "education": {
+            "name": "Education"
+        },
+        "languages": {
+            "name": "Languages"
+        },
         "experiences": "Experiences",
         "projects": "Projects"
     }
