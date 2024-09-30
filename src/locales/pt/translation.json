@@ -22,7 +22,11 @@
         "languages": {
             "name": "Idiomas"
         },
-        "experiences": "Experiências",
-        "projects": "Projetos"
+        "experiences": {
+            "name": "Experiências"
+        },
+        "projects": {
+            "name": "Projetos"
+        }
     }
 }

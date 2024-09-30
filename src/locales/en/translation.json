@@ -18,7 +18,11 @@
         "languages": {
             "name": "Languages"
         },
-        "experiences": "Experiences",
-        "projects": "Projects"
+        "experiences": {
+            "name": "Experiences"
+        },
+        "projects": {
+            "name": "Projects"
+        }
     }
 }
