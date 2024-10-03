@@ -78,6 +78,14 @@
             "raw": {
                 "title": ".raw Mode",
                 "text": "Jogo de puzzle de plataforma desenvolvido para uma game jam. Esse projeto conquistou o primeiro lugar na categoria de inovação da competição."
+            },
+            "anchors": {
+                "repo": "Repositório",
+                "front": "Front-End",
+                "back": "Back-End",
+                "game": "Jogo",
+                "site": "Site",
+                "paper": "Artigo"
             }
         }
     }
