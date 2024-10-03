@@ -1,22 +1,22 @@
-import { Container } from "react-bootstrap";
 import "./App.css";
 import { NavBar } from "./components/NavBar";
 import { Home } from "./components/sections/Home";
 import { About } from "./components/sections/About";
 import { Experience } from "./components/sections/Experience";
 import { Projects } from "./components/sections/Projects";
+import { MantineProvider, Container, DEFAULT_THEME } from "@mantine/core";
 
 function App() {
   return (
-    <div className="App">
+    <MantineProvider theme={DEFAULT_THEME}>
       <NavBar />
-      <Container className="pt-5 mt-5 body-container">
+      <Container fluid>
         <Home />
         <About />
         <Experience />
         <Projects />
       </Container>
-    </div>
+    </MantineProvider>
   );
 }
 
