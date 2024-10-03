@@ -1,0 +1,51 @@
+{
+    "propor": {
+        "paper": "https://aclanthology.org/2024.propor-1.49.pdf",
+        "site": "https://caiofov.github.io/AnimationGenerator-Dataset-PROPOR2024/",
+        "game": "https://caiofov.itch.io/animation-generator-dataset",
+        "techs": [
+            "Python",
+            "SpaCy",
+            "RPG Maker MV",
+            "JavaScript"
+        ]
+    },
+    "mel": {
+        "game": "https://tushin.itch.io/jornada-da-mel",
+        "img": "https://img.itch.zone/aW1nLzEwMDczODEzLnBuZw==/315x250%23c/DmHByF.png",
+        "techs": [
+            "RPG Maker MV",
+            "JavaScript"
+        ]
+    },
+    "caronei": {
+        "repo": "https://github.com/caiofov/Caronei",
+        "img": "https://private-user-images.githubusercontent.com/69114136/373375881-f07a606a-5f2c-49d3-9d45-d1a0546473e8.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3Mjc5ODEzODksIm5iZiI6MTcyNzk4MTA4OSwicGF0aCI6Ii82OTExNDEzNi8zNzMzNzU4ODEtZjA3YTYwNmEtNWYyYy00OWQzLTlkNDUtZDFhMDU0NjQ3M2U4LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDEwMDMlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQxMDAzVDE4NDQ0OVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTFhOWQwMGRjZWI5MjhjYTUzZDlhYjU1ZDA0YTBhZmQwNzYyZmNkOTI2ZjdlYWMzZmQ4ZDBjNzIxMmExMmJiMzEmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.hJ53g48en4ePJIBXAz-XDbBB2I3O3j7sE2nYm6wLYg0",
+        "techs": [
+            "React Native",
+            "JavaScript",
+            "ExpressJS"
+        ]
+    },
+    "climasync": {
+        "front": "https://github.com/caiofov/ClimaSync-FrontEnd",
+        "back": "https://github.com/caiofov/ClimaSync-BackEnd",
+        "img": "",
+        "techs": [
+            "TypeScript",
+            "ExpressJS",
+            "Kotlin",
+            "TuyaAPI",
+            "Firebase"
+        ]
+    },
+    "raw": {
+        "repo": "https://github.com/caiofov/.rawMode-Gamedevjs",
+        "game": "https://caiofov.itch.io/raw-mode",
+        "img": "https://img.itch.zone/aW1nLzg3Njc4MTkucG5n/315x250%23c/k8jR8p.png",
+        "techs": [
+            "JavaScript",
+            "PhaserJS"
+        ]
+    }
+}
