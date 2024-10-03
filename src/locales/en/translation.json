@@ -54,7 +54,27 @@
             }
         },
         "projects": {
-            "name": "Projects"
+            "name": "Projects",
+            "propor": {
+                "title": "A Natural Language Text to Role-Playing Game Animation Generator",
+                "text": ""
+            },
+            "mel": {
+                "title": "Mel's Journey",
+                "text": ""
+            },
+            "caronei": {
+                "title": "Caronei",
+                "text": ""
+            },
+            "climasync": {
+                "title": "ClimaSync",
+                "text": ""
+            },
+            "raw": {
+                "title": ".raw Mode",
+                "text": ""
+            }
         }
     }
 }

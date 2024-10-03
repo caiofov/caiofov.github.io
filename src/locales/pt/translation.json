@@ -58,7 +58,27 @@
             }
         },
         "projects": {
-            "name": "Projetos"
+            "name": "Projetos",
+            "propor": {
+                "title": "Gerador de animação para jogos Role-Playing a partir textos em linguagem natural",
+                "text": "Sistema determinístico de geração de animações para jogos de RPG a partir do processamento de frases em português, utilizando Python com a biblioteca SpaCy e com o motor de jogos RPG Maker MV. Esse projeto foi selecionado para um congresso internacional de processamento de português."
+            },
+            "mel": {
+                "title": "Jornada da Mel",
+                "text": "Um jogo narrativo de ensino de matemática financeira para alunos de ensino médio."
+            },
+            "caronei": {
+                "title": "Caronei",
+                "text": "Aplicativo de caronas para o campus universitário, utilizando React Native para o front-end e JavaScript com Express.js para o back-end, com PostgreSQL como banco de dados. Esse projeto inclui geolocalização e cálculo de rotas utilizando grafos."
+            },
+            "climasync": {
+                "title": "ClimaSync",
+                "text": "Sistema de gerenciamento de dispositivos IoT baseado em condições climáticas, utilizando TypeScript com Node.js no back-end, integrando a API do sistema Tuya e um sistema de atualização de condições climáticas, com PostgreSQL como banco de dados e Kotlin no front-end."
+            },
+            "raw": {
+                "title": ".raw Mode",
+                "text": "Jogo de puzzle de plataforma desenvolvido para uma game jam. Esse projeto conquistou o primeiro lugar na categoria de inovação da competição."
+            }
         }
     }
 }

@@ -24,7 +24,8 @@
         "techs": [
             "React Native",
             "JavaScript",
-            "ExpressJS"
+            "ExpressJS",
+            "PostgreSQL"
         ]
     },
     "climasync": {
@@ -36,7 +37,8 @@
             "ExpressJS",
             "Kotlin",
             "TuyaAPI",
-            "Firebase"
+            "Firebase",
+            "PostgreSQL"
         ]
     },
     "raw": {
