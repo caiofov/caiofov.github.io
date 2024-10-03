@@ -1,15 +1,12 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { ReactTyped } from "react-typed";
-import { HIAnimation } from "../animations/HiAnimation";
 import { Icon } from "../Icon";
 import brazilFlag from "../../assets/brazil_flag.svg";
 import usaFlag from "../../assets/usa_flag.svg";
-import { PopReveal, PopRevealSequence } from "../animations/PopReveal";
-import {
-  OpacityReveal,
-  OpacityRevealSequence,
-} from "../animations/OpacityReveal";
+import { PopRevealSequence } from "../animations/PopReveal";
+import { OpacityRevealSequence } from "../animations/OpacityReveal";
+import { Anchor, Group, Image, Text, Title, Tooltip } from "@mantine/core";
 
 const CVLanguage: React.FC<{
   image: string;
@@ -17,25 +14,27 @@ const CVLanguage: React.FC<{
   href: string;
 }> = ({ image, tooltipText, href }) => {
   return (
-    <a href={href}>
-      <img src={image} title={tooltipText} />
-    </a>
+    <Tooltip label={tooltipText}>
+      <Anchor href={href}>
+        <Image h={"20px"} src={image} />
+      </Anchor>
+    </Tooltip>
   );
 };
 export const Home = () => {
   const { t } = useTranslation();
   return (
     <section id="home-section" className="d-block">
-      <div className="title">
-        <h1>
+      <Group className="title" display="block">
+        <Title>
           <ReactTyped
             className="typed-h1"
             strings={["Caio Oliveira"]}
             typeSpeed={100}
             onComplete={(self) => self.cursor.remove()}
           />
-        </h1>
-        <h2>
+        </Title>
+        <Title order={2}>
           <ReactTyped
             className="typed-h2"
             strings={[t("sections.home.role")]}
@@ -43,9 +42,9 @@ export const Home = () => {
             startDelay={800}
             onComplete={(self) => self.cursor.remove()}
           />
-        </h2>
-      </div>
-      <div
+        </Title>
+      </Group>
+      <Group
         id="contact-info"
         className="d-flex justify-content-between mt-4 mb-3 align-items-center"
       >
@@ -62,10 +61,12 @@ export const Home = () => {
           />
           <Icon iconName="envelope-fill" text="cfoviana@gmail.com" />
         </PopRevealSequence>
-      </div>
+      </Group>
       <OpacityRevealSequence delayInit={1}>
-        <div id="download-cv" className="">
-          <p className="d-inline m-0 p-0">{t("sections.home.download-cv")}:</p>
+        <Group id="download-cv" className="">
+          <Text className="d-inline m-0 p-0">
+            {t("sections.home.download-cv")}:
+          </Text>
           <CVLanguage
             image={brazilFlag}
             href=""
@@ -76,8 +77,8 @@ export const Home = () => {
             href=""
             tooltipText={t("sections.home.download-en")}
           />
-        </div>
-        <p>{t("sections.home.text")}</p>
+        </Group>
+        <Text>{t("sections.home.text")}</Text>
       </OpacityRevealSequence>
 
       {/* <div className="photo">
