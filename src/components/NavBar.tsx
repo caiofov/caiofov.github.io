@@ -1,10 +1,24 @@
+import { Anchor, AppShell, Burger, Group } from "@mantine/core";
+import React, { useEffect, useState } from "react";
 import { LanguageSelector } from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
-import React, { useState, useEffect } from "react";
-import { Anchor, Container, Group, Text } from "@mantine/core";
 
-export const NavBar = () => {
+export const NavbarSections = () => {
   const { t } = useTranslation();
+  return (
+    <>
+      {["home", "about", "experiences", "projects"].map((section) => {
+        return (
+          <Anchor href={`#${section}`}>{t(`sections.${section}.name`)}</Anchor>
+        );
+      })}
+      <LanguageSelector />
+    </>
+  );
+};
+
+export const Navbar = () => {
+  const [isNavbarOpened, setIsNavbarOpened] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
   // Função para adicionar a sombra e transparência quando der scroll
@@ -18,29 +32,32 @@ export const NavBar = () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
-
   return (
-    <Container>
-      <nav className={isScrolled ? "navbar-scrolled" : ""}>
-        <Container>
-          <Text className="me-auto">
-            {"< Caio"}
-            <b>Oliveira</b>
-            {" />"}
-          </Text>
+    <>
+      <AppShell.Header h={"10%"}>
+        <Burger
+          hiddenFrom="sm"
+          opened={isNavbarOpened}
+          onClick={() => setIsNavbarOpened((o) => !o)}
+          size="sm"
+          mr="xl"
+        />
+        <Group
+          visibleFrom="sm"
+          opacity={isScrolled ? "50%" : "100%"}
+          style={{ transition: "all 1s ease-in-out" }}
+        >
+          <NavbarSections />
+        </Group>
+      </AppShell.Header>
 
-          <Group align="center">
-            {["home", "about", "experiences", "projects"].map((section) => {
-              return (
-                <Anchor href={`#${section}`}>
-                  {t(`sections.${section}.name`)}
-                </Anchor>
-              );
-            })}
-            <LanguageSelector />
+      {isNavbarOpened ? (
+        <AppShell.Navbar hidden={!isNavbarOpened}>
+          <Group w={{ base: "100%", sm: 0 }}>
+            <NavbarSections />
           </Group>
-        </Container>
-      </nav>
-    </Container>
+        </AppShell.Navbar>
+      ) : null}
+    </>
   );
 };
