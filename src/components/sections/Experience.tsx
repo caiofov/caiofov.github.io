@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import experiences from "../../assets/experiences.json";
 import { OpacityRevealSequence } from "../animations/OpacityReveal";
+import { Group, List, Text, Title } from "@mantine/core";
 
 type CompanyType = keyof typeof experiences;
 type ExperienceType = keyof (typeof experiences)[CompanyType]["experiences"];
@@ -36,15 +37,15 @@ const ExperienceItem: React.FC<{
   const skills = experiences[company]["experiences"][experience] as string[];
 
   return (
-    <li className="experience-item">
-      {text}
+    <List.Item>
+      <Text>{text}</Text>
 
-      <div className="experience-skills d-flex">
+      <Group display={"flex"}>
         {skills.map((skill) => {
-          return <p>{skill}</p>;
+          return <Text>{skill}</Text>;
         })}
-      </div>
-    </li>
+      </Group>
+    </List.Item>
   );
 };
 
@@ -55,8 +56,8 @@ export const Experience = () => {
   );
   return (
     <section id="experiences">
-      <h3>{t("sections.experiences.name")}</h3>
-      <div
+      <Title order={3}>{t("sections.experiences.name")}</Title>
+      <Group
         id="experiences-select"
         className="d-flex justify-content-center align-items-center"
       >
@@ -77,28 +78,30 @@ export const Experience = () => {
             />
           );
         })}
-      </div>
-      <div id="experiences-body">
-        <OpacityRevealSequence
-          delayIncrease={(len) => {
-            return len > 5 ? 0.1 : 10;
-          }}
-        >
-          {Object.keys(experiences[active]["experiences"]).map((e) => {
-            const exp = e as ExperienceType;
-            return (
-              <ExperienceItem
-                key={active + exp}
-                company={active}
-                experience={exp}
-                text={t(
-                  `sections.experiences.${active}.texts.${exp as string}`
-                )}
-              />
-            );
-          })}
-        </OpacityRevealSequence>
-      </div>
+      </Group>
+      <Group id="experiences-body">
+        <List>
+          <OpacityRevealSequence
+            delayIncrease={(len) => {
+              return len > 5 ? 0.1 : 10;
+            }}
+          >
+            {Object.keys(experiences[active]["experiences"]).map((e) => {
+              const exp = e as ExperienceType;
+              return (
+                <ExperienceItem
+                  key={active + exp}
+                  company={active}
+                  experience={exp}
+                  text={t(
+                    `sections.experiences.${active}.texts.${exp as string}`
+                  )}
+                />
+              );
+            })}
+          </OpacityRevealSequence>
+        </List>
+      </Group>
     </section>
   );
 };
