@@ -11,7 +11,6 @@ function App() {
     <MantineProvider theme={DEFAULT_THEME} defaultColorScheme="dark">
       <AppShell navbar={{ width: "30%", breakpoint: "sm" }}>
         <Navbar />
-        <AppShell.Footer>Footer</AppShell.Footer>
 
         <AppShell.Main>
           <AppShell.Section>

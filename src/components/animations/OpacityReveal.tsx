@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import React from "react";
 
 export const OpacityReveal: React.FC<{
-  children: JSX.Element;
+  children: React.ReactNode;
   delay?: number;
   stiffness?: number;
 }> = ({ children, delay = 0, stiffness = 20 }) => {
@@ -23,7 +23,7 @@ export const OpacityReveal: React.FC<{
 };
 
 export const OpacityRevealSequence: React.FC<{
-  children: JSX.Element[];
+  children: React.ReactNode[];
   delayIncrease?: number | ((len: number) => number);
   delayInit?: number;
 }> = ({ children, delayIncrease = 0.5, delayInit = 0 }) => {
