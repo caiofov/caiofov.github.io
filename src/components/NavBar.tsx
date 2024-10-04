@@ -70,21 +70,25 @@ export const Navbar: React.FC<{
           size="sm"
         />
 
-        <Group>
-          <Text visibleFrom="xs">
+        <Group visibleFrom="xs">
+          <Text size="xl">
             {"< "}
             <b>Caio</b>Oliveira{" />"}
           </Text>
-          <Text hiddenFrom="xs">
+          <Group hiddenFrom="sm">{DarkModeToggle}</Group>
+        </Group>
+        <Group hiddenFrom="xs">
+          <Text size="xl">
             {"< "}
             <b>C</b>O{" />"}
           </Text>
+          {DarkModeToggle}
         </Group>
 
         <Group visibleFrom="sm" display="flex" justify="space-between">
           {navbarAnchors}
-          {DarkModeToggle}
           <LanguageSelector />
+          {DarkModeToggle}
         </Group>
       </AppShell.Header>
       {isNavbarOpened ? (

@@ -21,8 +21,9 @@ function App() {
       <AppShell navbar={{ width: "30%", breakpoint: "sm" }}>
         <Navbar DarkModeToggle={ThemeToggle} />
 
-        <AppShell.Main mt={"5%"} p="0">
+        <AppShell.Main p="0">
           <Container
+            pt={"5%"}
             ml={"10%"}
             mr={"10%"}
             fluid
