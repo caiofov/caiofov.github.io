@@ -4,18 +4,22 @@ import { Home } from "./components/sections/Home";
 import { About } from "./components/sections/About";
 import { Experience } from "./components/sections/Experience";
 import { Projects } from "./components/sections/Projects";
-import {
-  MantineProvider,
-  DEFAULT_THEME,
-  AppShell,
-  Container,
-} from "@mantine/core";
+import { MantineProvider, AppShell, Container } from "@mantine/core";
+import { useState } from "react";
+import { DarkModeToggle } from "./components/DarkModeToggle";
 
 function App() {
+  const [darkMode, setDarkMode] = useState(true);
+  const ThemeToggle = (
+    <DarkModeToggle
+      checked={darkMode}
+      onChange={() => setDarkMode(!darkMode)}
+    />
+  );
   return (
-    <MantineProvider theme={DEFAULT_THEME} defaultColorScheme="dark">
+    <MantineProvider forceColorScheme={darkMode ? "dark" : "light"}>
       <AppShell navbar={{ width: "30%", breakpoint: "sm" }}>
-        <Navbar />
+        <Navbar DarkModeToggle={ThemeToggle} />
 
         <AppShell.Main mt={"5%"} p="0">
           <Container

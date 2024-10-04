@@ -2,7 +2,6 @@ import { Anchor, AppShell, Burger, Group, Text } from "@mantine/core";
 import React, { useEffect, useState } from "react";
 import { LanguageSelector } from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
 import { OpacityRevealSequence } from "./animations/OpacityReveal";
 import {
   IconBriefcase2,
@@ -18,7 +17,9 @@ const SECTIONS = [
   { label: "projects", icon: IconPencil },
 ];
 
-export const Navbar = () => {
+export const Navbar: React.FC<{
+  DarkModeToggle: JSX.Element;
+}> = ({ DarkModeToggle }) => {
   const [isNavbarOpened, setIsNavbarOpened] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const { t } = useTranslation();
@@ -82,6 +83,7 @@ export const Navbar = () => {
 
         <Group visibleFrom="sm" display="flex" justify="space-between">
           {navbarAnchors}
+          {DarkModeToggle}
           <LanguageSelector />
         </Group>
       </AppShell.Header>
