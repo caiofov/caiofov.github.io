@@ -3,6 +3,8 @@ import { useTranslation } from "react-i18next";
 import experiences from "../../assets/experiences.json";
 import { OpacityRevealSequence } from "../animations/OpacityReveal";
 import { Group, List, Text, Title } from "@mantine/core";
+import { Section } from "./Section";
+import { useHover } from "@mantine/hooks";
 
 type CompanyType = keyof typeof experiences;
 type ExperienceType = keyof (typeof experiences)[CompanyType]["experiences"];
@@ -15,17 +17,23 @@ const ExperienceTitle: React.FC<{
   active: boolean;
   onClick: React.MouseEventHandler<HTMLDivElement>;
 }> = ({ company, start, end, role, active, onClick }) => {
+  const { hovered, ref } = useHover();
+  const style = hovered
+    ? {
+        opacity: "50%",
+        cursor: "pointer",
+      }
+    : {
+        transition: "all 0.3s ease-in-out",
+      };
   return (
-    <div
-      className={"experience-title" + (active ? " active" : "")}
-      onClick={onClick}
-    >
-      <h4>{role}</h4>
-      <p className="experience-company">{company}</p>
-      <p className="experience-period">
+    <Group display="block" onClick={onClick} ref={ref} style={style}>
+      <Title order={4}>{role}</Title>
+      <Text>{company}</Text>
+      <Text>
         {start} - {end}
-      </p>
-    </div>
+      </Text>
+    </Group>
   );
 };
 
@@ -55,53 +63,57 @@ export const Experience = () => {
     Object.keys(experiences)[0] as CompanyType
   );
   return (
-    <section id="experiences">
-      <Title order={3}>{t("sections.experiences.name")}</Title>
-      <Group
-        id="experiences-select"
-        className="d-flex justify-content-center align-items-center"
-      >
-        {Object.keys(experiences).map((c) => {
-          const company = c as CompanyType;
-          return (
-            <ExperienceTitle
-              key={company}
-              company={experiences[company as keyof typeof experiences].name}
-              start={t(`sections.experiences.${company}.start`)}
-              end={t(`sections.experiences.${company}.end`)}
-              role={t(`sections.experiences.${company}.role`)}
-              active={company === active}
-              onClick={(e) => {
-                e.preventDefault();
-                setActive(company);
+    <Section id="experiences" text={t("sections.experiences.name")}>
+      <Group>
+        <Group
+          id="experiences-select"
+          display={"flex"}
+          justify="space-around"
+          w="100%"
+          mt="2%"
+        >
+          {Object.keys(experiences).map((c) => {
+            const company = c as CompanyType;
+            return (
+              <ExperienceTitle
+                key={company}
+                company={experiences[company as keyof typeof experiences].name}
+                start={t(`sections.experiences.${company}.start`)}
+                end={t(`sections.experiences.${company}.end`)}
+                role={t(`sections.experiences.${company}.role`)}
+                active={company === active}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setActive(company);
+                }}
+              />
+            );
+          })}
+        </Group>
+        <Group id="experiences-body" mt="2%">
+          <List>
+            <OpacityRevealSequence
+              delayIncrease={(len) => {
+                return len > 5 ? 0.1 : 10;
               }}
-            />
-          );
-        })}
+            >
+              {Object.keys(experiences[active]["experiences"]).map((e) => {
+                const exp = e as ExperienceType;
+                return (
+                  <ExperienceItem
+                    key={active + exp}
+                    company={active}
+                    experience={exp}
+                    text={t(
+                      `sections.experiences.${active}.texts.${exp as string}`
+                    )}
+                  />
+                );
+              })}
+            </OpacityRevealSequence>
+          </List>
+        </Group>
       </Group>
-      <Group id="experiences-body">
-        <List>
-          <OpacityRevealSequence
-            delayIncrease={(len) => {
-              return len > 5 ? 0.1 : 10;
-            }}
-          >
-            {Object.keys(experiences[active]["experiences"]).map((e) => {
-              const exp = e as ExperienceType;
-              return (
-                <ExperienceItem
-                  key={active + exp}
-                  company={active}
-                  experience={exp}
-                  text={t(
-                    `sections.experiences.${active}.texts.${exp as string}`
-                  )}
-                />
-              );
-            })}
-          </OpacityRevealSequence>
-        </List>
-      </Group>
-    </section>
+    </Section>
   );
 };

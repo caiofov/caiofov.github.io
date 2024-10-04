@@ -10,6 +10,7 @@ import {
   IconStackMiddle,
   IconWorld,
 } from "@tabler/icons-react";
+import { Section } from "./Section";
 type ProjectType = (typeof projects)[keyof typeof projects];
 
 const AnchorIcons = {
@@ -107,8 +108,7 @@ export const Projects = () => {
   };
 
   return (
-    <section id="projects">
-      <Title order={3}>{t("sections.projects.name")}</Title>
+    <Section id="projects" text={t("sections.projects.name")}>
       <Group display="flex" align="top">
         {Object.keys(projects).map((key) => {
           const proj = projects[key as keyof typeof projects];
@@ -124,6 +124,6 @@ export const Projects = () => {
           );
         })}
       </Group>
-    </section>
+    </Section>
   );
 };
