@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export const PopReveal: React.FC<{
   children: JSX.Element;
@@ -9,6 +10,7 @@ export const PopReveal: React.FC<{
   return (
     <motion.div
       animate={{ scale: [0, 1] }}
+      key={uuidv4()}
       transition={{
         times: [0, 1],
         type: "spring",

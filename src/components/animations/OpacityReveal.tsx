@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import React from "react";
+import { v4 as uuidv4 } from "uuid";
 
 export const OpacityReveal: React.FC<{
   children: React.ReactNode;
@@ -8,6 +9,7 @@ export const OpacityReveal: React.FC<{
 }> = ({ children, delay = 0, stiffness = 20 }) => {
   return (
     <motion.div
+      key={uuidv4()}
       animate={{ opacity: [0, 1] }}
       transition={{
         times: [0, 1],
@@ -36,7 +38,7 @@ export const OpacityRevealSequence: React.FC<{
 
   return (
     <>
-      {children.map((child, idx) => {
+      {children.map((child) => {
         delay += delayIcc;
         return <OpacityReveal delay={delay}>{child}</OpacityReveal>;
       })}
