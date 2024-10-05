@@ -65,7 +65,7 @@
             },
             "mel": {
                 "title": "Jornada da Mel",
-                "text": "Um jogo narrativo de ensino de matemática financeira para alunos de ensino médio."
+                "text": "Um jogo narrativo de ensino de matemática financeira voltado para alunos de ensino médio, envolvendo temáticas como porcentagem, juros simples e compostos. Foi desenvolvido com RPG Maker MV e JavaScript. Foi feita uma avaliação com estudantes e obteve excelentes avaliações."
             },
             "caronei": {
                 "title": "Caronei",
@@ -77,7 +77,7 @@
             },
             "raw": {
                 "title": ".raw Mode",
-                "text": "Jogo de puzzle de plataforma desenvolvido para uma game jam. Esse projeto conquistou o primeiro lugar na categoria de inovação da competição."
+                "text": "Jogo de puzzle de plataforma desenvolvido em PhaserJS para uma game jam na plataforma Itch.io. Esse projeto conquistou o primeiro lugar na categoria de inovação da competição."
             },
             "anchors": {
                 "repo": "Repositório",

@@ -1,4 +1,16 @@
-import { Card, Group, Title, Image, Text, Badge, Anchor } from "@mantine/core";
+import {
+  Card,
+  Group,
+  Title,
+  Image,
+  Text,
+  Badge,
+  Anchor,
+  Grid,
+  GridCol,
+  ThemeIcon,
+  useMatches,
+} from "@mantine/core";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import projects from "../../assets/projects.json";
@@ -39,7 +51,7 @@ const ProjectAnchor: React.FC<{
 }> = ({ anchor }) => {
   const AnchorIcon = AnchorIcons[anchor.type];
   return (
-    <Group>
+    <Group w="fit-content" gap="xs" mr="sm">
       <AnchorIcon />
       <Anchor href={anchor.link}>{anchor.text}</Anchor>
     </Group>
@@ -51,39 +63,43 @@ const ProjectItem: React.FC<{ project: CompleteProjectType }> = ({
 }) => {
   return (
     <Card
-      p={"2%"}
-      shadow="sm"
-      radius="md"
+      p="xl"
+      shadow="xl"
+      radius="lg"
       withBorder
-      style={{ maxWidth: "30%", alignContent: "center" }}
+      h="100%"
+      w="100%"
+      style={{
+        justifyContent: "space-between",
+      }}
     >
-      {"img" in project && project["img"].length > 0 ? (
-        <Card.Section>
-          <Image radius="md" src={project.img} height={300} />
-        </Card.Section>
-      ) : null}
-      <Card.Section p={"1%"}>
-        <Title mt={"1%"} order={4}>
+      <Card.Section>
+        {"img" in project && project["img"].length > 0 ? (
+          <Image radius="xl" src={project.img} height={300} />
+        ) : null}
+        <Title mt="md" mb="sm" order={4}>
           {project.title}
         </Title>
-      </Card.Section>
-      <Card.Section>
-        {project.techs.sort().map((tech) => {
-          return (
-            <Badge key={tech} radius="sm" mr={"1%"} size="sm" variant="light">
-              {tech}
-            </Badge>
-          );
-        })}
-      </Card.Section>
-
-      <Card.Section p={"1%"}>
-        <Text size="sm">{project.text}</Text>
+        <Group mb="md" justify="flex-start" gap="xs">
+          {project.techs.sort().map((tech) => {
+            return (
+              <Badge key={tech} radius="sm" mr="xs" size="sm" variant="light">
+                {tech}
+              </Badge>
+            );
+          })}
+        </Group>
       </Card.Section>
 
+      <Card.Section mb="xl">
+        <Text>{project.text}</Text>
+      </Card.Section>
+
       <Card.Section>
-        <Text fw={"bold"}>Links:</Text>
-        <Group display={"flex"}>
+        <Title order={5} mb="sm">
+          Links:
+        </Title>
+        <Group display="flex">
           {project.anchorsMapped.map((anchor) => (
             <ProjectAnchor key={anchor.link} anchor={anchor} />
           ))}
@@ -106,25 +122,31 @@ export const Projects = () => {
       } as AnchorType;
     });
   };
+  const justify = useMatches({
+    md: "flex-start",
+    base: "center",
+  });
 
   return (
     <Section id="projects" text={t("sections.projects.name")}>
-      <Group display="flex" align="top">
+      <Grid gutter={{ md: "lg", sm: "xs" }} align="stretch" justify={justify}>
         {Object.keys(projects).map((key) => {
           const proj = projects[key as keyof typeof projects];
           return (
-            <ProjectItem
-              key={key}
-              project={{
-                ...proj,
-                title: t(`sections.projects.${key}.title`),
-                text: t(`sections.projects.${key}.text`),
-                anchorsMapped: getProjectAnchors(proj),
-              }}
-            />
+            <GridCol span={{ lg: 4, md: 6, xs: 10 }}>
+              <ProjectItem
+                key={key}
+                project={{
+                  ...proj,
+                  title: t(`sections.projects.${key}.title`),
+                  text: t(`sections.projects.${key}.text`),
+                  anchorsMapped: getProjectAnchors(proj),
+                }}
+              />
+            </GridCol>
           );
         })}
-      </Group>
+      </Grid>
     </Section>
   );
 };

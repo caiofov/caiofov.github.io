@@ -32,7 +32,9 @@
             "React Native",
             "JavaScript",
             "ExpressJS",
-            "PostgreSQL"
+            "PostgreSQL",
+            "CSS",
+            "HTML"
         ]
     },
     "climasync": {
@@ -40,7 +42,7 @@
             "front": "https://github.com/caiofov/ClimaSync-FrontEnd",
             "back": "https://github.com/caiofov/ClimaSync-BackEnd"
         },
-        "img": "",
+        "img": "https://github.com/caiofov/ClimaSync-FrontEnd/blob/main/img.png?raw=true",
         "techs": [
             "TypeScript",
             "ExpressJS",
