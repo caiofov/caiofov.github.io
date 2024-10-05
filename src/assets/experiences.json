@@ -30,7 +30,9 @@
                 "Svelte",
                 "Docker",
                 "Back-End",
-                "Front-End"
+                "Front-End",
+                "HTML",
+                "CSS"
             ],
             "automations": [
                 "Python"
