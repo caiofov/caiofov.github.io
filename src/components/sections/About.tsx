@@ -1,4 +1,4 @@
-import { Group, Text, Title } from "@mantine/core";
+import { Text } from "@mantine/core";
 import React from "react";
 import { useTranslation } from "react-i18next";
 import { Trans } from "react-i18next";

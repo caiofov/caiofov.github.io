@@ -70,7 +70,7 @@ const ProjectItem: React.FC<{ project: CompleteProjectType }> = ({
       <Card.Section>
         {project.techs.sort().map((tech) => {
           return (
-            <Badge key={tech} radius="sm" mr={"1%"} size="sm">
+            <Badge key={tech} radius="sm" mr={"1%"} size="sm" variant="light">
               {tech}
             </Badge>
           );

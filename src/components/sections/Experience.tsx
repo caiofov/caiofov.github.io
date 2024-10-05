@@ -7,10 +7,10 @@ import {
   Badge,
   Group,
   List,
-  MantineStyleProp,
   Paper,
   ScrollArea,
   Text,
+  ThemeIcon,
   Timeline,
   Title,
 } from "@mantine/core";
@@ -30,6 +30,7 @@ import {
   experienceStyle,
 } from "../../styles/experience";
 import { Typing } from "../animations/Typing";
+import { v4 as uuidv4 } from "uuid";
 
 type CompanyType = keyof typeof experiences;
 type ExperienceType = keyof (typeof experiences)[CompanyType]["experiences"];
@@ -56,7 +57,16 @@ const ExperienceTitle: React.FC<{
 
   return (
     <Timeline.Item
-      bullet={<Bullet size="xs" style={bullet} />}
+      bullet={
+        <ThemeIcon
+          variant={active ? "gradient" : "transparent"}
+          size="lg"
+          radius="lg"
+          style={bullet}
+        >
+          <Bullet />
+        </ThemeIcon>
+      }
       onClick={onClick}
       ref={ref}
       style={style}
@@ -102,9 +112,11 @@ const ActivityItem: React.FC<{
       <Text mb="sm">{text}</Text>
 
       <Group display={"flex"}>
-        {skills.map((skill) => {
-          return <Badge>{skill}</Badge>;
-        })}
+        {skills.map((skill) => (
+          <Badge key={skill} variant="light">
+            {skill}
+          </Badge>
+        ))}
       </Group>
     </List.Item>
   );
@@ -117,29 +129,42 @@ export const Experience = () => {
     Object.keys(experiences)[activeIdx] as CompanyType
   );
 
+  const changeActiveExp = (idx: number) => {
+    setActiveId(Object.keys(experiences)[idx] as CompanyType);
+    setActiveIdx(idx);
+  };
+
   return (
     <Section id="experiences" text={t("sections.experiences.name")}>
-      <Group display={"flex"} w="100%" mt="lg" ml="5%">
+      <Group
+        display={"flex"}
+        w="100%"
+        mt="xl"
+        style={{
+          justifyContent: "space-evenly",
+        }}
+      >
         <Group w={"40%"} justify="center">
-          <Timeline active={activeIdx + 1} bulletSize={30} lineWidth={2}>
+          <Timeline
+            h="100%"
+            active={activeIdx + 1}
+            bulletSize={30}
+            lineWidth={2}
+            style={{ alignItems: "stretch" }}
+          >
             {Object.keys(experiences).map((c, idx) => {
               const company = c as CompanyType;
               return (
                 <ExperienceTitle
                   key={company}
-                  company={
-                    experiences[company as keyof typeof experiences].name
-                  }
+                  company={experiences[company as CompanyType].name}
                   start={t(`sections.experiences.${company}.start`)}
                   end={t(`sections.experiences.${company}.end`)}
                   role={t(`sections.experiences.${company}.role`)}
                   active={idx === activeIdx}
                   onClick={(e) => {
                     e.preventDefault();
-                    setActiveIdx(idx);
-                    setActiveId(
-                      Object.keys(experiences)[activeIdx] as CompanyType
-                    );
+                    changeActiveExp(idx);
                   }}
                   Bullet={experienceIcons[company]}
                 />
@@ -147,6 +172,7 @@ export const Experience = () => {
             })}
           </Timeline>
         </Group>
+
         <Paper w="50%" withBorder radius="md" shadow="xl" p="lg">
           <ExperienceBodyTitle
             companyName={experiences[activeId].name}
@@ -161,6 +187,7 @@ export const Experience = () => {
                   (exp) => {
                     return (
                       <ActivityItem
+                        key={uuidv4()}
                         company={activeId}
                         experience={exp as ExperienceType}
                         text={t(
