@@ -1,4 +1,5 @@
 import { Anchor, AppShell, Burger, Group, Text } from "@mantine/core";
+import { useHover } from "@mantine/hooks";
 import React, { useEffect, useState } from "react";
 import { LanguageSelector } from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
@@ -36,7 +37,8 @@ export const Navbar: React.FC<{
     };
   }, []);
 
-  const navbarOpacity = isScrolled ? "50%" : "100%";
+  const { hovered, ref } = useHover();
+  const navbarOpacity = hovered || !isScrolled ? "100%" : "50%";
 
   const navbarAnchors = SECTIONS.map((section) => {
     return (
@@ -62,6 +64,7 @@ export const Navbar: React.FC<{
         pl="5%"
         pr="5%"
         opacity={navbarOpacity}
+        ref={ref}
       >
         <Burger
           hiddenFrom="sm"
