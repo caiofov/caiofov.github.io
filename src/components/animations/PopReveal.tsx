@@ -10,7 +10,6 @@ export const PopReveal: React.FC<{
   return (
     <motion.div
       animate={{ scale: [0, 1] }}
-      key={uuidv4()}
       transition={{
         times: [0, 1],
         type: "spring",
@@ -34,7 +33,11 @@ export const PopRevealSequence: React.FC<{
     <>
       {children.map((child, idx) => {
         delay += delayIncrease;
-        return <PopReveal delay={delay}>{child}</PopReveal>;
+        return (
+          <PopReveal key={uuidv4()} delay={delay}>
+            {child}
+          </PopReveal>
+        );
       })}
     </>
   );

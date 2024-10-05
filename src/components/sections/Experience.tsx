@@ -22,7 +22,6 @@ import {
   IconDeviceDesktop,
   IconMessageChatbot,
 } from "@tabler/icons-react";
-import { ReactTyped } from "react-typed";
 import { PopReveal } from "../animations/PopReveal";
 
 type CompanyType = keyof typeof experiences;
@@ -90,19 +89,10 @@ const ExperienceBodyTitle: React.FC<{
       </PopReveal>
       <Group display={"block"} mb="sm">
         <Title order={4}>
-          <ReactTyped
-            strings={[role]}
-            typeSpeed={25}
-            onComplete={(self) => self.cursor.remove()}
-          />
+          <Typing text={role} duration={25} />
         </Title>
         <Text>
-          <ReactTyped
-            strings={[companyName]}
-            typeSpeed={25}
-            startDelay={500}
-            onComplete={(self) => self.cursor.remove()}
-          />
+          <Typing text={companyName} duration={25} delay={500} />
         </Text>
       </Group>
     </Group>

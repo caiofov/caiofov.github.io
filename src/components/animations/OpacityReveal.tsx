@@ -9,7 +9,6 @@ export const OpacityReveal: React.FC<{
 }> = ({ children, delay = 0, stiffness = 20 }) => {
   return (
     <motion.div
-      key={uuidv4()}
       animate={{ opacity: [0, 1] }}
       transition={{
         times: [0, 1],
@@ -40,7 +39,11 @@ export const OpacityRevealSequence: React.FC<{
     <>
       {children.map((child) => {
         delay += delayIcc;
-        return <OpacityReveal delay={delay}>{child}</OpacityReveal>;
+        return (
+          <OpacityReveal key={uuidv4()} delay={delay}>
+            {child}
+          </OpacityReveal>
+        );
       })}
     </>
   );

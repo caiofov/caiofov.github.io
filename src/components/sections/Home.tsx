@@ -1,18 +1,17 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { ReactTyped } from "react-typed";
-import { Icon } from "../Icon";
 import brazilFlag from "../../assets/brazil_flag.svg";
 import usaFlag from "../../assets/usa_flag.svg";
 import { PopRevealSequence } from "../animations/PopReveal";
 import { OpacityRevealSequence } from "../animations/OpacityReveal";
-import { Anchor, Group, Image, Text, Title, Tooltip } from "@mantine/core";
+import { Group, Text, Title } from "@mantine/core";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconMail,
 } from "@tabler/icons-react";
 import { IconTooltip, ImageTooltip } from "../IconTooltip";
+import { Typing } from "../animations/Typing";
 
 const contactInfo = [
   {
@@ -59,21 +58,17 @@ export const Home = () => {
       >
         <Group display={"block"}>
           <Group id="home-section-title" display="block" mb="1%">
-            <Title>
-              <ReactTyped
-                strings={["Caio Oliveira"]}
-                typeSpeed={100}
-                onComplete={(self) => self.cursor.remove()}
-                style={{ fontFamily: "monospace", fontSize: "6rem" }}
-              />
+            <Title style={{ fontFamily: "monospace", fontSize: "6rem" }}>
+              <Typing text={"Caio Oliveira"} duration={100} />
             </Title>
-            <Title order={2}>
-              <ReactTyped
-                strings={[t("sections.home.role")]}
-                typeSpeed={50}
-                startDelay={800}
-                onComplete={(self) => self.cursor.remove()}
-                style={{ fontFamily: "monospace", fontSize: "2rem" }}
+            <Title
+              order={2}
+              style={{ fontFamily: "monospace", fontSize: "2rem" }}
+            >
+              <Typing
+                text={t("sections.home.role")}
+                duration={50}
+                delay={800}
               />
             </Title>
           </Group>
