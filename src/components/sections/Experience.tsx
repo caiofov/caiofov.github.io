@@ -23,6 +23,13 @@ import {
   IconMessageChatbot,
 } from "@tabler/icons-react";
 import { PopReveal } from "../animations/PopReveal";
+import {
+  activeBulletStyle,
+  activeExperienceStyle,
+  bulletStyle,
+  experienceStyle,
+} from "../../styles/experience";
+import { Typing } from "../animations/Typing";
 
 type CompanyType = keyof typeof experiences;
 type ExperienceType = keyof (typeof experiences)[CompanyType]["experiences"];
@@ -44,27 +51,12 @@ const ExperienceTitle: React.FC<{
 }> = ({ company, start, end, role, active, onClick, Bullet }) => {
   const { hovered, ref } = useHover();
   const isActiveOrHovered = hovered || active;
-  const style: MantineStyleProp = isActiveOrHovered
-    ? {
-        cursor: "pointer",
-      }
-    : {
-        transition: "all 0.3s ease-in-out",
-      };
-
-  const bulletStyle: React.CSSProperties = isActiveOrHovered
-    ? {
-        cursor: "pointer",
-        opacity: "100%",
-      }
-    : {
-        opacity: "50%",
-        transition: "all 0.3s ease-in-out",
-      };
+  const style = isActiveOrHovered ? activeExperienceStyle : experienceStyle;
+  const bullet = isActiveOrHovered ? activeBulletStyle : bulletStyle;
 
   return (
     <Timeline.Item
-      bullet={<Bullet size="xs" style={bulletStyle} />}
+      bullet={<Bullet size="xs" style={bullet} />}
       onClick={onClick}
       ref={ref}
       style={style}
@@ -98,7 +90,7 @@ const ExperienceBodyTitle: React.FC<{
     </Group>
   );
 };
-const ExperienceItem: React.FC<{
+const ActivityItem: React.FC<{
   company: CompanyType;
   experience: ExperienceType;
   text: string;
@@ -120,15 +112,16 @@ const ExperienceItem: React.FC<{
 
 export const Experience = () => {
   const { t } = useTranslation();
-  const [active, setActive] = useState(0);
-  const getActiveCompany = () =>
-    Object.keys(experiences)[active] as CompanyType;
+  const [activeIdx, setActiveIdx] = useState(0);
+  const [activeId, setActiveId] = useState<CompanyType>(
+    Object.keys(experiences)[activeIdx] as CompanyType
+  );
 
   return (
     <Section id="experiences" text={t("sections.experiences.name")}>
       <Group display={"flex"} w="100%" mt="lg" ml="5%">
         <Group w={"40%"} justify="center">
-          <Timeline active={active + 1} bulletSize={30} lineWidth={2}>
+          <Timeline active={activeIdx + 1} bulletSize={30} lineWidth={2}>
             {Object.keys(experiences).map((c, idx) => {
               const company = c as CompanyType;
               return (
@@ -140,10 +133,13 @@ export const Experience = () => {
                   start={t(`sections.experiences.${company}.start`)}
                   end={t(`sections.experiences.${company}.end`)}
                   role={t(`sections.experiences.${company}.role`)}
-                  active={idx === active}
+                  active={idx === activeIdx}
                   onClick={(e) => {
                     e.preventDefault();
-                    setActive(idx);
+                    setActiveIdx(idx);
+                    setActiveId(
+                      Object.keys(experiences)[activeIdx] as CompanyType
+                    );
                   }}
                   Bullet={experienceIcons[company]}
                 />
@@ -153,30 +149,27 @@ export const Experience = () => {
         </Group>
         <Paper w="50%" withBorder radius="md" shadow="xl" p="lg">
           <ExperienceBodyTitle
-            companyName={experiences[getActiveCompany()].name}
-            role={t(`sections.experiences.${getActiveCompany()}.role`)}
-            ExperienceIcon={experienceIcons[getActiveCompany()]}
+            companyName={experiences[activeId].name}
+            role={t(`sections.experiences.${activeId}.role`)}
+            ExperienceIcon={experienceIcons[activeId]}
           />
 
           <ScrollArea h={250} p="sm" type="always" scrollbars="y">
             <List w={"90%"}>
               <OpacityRevealSequence delayInit={0.5} delayIncrease={0.1}>
-                {Object.keys(
-                  experiences[getActiveCompany()]["experiences"]
-                ).map((e) => {
-                  const exp = e as ExperienceType;
-                  return (
-                    <ExperienceItem
-                      company={getActiveCompany()}
-                      experience={exp}
-                      text={t(
-                        `sections.experiences.${getActiveCompany()}.texts.${
-                          exp as string
-                        }`
-                      )}
-                    />
-                  );
-                })}
+                {Object.keys(experiences[activeId]["experiences"]).map(
+                  (exp) => {
+                    return (
+                      <ActivityItem
+                        company={activeId}
+                        experience={exp as ExperienceType}
+                        text={t(
+                          `sections.experiences.${activeId}.texts.${exp}`
+                        )}
+                      />
+                    );
+                  }
+                )}
               </OpacityRevealSequence>
             </List>
           </ScrollArea>

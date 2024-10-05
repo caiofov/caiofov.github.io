@@ -70,7 +70,7 @@ const ProjectItem: React.FC<{ project: CompleteProjectType }> = ({
       <Card.Section>
         {project.techs.sort().map((tech) => {
           return (
-            <Badge radius="sm" mr={"1%"} size="sm">
+            <Badge key={tech} radius="sm" mr={"1%"} size="sm">
               {tech}
             </Badge>
           );
@@ -85,7 +85,7 @@ const ProjectItem: React.FC<{ project: CompleteProjectType }> = ({
         <Text fw={"bold"}>Links:</Text>
         <Group display={"flex"}>
           {project.anchorsMapped.map((anchor) => (
-            <ProjectAnchor anchor={anchor} />
+            <ProjectAnchor key={anchor.link} anchor={anchor} />
           ))}
         </Group>
       </Card.Section>
@@ -114,6 +114,7 @@ export const Projects = () => {
           const proj = projects[key as keyof typeof projects];
           return (
             <ProjectItem
+              key={key}
               project={{
                 ...proj,
                 title: t(`sections.projects.${key}.title`),
