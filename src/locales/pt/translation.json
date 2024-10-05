@@ -6,7 +6,8 @@
             "role": "Desenvolvedor Full-Stack",
             "download-cv": "Download do CV em PDF",
             "download-pt": "Download em português",
-            "download-en": "Download em inglês"
+            "download-en": "Download em inglês",
+            "copied": "copiado"
         },
         "about": {
             "name": "Sobre mim",
