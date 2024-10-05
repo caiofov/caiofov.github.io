@@ -4,27 +4,26 @@ import brazilFlag from "../../assets/brazil_flag.svg";
 import usaFlag from "../../assets/usa_flag.svg";
 import { PopRevealSequence } from "../animations/PopReveal";
 import { OpacityRevealSequence } from "../animations/OpacityReveal";
-import { Group, Text, Title } from "@mantine/core";
+import { Button, CopyButton, Group, Text, Title } from "@mantine/core";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
+  IconCopyCheck,
   IconMail,
 } from "@tabler/icons-react";
-import { IconTooltip, ImageTooltip } from "../IconTooltip";
+import { CopyTooltip, IconTooltip, ImageTooltip } from "../IconTooltip";
 import { Typing } from "../animations/Typing";
 
 const contactInfo = [
   {
     href: "https://www.linkedin.com/in/caio-oliveira1312/",
     icon: IconBrandLinkedin,
-    text: "caio-oliveira1312",
-    ariaLabel: "linkedin",
+    text: "LinkedIn",
   },
   {
     href: "https://www.github.com/caiofov",
     icon: IconBrandGithub,
-    text: "caiofov",
-    ariaLabel: "github",
+    text: "GitHub",
   },
   {
     text: "cfoviana@gmail.com",
@@ -53,11 +52,12 @@ export const Home = () => {
       <Group
         id="home-section"
         style={{ justifyContent: "center", alignItems: "center" }}
-        mb="10%"
-        mt="10%"
+        mb="xl"
+        mt="xl"
+        h="60vh"
       >
         <Group display={"block"}>
-          <Group id="home-section-title" display="block" mb="1%">
+          <Group id="home-section-title" display="block" mb="lg">
             <Title style={{ fontFamily: "monospace", fontSize: "6rem" }}>
               <Typing text={"Caio Oliveira"} duration={100} />
             </Title>
@@ -73,16 +73,25 @@ export const Home = () => {
             </Title>
           </Group>
 
-          <Group id="contact-info" mb="1%">
+          <Group id="contact-info" mb="lg">
             <PopRevealSequence>
-              {contactInfo.map(({ href, icon, text }) => (
-                <IconTooltip
-                  key={text}
-                  href={href}
-                  Icon={icon}
-                  tooltip={text}
-                />
-              ))}
+              {contactInfo.map(({ href, icon, text }) => {
+                return href ? (
+                  <IconTooltip
+                    key={text}
+                    href={href}
+                    Icon={icon}
+                    tooltip={text}
+                  />
+                ) : (
+                  <CopyTooltip
+                    Icon={icon}
+                    tooltip={text}
+                    copyValue={text}
+                    copiedTooltip={`(${t("sections.home.copied")})`}
+                  />
+                );
+              })}
             </PopRevealSequence>
           </Group>
 
@@ -93,6 +102,7 @@ export const Home = () => {
               </Text>
               {languageInfo.map(({ code, href, image }) => (
                 <ImageTooltip
+                  key={code}
                   imageSrc={image}
                   href={href}
                   tooltip={t(`sections.home.download-${code}`)}

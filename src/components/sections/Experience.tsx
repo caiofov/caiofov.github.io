@@ -111,7 +111,7 @@ const ActivityItem: React.FC<{
     <List.Item mb="md">
       <Text mb="sm">{text}</Text>
 
-      <Group display={"flex"}>
+      <Group display={"flex"} gap="xs">
         {skills.map((skill) => (
           <Badge key={skill} variant="light">
             {skill}
