@@ -4,11 +4,10 @@ import brazilFlag from "../../assets/brazil_flag.svg";
 import usaFlag from "../../assets/usa_flag.svg";
 import { PopRevealSequence } from "../animations/PopReveal";
 import { OpacityRevealSequence } from "../animations/OpacityReveal";
-import { Button, CopyButton, Group, Text, Title } from "@mantine/core";
+import { Group, Text, Title } from "@mantine/core";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
-  IconCopyCheck,
   IconMail,
 } from "@tabler/icons-react";
 import { CopyTooltip, IconTooltip, ImageTooltip } from "../IconTooltip";
@@ -50,14 +49,14 @@ export const Home = () => {
   return (
     <section>
       <Group
-        id="home-section"
+        id="home"
         style={{ justifyContent: "center", alignItems: "center" }}
         mb="xl"
         mt="xl"
         h="60vh"
       >
         <Group display={"block"}>
-          <Group id="home-section-title" display="block" mb="lg">
+          <Group id="home-title" display="block" mb="lg">
             <Title style={{ fontFamily: "monospace", fontSize: "6rem" }}>
               <Typing text={"Caio Oliveira"} duration={100} />
             </Title>
@@ -85,6 +84,7 @@ export const Home = () => {
                   />
                 ) : (
                   <CopyTooltip
+                    key={text}
                     Icon={icon}
                     tooltip={text}
                     copyValue={text}

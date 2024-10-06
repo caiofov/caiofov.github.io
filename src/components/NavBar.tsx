@@ -1,4 +1,12 @@
-import { Anchor, AppShell, Burger, Group, Text } from "@mantine/core";
+import {
+  AppShell,
+  Burger,
+  Button,
+  Group,
+  Text,
+  ThemeIcon,
+  useMatches,
+} from "@mantine/core";
 import { useHover } from "@mantine/hooks";
 import React, { useEffect, useState } from "react";
 import { LanguageSelector } from "./LanguageSelector";
@@ -23,51 +31,114 @@ export const Navbar: React.FC<{
 }> = ({ DarkModeToggle }) => {
   const [isNavbarOpened, setIsNavbarOpened] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isScrolling, setIsScrolling] = useState(false);
   const { t } = useTranslation();
+  const [activeSection, setActiveSection] = useState("home");
+  const { hovered, ref } = useHover();
+  const navbarOpacity = hovered || !isScrolled ? "100%" : "70%";
 
-  // Função para adicionar a sombra e transparência quando der scroll
+  const headerItemsGap = useMatches({
+    lg: "xl",
+    md: "sm",
+    base: "xs",
+  });
+
+  let sectionElements: HTMLElement[] = [];
+
+  const getSectionScrollY = (sec: HTMLElement) =>
+    sec.offsetTop - (ref.current?.clientHeight ?? 0) - 20;
   const handleScroll = () => {
     setIsScrolled(window.scrollY > 50);
+
+    if (!isScrolling)
+      for (const section of sectionElements) {
+        if (window.scrollY > getSectionScrollY(section)) {
+          setActiveSection(section.id);
+          break;
+        }
+      }
+  };
+
+  const scrollToSection = (section: string) => {
+    setIsScrolling(true);
+    const secElement = sectionElements.filter(({ id }) => id == section)[0];
+    if (secElement) {
+      window.scrollTo({
+        top: getSectionScrollY(secElement),
+        behavior: "smooth",
+      });
+    }
+    setIsScrolling(false);
   };
 
   useEffect(() => {
     window.addEventListener("scroll", handleScroll);
+    const splittedUrl = window.location.href.split("#");
+    if (splittedUrl.length > 1) {
+      setActiveSection(splittedUrl.pop()!);
+      scrollToSection(activeSection);
+    }
+
+    sectionElements = SECTIONS.map(
+      ({ label }) => document.getElementById(label)!
+    )
+      .sort((a, b) => {
+        return a.offsetTop > b.offsetTop
+          ? 1
+          : b.offsetTop > a.offsetTop
+          ? -1
+          : 0;
+      })
+      .reverse();
+
     return () => {
       window.removeEventListener("scroll", handleScroll);
     };
   }, []);
 
-  const { hovered, ref } = useHover();
-  const navbarOpacity = hovered || !isScrolled ? "100%" : "50%";
-
   const navbarAnchors = SECTIONS.map((section) => {
+    const isActive = activeSection === section.label;
     return (
-      <Group align="center">
-        {/* <section.icon /> */}
-        <Anchor key={section.label} href={`#${section.label}`}>
+      <Button
+        key={section.label}
+        leftSection={
+          <ThemeIcon size="sm" variant="subtle">
+            <section.icon stroke={isActive ? "2.5" : "1.8"} />
+          </ThemeIcon>
+        }
+        onClick={(e) => {
+          e.preventDefault();
+          scrollToSection(section.label);
+          setActiveSection(section.label);
+        }}
+        variant={isActive ? "light" : "subtle"}
+        radius="xl"
+        size="md"
+      >
+        <Text fw={isActive ? "bold" : "normal"}>
           {t(`sections.${section.label}.name`)}
-        </Anchor>
-      </Group>
+        </Text>
+      </Button>
     );
   });
 
   return (
     <>
       <AppShell.Header
-        h={"8%"}
+        h="fit-content"
+        p="md"
+        px="xl"
         style={{
           justifyContent: "space-between",
           transition: "all 0.5s ease-in-out",
           alignItems: "center",
         }}
         display="inline-flex"
-        pl="5%"
-        pr="5%"
         opacity={navbarOpacity}
         ref={ref}
       >
         <Burger
-          hiddenFrom="sm"
+          hiddenFrom="md"
           opened={isNavbarOpened}
           onClick={() => setIsNavbarOpened((o) => !o)}
           size="sm"
@@ -78,7 +149,7 @@ export const Navbar: React.FC<{
             {"< "}
             <b>Caio</b>Oliveira{" />"}
           </Text>
-          <Group hiddenFrom="sm">{DarkModeToggle}</Group>
+          <Group hiddenFrom="md">{DarkModeToggle}</Group>
         </Group>
         <Group hiddenFrom="xs">
           <Text size="xl">
@@ -88,19 +159,26 @@ export const Navbar: React.FC<{
           {DarkModeToggle}
         </Group>
 
-        <Group visibleFrom="sm" display="flex" justify="space-between">
+        <Group
+          visibleFrom="md"
+          gap={headerItemsGap}
+          display="flex"
+          justify="space-between"
+        >
           {navbarAnchors}
-          <LanguageSelector />
-          {DarkModeToggle}
+          <Group gap="xs">
+            <LanguageSelector />
+            {DarkModeToggle}
+          </Group>
         </Group>
       </AppShell.Header>
       {isNavbarOpened ? (
         <AppShell.Navbar
           hidden={!isNavbarOpened}
           w="fit-content"
-          pl="5%"
-          pr="5%"
-          pt="2%"
+          px="xl"
+          pt="md"
+          h="100%"
         >
           <AppShell.Section display="block">
             <Burger
@@ -114,7 +192,10 @@ export const Navbar: React.FC<{
             <OpacityRevealSequence
               delayInit={0}
               delayIncrease={0.2}
-              children={[...navbarAnchors, <LanguageSelector />]}
+              children={[
+                ...navbarAnchors,
+                <LanguageSelector key="lang-selector" />,
+              ]}
             ></OpacityRevealSequence>
           </AppShell.Section>
         </AppShell.Navbar>

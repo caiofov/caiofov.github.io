@@ -8,7 +8,6 @@ import {
   Anchor,
   Grid,
   GridCol,
-  ThemeIcon,
   useMatches,
 } from "@mantine/core";
 import React from "react";
@@ -133,9 +132,8 @@ export const Projects = () => {
         {Object.keys(projects).map((key) => {
           const proj = projects[key as keyof typeof projects];
           return (
-            <GridCol span={{ lg: 4, md: 6, xs: 10 }}>
+            <GridCol key={key} span={{ lg: 4, md: 6, xs: 10 }}>
               <ProjectItem
-                key={key}
                 project={{
                   ...proj,
                   title: t(`sections.projects.${key}.title`),
