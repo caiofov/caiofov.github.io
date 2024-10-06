@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Switch } from "@mantine/core";
-import { IconSun, IconMoonStars } from "@tabler/icons-react";
+import { Switch, ThemeIcon, useMantineTheme } from "@mantine/core";
+import { IconSun, IconMoonStars, IconMoon } from "@tabler/icons-react";
 
 export const DarkModeToggle: React.FC<{
   checked: boolean;
@@ -10,10 +10,19 @@ export const DarkModeToggle: React.FC<{
   return (
     <Switch
       size="md"
+      color="dark.4"
       checked={checked}
       onChange={onChange}
-      offLabel={<IconSun />}
-      onLabel={<IconMoonStars />}
+      offLabel={
+        <ThemeIcon size="sm" variant="transparent">
+          <IconSun />
+        </ThemeIcon>
+      }
+      onLabel={
+        <ThemeIcon size="sm" variant="transparent">
+          <IconMoon />
+        </ThemeIcon>
+      }
     />
   );
 };
