@@ -7,35 +7,28 @@ import {
   ThemeIcon,
   useMatches,
 } from "@mantine/core";
-import { useHover } from "@mantine/hooks";
+import { useHover, useScrollIntoView, useWindowScroll } from "@mantine/hooks";
 import React, { useEffect, useState } from "react";
 import { LanguageSelector } from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
 import { OpacityRevealSequence } from "./animations/OpacityReveal";
-import {
-  IconBriefcase2,
-  IconHome2,
-  IconPencil,
-  IconUser,
-} from "@tabler/icons-react";
 
-const SECTIONS = [
-  { label: "home", icon: IconHome2 },
-  { label: "about", icon: IconUser },
-  { label: "experiences", icon: IconBriefcase2 },
-  { label: "projects", icon: IconPencil },
-];
+import { SectionIDType, SECTIONS } from "../utils/sections";
+import { typedEntries } from "../utils/functions";
 
 export const Navbar: React.FC<{
   DarkModeToggle: JSX.Element;
 }> = ({ DarkModeToggle }) => {
+  const { t } = useTranslation();
+
   const [isNavbarOpened, setIsNavbarOpened] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isScrolling, setIsScrolling] = useState(false);
-  const { t } = useTranslation();
-  const [activeSection, setActiveSection] = useState("home");
+  const [activeSection, setActiveSection] = useState<SectionIDType>("home");
+
   const { hovered, ref } = useHover();
-  const navbarOpacity = hovered || !isScrolled ? "100%" : "70%";
+  const [scroll, scrollTo] = useWindowScroll();
+
+  const headerOpacity = hovered || !isScrolled ? "100%" : "70%";
 
   const headerItemsGap = useMatches({
     lg: "xl",
@@ -43,64 +36,53 @@ export const Navbar: React.FC<{
     base: "xs",
   });
 
-  let sectionElements: HTMLElement[] = [];
-
-  const getSectionScrollY = (sec: HTMLElement) =>
-    sec.offsetTop - (ref.current?.clientHeight ?? 0) - 20;
-  const handleScroll = () => {
-    setIsScrolled(window.scrollY > 50);
-
-    if (!isScrolling)
-      for (const section of sectionElements) {
-        if (window.scrollY > getSectionScrollY(section)) {
-          setActiveSection(section.id);
-          break;
-        }
-      }
+  const scrollParams = {
+    offset: 100,
   };
 
-  const scrollToSection = (section: string) => {
-    setIsScrolling(true);
-    const secElement = sectionElements.filter(({ id }) => id == section)[0];
-    if (secElement) {
-      window.scrollTo({
-        top: getSectionScrollY(secElement),
-        behavior: "smooth",
-      });
-    }
-    setIsScrolling(false);
+  const sectionsScrolls: Record<
+    SectionIDType,
+    ReturnType<typeof useScrollIntoView<HTMLDivElement>>
+  > = {
+    projects: useScrollIntoView<HTMLDivElement>(scrollParams),
+    experiences: useScrollIntoView<HTMLDivElement>(scrollParams),
+    about: useScrollIntoView<HTMLDivElement>(scrollParams),
+    home: useScrollIntoView<HTMLDivElement>(scrollParams),
+  };
+
+  const scrollToSection = (section: SectionIDType) => {
+    sectionsScrolls[section].scrollIntoView();
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
     const splittedUrl = window.location.href.split("#");
     if (splittedUrl.length > 1) {
-      setActiveSection(splittedUrl.pop()!);
+      setActiveSection(splittedUrl.pop()! as SectionIDType);
       scrollToSection(activeSection);
     }
 
-    sectionElements = SECTIONS.map(
-      ({ label }) => document.getElementById(label)!
-    )
-      .sort((a, b) => {
-        return a.offsetTop > b.offsetTop
-          ? 1
-          : b.offsetTop > a.offsetTop
-          ? -1
-          : 0;
-      })
-      .reverse();
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
+    Object.entries(sectionsScrolls).map(([id, scrollHook]) => {
+      scrollHook.targetRef.current = document.getElementById(
+        id
+      ) as HTMLDivElement;
+    });
   }, []);
 
+  useEffect(() => {
+    setIsScrolled(scroll.y > 50);
+    for (const [id, { targetRef }] of typedEntries(sectionsScrolls)) {
+      if (scroll.y >= targetRef.current.offsetTop - scrollParams.offset - 10) {
+        setActiveSection(id);
+        break;
+      }
+    }
+  }, [scroll]);
+
   const navbarAnchors = SECTIONS.map((section) => {
-    const isActive = activeSection === section.label;
+    const isActive = activeSection === section.id;
     return (
       <Button
-        key={section.label}
+        key={section.id}
         leftSection={
           <ThemeIcon size="sm" variant="subtle">
             <section.icon stroke={isActive ? "2.5" : "1.8"} />
@@ -108,15 +90,14 @@ export const Navbar: React.FC<{
         }
         onClick={(e) => {
           e.preventDefault();
-          scrollToSection(section.label);
-          setActiveSection(section.label);
+          scrollToSection(section.id);
         }}
         variant={isActive ? "light" : "subtle"}
         radius="xl"
         size="md"
       >
         <Text fw={isActive ? "bold" : "normal"}>
-          {t(`sections.${section.label}.name`)}
+          {t(`sections.${section.id}.name`)}
         </Text>
       </Button>
     );
@@ -134,7 +115,7 @@ export const Navbar: React.FC<{
           alignItems: "center",
         }}
         display="inline-flex"
-        opacity={navbarOpacity}
+        opacity={headerOpacity}
         ref={ref}
       >
         <Burger
