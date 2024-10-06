@@ -122,6 +122,41 @@ const ActivityItem: React.FC<{
   );
 };
 
+const ExperienceTimeline: React.FC<{
+  changeActive: (idx: number) => void;
+  activeIdx: number;
+}> = ({ changeActive, activeIdx }) => {
+  const { t } = useTranslation();
+  return (
+    <Timeline
+      h="100%"
+      active={activeIdx + 1}
+      bulletSize={30}
+      lineWidth={2}
+      style={{ alignItems: "stretch" }}
+    >
+      {Object.keys(experiences).map((c, idx) => {
+        const company = c as CompanyType;
+        return (
+          <ExperienceTitle
+            key={company}
+            company={experiences[company as CompanyType].name}
+            start={t(`sections.experiences.${company}.start`)}
+            end={t(`sections.experiences.${company}.end`)}
+            role={t(`sections.experiences.${company}.role`)}
+            active={idx === activeIdx}
+            onClick={(e) => {
+              e.preventDefault();
+              changeActive(idx);
+            }}
+            Bullet={experienceIcons[company]}
+          />
+        );
+      })}
+    </Timeline>
+  );
+};
+
 export const Experience = () => {
   const { t } = useTranslation();
   const [activeIdx, setActiveIdx] = useState(0);
@@ -145,32 +180,10 @@ export const Experience = () => {
         }}
       >
         <Group w={"40%"} justify="center">
-          <Timeline
-            h="100%"
-            active={activeIdx + 1}
-            bulletSize={30}
-            lineWidth={2}
-            style={{ alignItems: "stretch" }}
-          >
-            {Object.keys(experiences).map((c, idx) => {
-              const company = c as CompanyType;
-              return (
-                <ExperienceTitle
-                  key={company}
-                  company={experiences[company as CompanyType].name}
-                  start={t(`sections.experiences.${company}.start`)}
-                  end={t(`sections.experiences.${company}.end`)}
-                  role={t(`sections.experiences.${company}.role`)}
-                  active={idx === activeIdx}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    changeActiveExp(idx);
-                  }}
-                  Bullet={experienceIcons[company]}
-                />
-              );
-            })}
-          </Timeline>
+          <ExperienceTimeline
+            changeActive={changeActiveExp}
+            activeIdx={activeIdx}
+          />
         </Group>
 
         <Paper w="50%" withBorder radius="md" shadow="xl" p="lg">
