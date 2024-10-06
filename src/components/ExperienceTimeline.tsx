@@ -21,6 +21,7 @@ import {
 } from "../styles/experience";
 import { useTranslation } from "react-i18next";
 import EXPERIENCES from "../assets/experiences.json";
+import { RefObject, useRef } from "react";
 
 export const EXPERIENCE_ICONS = {
   milenio: IconDeviceDesktop,
@@ -77,24 +78,26 @@ const ExperienceTitleMobile: React.FC<{
   end: string;
   role: string;
   active: boolean;
-  onClick: React.MouseEventHandler<HTMLDivElement>;
+  onClick: (ref: HTMLDivElement) => void;
   Bullet: Icon;
 }> = ({ company, start, end, role, active, onClick, Bullet }) => {
   const { hovered, ref } = useHover();
   const isActiveOrHovered = hovered || active;
   const style = isActiveOrHovered ? activeExperienceStyle : experienceStyle;
   const bullet = isActiveOrHovered ? activeBulletStyle : bulletStyle;
-
   return (
     <Group
       display="inline-flex"
       w="fit-content"
-      onClick={onClick}
+      onClick={() => {
+        onClick(ref.current!);
+      }}
       ref={ref}
       align="center"
       wrap="nowrap"
       gap="xs"
       mx="sm"
+      style={style}
     >
       <ThemeIcon
         variant={active ? "gradient" : "transparent"}
@@ -157,9 +160,17 @@ const ExperienceTimelineMobile: React.FC<{
   activeIdx: number;
 }> = ({ changeActive, activeIdx }) => {
   const { t } = useTranslation();
+  const ref = useRef<HTMLDivElement>(null);
 
   return (
-    <ScrollArea w={"90%"} scrollbars="x" type="always" p="md" pb="xl">
+    <ScrollArea
+      viewportRef={ref}
+      w="90%"
+      scrollbars="x"
+      type="always"
+      p="md"
+      pb="xl"
+    >
       <Group display="inline-flex" wrap="nowrap">
         {Object.keys(EXPERIENCES).map((c, idx) => {
           const company = c as CompanyType;
@@ -171,8 +182,11 @@ const ExperienceTimelineMobile: React.FC<{
               end={t(`sections.experiences.${company}.end`)}
               role={t(`sections.experiences.${company}.role`)}
               active={idx === activeIdx}
-              onClick={(e) => {
-                e.preventDefault();
+              onClick={(groupRef) => {
+                ref.current!.scrollTo({
+                  left: groupRef.offsetLeft - 30,
+                  behavior: "smooth",
+                });
                 changeActive(idx);
               }}
               Bullet={EXPERIENCE_ICONS[company]}
