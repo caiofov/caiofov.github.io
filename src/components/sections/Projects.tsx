@@ -12,7 +12,6 @@ import {
 } from "@mantine/core";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import projects from "../../assets/projects.json";
 import {
   IconCode,
   IconDeviceGamepad,
@@ -22,33 +21,19 @@ import {
   IconWorld,
 } from "@tabler/icons-react";
 import { Section } from "./Section";
-type ProjectType = (typeof projects)[keyof typeof projects];
-
-const AnchorIcons = {
-  repo: IconCode,
-  paper: IconPaperclip,
-  game: IconDeviceGamepad,
-  site: IconWorld,
-  back: IconStackMiddle,
-  front: IconFloatCenter,
-};
-
-type AnchorType = {
-  text: string;
-  link: string;
-  type: keyof typeof AnchorIcons;
-};
-
-type CompleteProjectType = {
-  title: string;
-  text: string;
-  anchorsMapped: AnchorType[];
-} & ProjectType;
+import { typedKeys } from "../../utils/functions";
+import {
+  ANCHOR_ICONS,
+  AnchorType,
+  CompleteProjectType,
+  PROJECTS,
+  ProjectType,
+} from "../../utils/projects";
 
 const ProjectAnchor: React.FC<{
   anchor: AnchorType;
 }> = ({ anchor }) => {
-  const AnchorIcon = AnchorIcons[anchor.type];
+  const AnchorIcon = ANCHOR_ICONS[anchor.type];
   return (
     <Group w="fit-content" gap="xs" mr="sm">
       <AnchorIcon />
@@ -112,12 +97,11 @@ export const Projects = () => {
   const { t } = useTranslation();
 
   const getProjectAnchors = (proj: ProjectType) => {
-    return Object.keys(proj.anchors).map((anchorType) => {
-      const type = anchorType as keyof ProjectType["anchors"];
+    return typedKeys(proj.anchors).map((anchorType) => {
       return {
         text: t(`sections.projects.anchors.${anchorType}`),
-        link: proj.anchors[type],
-        type,
+        link: proj.anchors[anchorType as keyof typeof proj.anchors],
+        type: anchorType,
       } as AnchorType;
     });
   };
@@ -129,8 +113,8 @@ export const Projects = () => {
   return (
     <Section id="projects" text={t("sections.projects.name")}>
       <Grid gutter={{ md: "lg", sm: "xs" }} align="stretch" justify={justify}>
-        {Object.keys(projects).map((key) => {
-          const proj = projects[key as keyof typeof projects];
+        {typedKeys(PROJECTS).map((key) => {
+          const proj = PROJECTS[key];
           return (
             <GridCol key={key} span={{ lg: 4, md: 6, xs: 10 }}>
               <ProjectItem
