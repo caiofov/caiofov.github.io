@@ -18,7 +18,7 @@ import {
   activeExperienceStyle,
   bulletStyle,
   experienceStyle,
-} from "../styles/experience";
+} from "../utils/experience";
 import { useTranslation } from "react-i18next";
 import EXPERIENCES from "../assets/experiences.json";
 import { RefObject, useRef } from "react";
