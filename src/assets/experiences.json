@@ -1,7 +1,8 @@
 {
     "milenio": {
+        "id": "milenio",
         "name": "Milenio Capital",
-        "experiences": {
+        "activities": {
             "rest-api": [
                 "FastAPI",
                 "Python",
@@ -59,8 +60,9 @@
         }
     },
     "ckl": {
+        "id": "ckl",
         "name": "Code Kids Love",
-        "experiences": {
+        "activities": {
             "classes": [
                 "Python"
             ],
@@ -72,8 +74,9 @@
         }
     },
     "codijr": {
+        "id": "codijr",
         "name": "Container Digital Jr.",
-        "experiences": {
+        "activities": {
             "dev": [
                 "PHP",
                 "Front-End",

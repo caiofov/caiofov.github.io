@@ -17,21 +17,14 @@ import {
   activeBulletStyle,
   activeExperienceStyle,
   bulletStyle,
+  CompanyIDType,
+  EXPERIENCE_ICONS,
+  EXPERIENCES,
   experienceStyle,
 } from "../utils/experience";
 import { useTranslation } from "react-i18next";
-import EXPERIENCES from "../assets/experiences.json";
-import { RefObject, useRef } from "react";
-
-export const EXPERIENCE_ICONS = {
-  milenio: IconDeviceDesktop,
-  ckl: IconMessageChatbot,
-  codijr: IconBrowser,
-};
-
-export type CompanyType = keyof typeof EXPERIENCES;
-export type ExperienceType =
-  keyof (typeof EXPERIENCES)[CompanyType]["experiences"];
+import { useRef } from "react";
+import { typedKeys } from "../utils/functions";
 
 const ExperienceTitleDesktop: React.FC<{
   company: string;
@@ -133,12 +126,11 @@ const ExperienceTimelineDesktop: React.FC<{
       lineWidth={2}
       style={{ alignItems: "stretch" }}
     >
-      {Object.keys(EXPERIENCES).map((c, idx) => {
-        const company = c as CompanyType;
+      {typedKeys(EXPERIENCES).map((company, idx) => {
         return (
           <ExperienceTitleDesktop
             key={company}
-            company={EXPERIENCES[company as CompanyType].name}
+            company={EXPERIENCES[company].name}
             start={t(`sections.experiences.${company}.start`)}
             end={t(`sections.experiences.${company}.end`)}
             role={t(`sections.experiences.${company}.role`)}
@@ -172,12 +164,11 @@ const ExperienceTimelineMobile: React.FC<{
       pb="xl"
     >
       <Group display="inline-flex" wrap="nowrap">
-        {Object.keys(EXPERIENCES).map((c, idx) => {
-          const company = c as CompanyType;
+        {typedKeys(EXPERIENCES).map((company, idx) => {
           return (
             <ExperienceTitleMobile
               key={company}
-              company={EXPERIENCES[company as CompanyType].name}
+              company={EXPERIENCES[company].name}
               start={t(`sections.experiences.${company}.start`)}
               end={t(`sections.experiences.${company}.end`)}
               role={t(`sections.experiences.${company}.role`)}

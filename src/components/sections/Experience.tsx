@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import experiences from "../../assets/experiences.json";
 import { OpacityRevealSequence } from "../animations/OpacityReveal";
 
 import {
@@ -19,13 +18,13 @@ import { PopReveal } from "../animations/PopReveal";
 
 import { Typing } from "../animations/Typing";
 import { v4 as uuidv4 } from "uuid";
+import { ExperienceTimeline } from "../ExperienceTimeline";
 import {
-  ExperienceTimeline,
+  CompanyIDType,
   EXPERIENCE_ICONS,
-  ExperienceType,
-  CompanyType,
-} from "../ExperienceTimeline";
-import EXPERIENCES from "../../assets/experiences.json";
+  EXPERIENCES,
+} from "../../utils/experience";
+import { typedKeys } from "../../utils/functions";
 
 const ExperienceBodyTitle: React.FC<{
   role: string;
@@ -49,11 +48,11 @@ const ExperienceBodyTitle: React.FC<{
   );
 };
 const ActivityItem: React.FC<{
-  company: CompanyType;
-  experience: ExperienceType;
+  company: CompanyIDType;
+  activity: string;
   text: string;
-}> = ({ company, text, experience }) => {
-  const skills = experiences[company]["experiences"][experience] as string[];
+}> = ({ company, text, activity }) => {
+  const skills = EXPERIENCES[company]["activities"][activity];
 
   return (
     <List.Item mb="md">
@@ -73,8 +72,8 @@ const ActivityItem: React.FC<{
 export const Experience = () => {
   const { t } = useTranslation();
   const [activeIdx, setActiveIdx] = useState(0);
-  const [activeId, setActiveId] = useState<CompanyType>(
-    Object.keys(EXPERIENCES)[activeIdx] as CompanyType
+  const [activeId, setActiveId] = useState<CompanyIDType>(
+    typedKeys(EXPERIENCES)[activeIdx]
   );
 
   const [isMobile, paperWidth, timelineWidth] = useMatches({
@@ -83,7 +82,7 @@ export const Experience = () => {
   });
 
   const changeActiveExp = (idx: number) => {
-    setActiveId(Object.keys(EXPERIENCES)[idx] as CompanyType);
+    setActiveId(typedKeys(EXPERIENCES)[idx]);
     setActiveIdx(idx);
   };
 
@@ -115,20 +114,16 @@ export const Experience = () => {
           <ScrollArea h={250} p="sm" type="always" scrollbars="y">
             <List w={"90%"}>
               <OpacityRevealSequence delayInit={0.5} delayIncrease={0.1}>
-                {Object.keys(EXPERIENCES[activeId]["experiences"]).map(
-                  (exp) => {
-                    return (
-                      <ActivityItem
-                        key={uuidv4()}
-                        company={activeId}
-                        experience={exp as ExperienceType}
-                        text={t(
-                          `sections.experiences.${activeId}.texts.${exp}`
-                        )}
-                      />
-                    );
-                  }
-                )}
+                {typedKeys(EXPERIENCES[activeId].activities).map((exp) => {
+                  return (
+                    <ActivityItem
+                      key={uuidv4()}
+                      company={activeId}
+                      activity={exp}
+                      text={t(`sections.experiences.${activeId}.texts.${exp}`)}
+                    />
+                  );
+                })}
               </OpacityRevealSequence>
             </List>
           </ScrollArea>
