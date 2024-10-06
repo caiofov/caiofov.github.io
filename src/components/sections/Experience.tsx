@@ -87,7 +87,11 @@ export const Experience = () => {
   };
 
   return (
-    <Section id="experiences" text={t("sections.experiences.name")}>
+    <Section
+      id="experiences"
+      position="right"
+      text={t("sections.experiences.name")}
+    >
       <Group
         display={"flex"}
         w="100%"
