@@ -9,20 +9,15 @@ import {
   useCombobox,
   Text,
   Image,
+  ThemeIcon,
+  Popover,
+  Button,
 } from "@mantine/core";
+import { IconChevronCompactDown, IconChevronDown } from "@tabler/icons-react";
 
 const languages = {
   pt: { name: "Português", flag: brazilFlag },
   en: { name: "English", flag: usaFlag },
-};
-
-const SelectOption: React.FC<{ code: LanguageCode }> = ({ code }) => {
-  return (
-    <Group>
-      <Image h="10px" src={languages[code]["flag"]} />
-      <Text>{languages[code]["name"]}</Text>
-    </Group>
-  );
 };
 
 export const LanguageSelector = () => {
@@ -37,32 +32,43 @@ export const LanguageSelector = () => {
   return (
     <Combobox
       store={combobox}
-      withinPortal={false}
+      withinPortal={true}
       onOptionSubmit={(val) => {
         console.log(val);
         chooseLanguage(val as LanguageCode);
         combobox.closeDropdown();
       }}
+      transitionProps={{ duration: 200, transition: "scale-y" }}
+      width="fit-content"
+      position="bottom-start"
     >
       <Combobox.Target>
-        <InputBase
-          component="button"
-          type="button"
-          pointer
+        <Button
+          size="compact-sm"
           rightSection={<Combobox.Chevron />}
           onClick={() => combobox.toggleDropdown()}
-          rightSectionPointerEvents="none"
-          multiline
+          variant="subtle"
+          style={{
+            justifyContent: "space-around",
+            transition: "all 0.2s ease-in-out",
+          }}
         >
-          <SelectOption code={value} />
-        </InputBase>
+          <Image h="15px" w="22px" src={languages[value]["flag"]} />
+        </Button>
       </Combobox.Target>
 
       <Combobox.Dropdown>
-        <Combobox.Options>
+        <Combobox.Options w="100%">
           {Object.keys(languages).map((c) => (
             <Combobox.Option key={"lang_" + c} value={c}>
-              <SelectOption code={c as LanguageCode} />
+              <Group display="inline-flex">
+                <Image
+                  h="10px"
+                  w="22px"
+                  src={languages[c as LanguageCode]["flag"]}
+                />
+                <Text>{languages[c as LanguageCode]["name"]}</Text>
+              </Group>
             </Combobox.Option>
           ))}
         </Combobox.Options>
