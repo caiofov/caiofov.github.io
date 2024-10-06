@@ -5,6 +5,7 @@ export const activeExperienceStyle: MantineStyleProp = {
 };
 export const experienceStyle: MantineStyleProp = {
   transition: "all 0.3s ease-in-out",
+  opacity: "70%",
 };
 
 export const bulletStyle: React.CSSProperties = {
