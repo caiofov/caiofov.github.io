@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { OpacityRevealSequence } from "../animations/OpacityReveal";
 
@@ -71,6 +71,7 @@ const ActivityItem: React.FC<{
 
 export const Experience = () => {
   const { t } = useTranslation();
+  const scrollRef = useRef<HTMLDivElement>(null);
   const [activeIdx, setActiveIdx] = useState(0);
   const [activeId, setActiveId] = useState<CompanyIDType>(
     typedKeys(EXPERIENCES)[activeIdx]
@@ -82,6 +83,7 @@ export const Experience = () => {
   });
 
   const changeActiveExp = (idx: number) => {
+    scrollRef.current!.scrollTo({ top: 0 });
     setActiveId(typedKeys(EXPERIENCES)[idx]);
     setActiveIdx(idx);
   };
@@ -115,8 +117,16 @@ export const Experience = () => {
             ExperienceIcon={EXPERIENCE_ICONS[activeId]}
           />
 
-          <ScrollArea h={250} p="sm" type="always" scrollbars="y">
-            <List w={"90%"}>
+          <ScrollArea
+            viewportRef={scrollRef}
+            h={250}
+            w="100%"
+            p="md"
+            type="always"
+            scrollbars="y"
+          >
+            {/* TODO: its changing width when selecting option without scroll */}
+            <List w="90%">
               <OpacityRevealSequence delayInit={0.5} delayIncrease={0.1}>
                 {typedKeys(EXPERIENCES[activeId].activities).map((exp) => {
                   return (
