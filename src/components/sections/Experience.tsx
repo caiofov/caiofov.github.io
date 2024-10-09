@@ -56,9 +56,9 @@ export const Experience = () => {
     typedKeys(EXPERIENCES)[activeIdx]
   );
 
-  const [isMobile, paperWidth, timelineWidth] = useMatches({
-    md: [false, "50%", "40%"],
-    base: [true, "100%", "100%"],
+  const [isMobile, paperWidth, paperPadding, timelineWidth] = useMatches({
+    md: [false, "50%", "xl", "40%"],
+    base: [true, "100%", "sm", "80%"],
   });
 
   const changeActiveExp = (idx: number) => {
@@ -73,7 +73,7 @@ export const Experience = () => {
       position="right"
       text={t("sections.experiences.name")}
     >
-      <Group display="flex" w="80%" my="lg" justify="space-evenly">
+      <Group display="flex" justify="space-evenly">
         <Group w={timelineWidth} justify="center">
           <ExperienceTimeline
             changeActive={changeActiveExp}
@@ -82,7 +82,14 @@ export const Experience = () => {
           />
         </Group>
 
-        <Paper w={paperWidth} withBorder radius="md" mt="xl" shadow="xl" p="lg">
+        <Paper
+          w={paperWidth}
+          withBorder
+          radius="md"
+          mt="xl"
+          shadow="xl"
+          p={paperPadding}
+        >
           <ExperienceBodyTitle
             companyName={EXPERIENCES[activeId].name}
             role={t(`sections.experiences.${activeId}.role`)}
@@ -97,7 +104,7 @@ export const Experience = () => {
             type="always"
             scrollbars="y"
           >
-            <List w="90%">
+            <List mr="lg">
               <OpacityRevealSequence delayInit={0.5} delayIncrease={0.1}>
                 {typedKeys(EXPERIENCES[activeId].activities).map((exp, idx) => {
                   const skills = EXPERIENCES[activeId]["activities"][exp];

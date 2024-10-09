@@ -43,7 +43,6 @@ export const Section: React.FC<{
           animate={mainControls}
           transition={{ duration: 1 }}
           style={{
-            width: "100%",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
@@ -53,8 +52,7 @@ export const Section: React.FC<{
             size="md"
             mb={dividerMargin}
             mx={dividerMargin}
-            w="80%"
-            style={{ justifyContent: "center" }}
+            w="100%"
             label={
               <Anchor href={"#" + id} underline="never" variant="gradient">
                 <Title

@@ -56,6 +56,7 @@ const ProjectItem: React.FC<{ project: CompleteProjectType }> = ({
       style={{
         justifyContent: "space-between",
       }}
+      mt="lg"
     >
       <Card.Section>
         {"img" in project && project["img"].length > 0 ? (
@@ -112,7 +113,7 @@ export const Projects = () => {
 
   return (
     <Section id="projects" text={t("sections.projects.name")}>
-      <Grid gutter={{ md: "lg", sm: "xs" }} align="stretch" justify={justify}>
+      <Grid gutter="xl" align="stretch" justify={justify}>
         {typedKeys(PROJECTS).map((key) => {
           const proj = PROJECTS[key];
           return (

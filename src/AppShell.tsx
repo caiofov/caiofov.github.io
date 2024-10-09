@@ -21,13 +21,16 @@ export const AppShell: React.FC<{
       onChange={() => setDarkMode(!darkMode)}
     />
   );
-  const containerMargin = useMatches({ md: "xl", base: "xs" });
+  const containerWidth = useMatches({
+    md: "80%",
+    base: "90%",
+  });
   return (
     <AppShellMantine navbar={{ width: "30%", breakpoint: "sm" }}>
       <Navbar DarkModeToggle={ThemeToggle} />
 
-      <AppShellMantine.Main p="0" mx={containerMargin}>
-        <Container p="0" mx={containerMargin} fluid>
+      <AppShellMantine.Main p="0">
+        <Container p="0" w={containerWidth} fluid>
           <Home />
 
           <About />

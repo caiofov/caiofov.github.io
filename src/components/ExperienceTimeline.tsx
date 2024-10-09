@@ -152,7 +152,7 @@ const ExperienceTimelineMobile: React.FC<{
   return (
     <ScrollArea
       viewportRef={ref}
-      w="90%"
+      w={window.innerWidth * 0.9}
       scrollbars="x"
       type="always"
       p="md"
