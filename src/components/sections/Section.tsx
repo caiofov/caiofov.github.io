@@ -42,21 +42,22 @@ export const Section: React.FC<{
           initial="hidden"
           animate={mainControls}
           transition={{ duration: 1 }}
-          style={{ width: "100%" }}
+          style={{
+            width: "100%",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
         >
           <Divider
             size="md"
             mb={dividerMargin}
             mx={dividerMargin}
+            w="80%"
+            style={{ justifyContent: "center" }}
             label={
-              <Anchor
-                w="fit-content"
-                href={"#" + id}
-                underline="never"
-                variant="gradient"
-              >
+              <Anchor href={"#" + id} underline="never" variant="gradient">
                 <Title
-                  w="fit-content"
                   order={3}
                   style={{ fontSize: titleSize, fontFamily: "revert" }}
                   mr={titleMargin}
