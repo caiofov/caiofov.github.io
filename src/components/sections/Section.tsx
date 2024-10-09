@@ -1,4 +1,4 @@
-import { Anchor, Divider, Group, Title } from "@mantine/core";
+import { Anchor, Divider, Group, Title, useMatches } from "@mantine/core";
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { ReactTyped, Typed } from "react-typed";
@@ -21,9 +21,14 @@ export const Section: React.FC<{
     if (isInView) typed?.reset(true);
   }, [isInView]);
 
+  const [titleSize, pos, dividerMargin, titleMargin] = useMatches({
+    sm: ["3rem", position, "xl", "md"],
+    base: ["2rem", "left", "sm", "xs"],
+  });
+
   return (
     <section>
-      <Group id={id} mb="xl">
+      <Group id={id} mb="xl" w="100%">
         <motion.div
           ref={ref}
           variants={{
@@ -37,12 +42,12 @@ export const Section: React.FC<{
           initial="hidden"
           animate={mainControls}
           transition={{ duration: 1 }}
+          style={{ width: "100%" }}
         >
           <Divider
             size="md"
-            mb="xl"
-            mr="xl"
-            ml="xl"
+            mb={dividerMargin}
+            mx={dividerMargin}
             label={
               <Anchor
                 w="fit-content"
@@ -53,8 +58,8 @@ export const Section: React.FC<{
                 <Title
                   w="fit-content"
                   order={3}
-                  style={{ fontSize: "3rem", fontFamily: "revert" }}
-                  mr="md"
+                  style={{ fontSize: titleSize, fontFamily: "revert" }}
+                  mr={titleMargin}
                 >
                   <ReactTyped
                     strings={[text]}
@@ -71,7 +76,7 @@ export const Section: React.FC<{
                 </Title>
               </Anchor>
             }
-            labelPosition={position}
+            labelPosition={pos as typeof position}
           />
           {children}
         </motion.div>
