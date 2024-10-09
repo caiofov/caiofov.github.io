@@ -45,20 +45,21 @@ const ExperienceTitleDesktop: React.FC<{
       bullet={
         <ThemeIcon
           variant={active ? "gradient" : "transparent"}
-          size="lg"
+          size="40"
           radius="lg"
           style={bullet}
         >
-          <Bullet />
+          <Bullet size="35" />
         </ThemeIcon>
       }
       onClick={onClick}
       ref={ref}
       style={style}
-      title={role}
+      title={<Title order={3}>{role}</Title>}
+      my="xl"
     >
-      <Text>{company}</Text>
-      <Text c="dimmed">
+      <Text size="xl">{company}</Text>
+      <Text size="lg" c="dimmed">
         {start} - {end}
       </Text>
     </Timeline.Item>
@@ -119,13 +120,7 @@ const ExperienceTimelineDesktop: React.FC<{
   const { t } = useTranslation();
 
   return (
-    <Timeline
-      h="100%"
-      active={activeIdx + 1}
-      bulletSize={30}
-      lineWidth={2}
-      style={{ alignItems: "stretch" }}
-    >
+    <Timeline bulletSize={40} lineWidth={4}>
       {typedKeys(EXPERIENCES).map((company, idx) => {
         return (
           <ExperienceTitleDesktop

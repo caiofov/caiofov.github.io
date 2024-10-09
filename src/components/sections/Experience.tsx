@@ -37,35 +37,14 @@ const ExperienceBodyTitle: React.FC<{
         <ExperienceIcon />
       </PopReveal>
       <Group display={"block"} mb="sm">
-        <Title order={4}>
+        <Title order={4} size="xl">
           <Typing text={role} duration={25} />
         </Title>
-        <Text>
+        <Text size="lg">
           <Typing text={companyName} duration={25} delay={500} />
         </Text>
       </Group>
     </Group>
-  );
-};
-const ActivityItem: React.FC<{
-  company: CompanyIDType;
-  activity: string;
-  text: string;
-}> = ({ company, text, activity }) => {
-  const skills = EXPERIENCES[company]["activities"][activity];
-
-  return (
-    <List.Item mb="md">
-      <Text mb="sm">{text}</Text>
-
-      <Group display={"flex"} gap="xs">
-        {skills.map((skill) => (
-          <Badge key={skill} variant="light">
-            {skill}
-          </Badge>
-        ))}
-      </Group>
-    </List.Item>
   );
 };
 
@@ -94,14 +73,7 @@ export const Experience = () => {
       position="right"
       text={t("sections.experiences.name")}
     >
-      <Group
-        display={"flex"}
-        w="100%"
-        mt="md"
-        style={{
-          justifyContent: "space-evenly",
-        }}
-      >
+      <Group display="flex" w="80%" my="lg" justify="space-evenly">
         <Group w={timelineWidth} justify="center">
           <ExperienceTimeline
             changeActive={changeActiveExp}
@@ -110,7 +82,7 @@ export const Experience = () => {
           />
         </Group>
 
-        <Paper w={paperWidth} withBorder radius="md" shadow="xl" p="lg">
+        <Paper w={paperWidth} withBorder radius="md" mt="xl" shadow="xl" p="lg">
           <ExperienceBodyTitle
             companyName={EXPERIENCES[activeId].name}
             role={t(`sections.experiences.${activeId}.role`)}
@@ -119,23 +91,37 @@ export const Experience = () => {
 
           <ScrollArea
             viewportRef={scrollRef}
-            h={250}
+            h={350}
             w="100%"
             p="md"
             type="always"
             scrollbars="y"
           >
-            {/* TODO: its changing width when selecting option without scroll */}
             <List w="90%">
               <OpacityRevealSequence delayInit={0.5} delayIncrease={0.1}>
-                {typedKeys(EXPERIENCES[activeId].activities).map((exp) => {
+                {typedKeys(EXPERIENCES[activeId].activities).map((exp, idx) => {
+                  const skills = EXPERIENCES[activeId]["activities"][exp];
+                  const marginBottom =
+                    idx - 1 ===
+                    Object.keys(EXPERIENCES[activeId].activities).length
+                      ? "0"
+                      : "md";
                   return (
-                    <ActivityItem
-                      key={uuidv4()}
-                      company={activeId}
-                      activity={exp}
-                      text={t(`sections.experiences.${activeId}.texts.${exp}`)}
-                    />
+                    <List.Item mb={marginBottom} key={uuidv4()}>
+                      <Text size="lg">
+                        {t(`sections.experiences.${activeId}.texts.${exp}`)}
+                      </Text>
+
+                      {skills.length ? (
+                        <Group display="flex" gap="xs" mt="sm">
+                          {skills.map((skill) => (
+                            <Badge key={skill} variant="light">
+                              {skill}
+                            </Badge>
+                          ))}
+                        </Group>
+                      ) : null}
+                    </List.Item>
                   );
                 })}
               </OpacityRevealSequence>
