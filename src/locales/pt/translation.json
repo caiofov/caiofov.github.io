@@ -11,7 +11,22 @@
         },
         "about": {
             "name": "Sobre mim",
-            "text": "<strong>Bacharel em Ciência da Computação pela Universidade Federal do Ceará (UFC).</strong> Possuo experiência no desenvolvimento de <strong>APIs REST</strong> com <strong>Python</strong> (principalmente usando <strong>FastAPI</strong>,  além de experiência com <strong>Django</strong>) e <strong>TypeScript</strong>, utilizando <strong>Node.js</strong> e <strong>Express.js</strong>. Também tenho vivência com tecnologias front-end, como <strong>React</strong> e <strong>Svelte</strong>, além de conhecimento em bancos de dados relacionais (<strong>PostgreSQL</strong>, <strong>MySQL</strong>) e não relacionais (<strong>MongoDB</strong>)."
+            "ufc": {
+                "title": "Bacharel em Ciência da Computação",
+                "text": "Sou formado pela Universidade Federal do Ceará (UFC), cursei de março de 2020 a setembro de 2024"
+            },
+            "backend": {
+                "title": "Back-End",
+                "text": "Desenvolvo automações e APIs Rest. Também tenho experiência com deploy de aplicações."
+            },
+            "frontend": {
+                "title": "Front-End",
+                "text": "Tenho prática com criação de sites responsivos tanto para visualização quanto para gerenciamento de dados"
+            },
+            "database": {
+                "title": "Banco de Dados",
+                "text": "Tenho experiência com modelagem e utilização de bancos de dados relacionais e não-relacionais"
+            }
         },
         "education": {
             "name": "Formação",

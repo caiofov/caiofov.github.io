@@ -1,0 +1,24 @@
+{
+    "ufc": [],
+    "backend": [
+        "Python",
+        "TypeScript",
+        "Docker",
+        "FastAPI",
+        "Django",
+        "NodeJS",
+        "ExpressJS"
+    ],
+    "frontend": [
+        "React",
+        "Svelte",
+        "Mantine",
+        "HTML",
+        "CSS"
+    ],
+    "database": [
+        "MongoDB",
+        "PostgreSQL",
+        "MySQL"
+    ]
+}
