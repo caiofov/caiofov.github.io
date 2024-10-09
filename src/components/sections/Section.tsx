@@ -21,9 +21,9 @@ export const Section: React.FC<{
     if (isInView) typed?.reset(true);
   }, [isInView]);
 
-  const [titleSize, pos, dividerMargin, titleMargin] = useMatches({
-    sm: ["3rem", position, "xl", "md"],
-    base: ["2rem", "left", "sm", "xs"],
+  const [titleSize, dividerMargin, titleMargin] = useMatches({
+    sm: ["3rem", "xl", "md"],
+    base: ["2rem", "sm", "xs"],
   });
 
   return (
@@ -75,7 +75,7 @@ export const Section: React.FC<{
                 </Title>
               </Anchor>
             }
-            labelPosition={pos as typeof position}
+            labelPosition={position}
           />
           {children}
         </motion.div>
