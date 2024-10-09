@@ -4,7 +4,7 @@ import brazilFlag from "../../assets/brazil_flag.svg";
 import usaFlag from "../../assets/usa_flag.svg";
 import { PopRevealSequence } from "../animations/PopReveal";
 import { OpacityRevealSequence } from "../animations/OpacityReveal";
-import { Group, Text, Title } from "@mantine/core";
+import { Group, Text, Title, useMatches } from "@mantine/core";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -46,23 +46,25 @@ const languageInfo = [
 
 export const Home = () => {
   const { t } = useTranslation();
+  const [titleFontSize, subtitleFontSize] = useMatches({
+    md: ["6rem", "2rem"],
+    sm: ["5rem", "1.5rem"],
+    base: ["4.2rem", "1.5rem"],
+  });
   return (
     <section>
-      <Group
-        id="home"
-        style={{ justifyContent: "center", alignItems: "center" }}
-        mb="xl"
-        mt="xl"
-        h="60vh"
-      >
+      <Group id="home" justify="center" align="center" my="xl" h="80vh">
         <Group display={"block"}>
           <Group id="home-title" display="block" mb="lg">
-            <Title style={{ fontFamily: "monospace", fontSize: "6rem" }}>
+            <Title style={{ fontFamily: "monospace", fontSize: titleFontSize }}>
               <Typing text={"Caio Oliveira"} duration={100} />
             </Title>
             <Title
               order={2}
-              style={{ fontFamily: "monospace", fontSize: "2rem" }}
+              style={{
+                fontFamily: "monospace",
+                fontSize: subtitleFontSize,
+              }}
             >
               <Typing
                 text={t("sections.home.role")}
@@ -72,7 +74,7 @@ export const Home = () => {
             </Title>
           </Group>
 
-          <Group id="contact-info" mb="lg">
+          <Group id="contact-info" mb="lg" gap="xs">
             <PopRevealSequence>
               {contactInfo.map(({ href, icon, text }) => {
                 return href ? (
