@@ -1,29 +1,56 @@
 import {
   Badge,
-  ColorSwatch,
-  Grid,
-  GridCol,
   Group,
   Text,
   ThemeIcon,
-  Timeline,
   Title,
+  useMatches,
 } from "@mantine/core";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import { Trans } from "react-i18next";
 import { Section } from "./Section";
-import {
-  Icon,
-  IconBrowser,
-  IconDatabase,
-  IconServer2,
-} from "@tabler/icons-react";
+import { Icon } from "@tabler/icons-react";
 
 import { typedEntries } from "../../utils/functions";
 
 import { ABOUT_SECTIONS, SECTION_ICONS } from "../../utils/about";
-const IconAbout: React.FC<{
+
+const ItemAboutMobile: React.FC<{
+  Icon: Icon;
+  badges: string[];
+  title: string;
+  text: string;
+}> = ({ Icon, title, text, badges }) => {
+  const [titleSize, textSize] = useMatches({
+    sm: ["1.7rem", "xl"],
+    base: ["1.6", "lg"],
+  });
+  return (
+    <Group
+      w="70%"
+      align="center"
+      justify="center"
+      style={{ textAlign: "center", flexDirection: "column" }}
+    >
+      <ThemeIcon size="80" variant="transparent" c="inherit" radius="md">
+        <Icon size="80" />
+      </ThemeIcon>
+      <Title style={{ fontSize: titleSize }} order={4}>
+        {title}
+      </Title>
+      <Text size={textSize}>{text}</Text>
+      <Group gap="xs" justify="center">
+        {badges.map((b) => (
+          <Badge key={b} variant="light">
+            {b}
+          </Badge>
+        ))}
+      </Group>
+    </Group>
+  );
+};
+
+const ItemAboutDesktop: React.FC<{
   Icon: Icon;
   badges: string[];
   title: string;
@@ -31,14 +58,14 @@ const IconAbout: React.FC<{
   alignLeft: boolean;
 }> = ({ Icon, title, text, badges, alignLeft }) => {
   const IconComponent = (
-    <ThemeIcon size="xl" variant="transparent" c="inherit" radius="md">
-      <Icon size="100" />
+    <ThemeIcon size="70" variant="transparent" c="inherit" radius="md">
+      <Icon size="70" />
     </ThemeIcon>
   );
   const textAlign = alignLeft ? "left" : "right";
 
   const BodyComponent = (
-    <Group w="47%" gap="xs" justify={!alignLeft ? "flex-end" : "flex-start"}>
+    <Group w="45%" gap="xs" justify={!alignLeft ? "flex-end" : "flex-start"}>
       <Title style={{ fontSize: "1.8rem", textAlign }} order={4}>
         {title}
       </Title>
@@ -75,12 +102,21 @@ const IconAbout: React.FC<{
 
 export const About = () => {
   const { t } = useTranslation();
+  const isMobile = useMatches({ md: false, base: true });
   return (
     <Section text={t("sections.about.name")} id="about">
-      <Group display="flex" justify="center">
+      <Group display="flex" justify="center" gap="xl">
         {typedEntries(ABOUT_SECTIONS).map(([section, skills], idx) => {
-          return (
-            <IconAbout
+          return isMobile ? (
+            <ItemAboutMobile
+              Icon={SECTION_ICONS[section]}
+              title={t(`sections.about.${section}.title`)}
+              text={t(`sections.about.${section}.text`)}
+              badges={skills}
+              key={section}
+            />
+          ) : (
+            <ItemAboutDesktop
               Icon={SECTION_ICONS[section]}
               title={t(`sections.about.${section}.title`)}
               text={t(`sections.about.${section}.text`)}
