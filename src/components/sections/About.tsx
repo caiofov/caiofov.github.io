@@ -41,20 +41,24 @@ const ItemAboutMobile: React.FC<{
           justify="center"
           style={{ textAlign: "center", flexDirection: "column" }}
         >
-          <ThemeIcon size="80" variant="transparent" c="inherit" radius="md">
-            <Icon size="80" />
-          </ThemeIcon>
-          <Title style={{ fontSize: titleSize }} order={4}>
-            {title}
-          </Title>
-          <Text size={textSize}>{text}</Text>
-          <Group gap="xs" justify="center">
-            {badges.map((b) => (
-              <Badge key={b} variant="light">
-                {b}
-              </Badge>
-            ))}
-          </Group>
+          <PopRevealOnVisible>
+            <ThemeIcon size="80" variant="transparent" c="inherit" radius="md">
+              <Icon size="80" />
+            </ThemeIcon>
+          </PopRevealOnVisible>
+          <OpacityRevealOnVisible>
+            <Title style={{ fontSize: titleSize }} order={4}>
+              {title}
+            </Title>
+            <Text size={textSize}>{text}</Text>
+            <Group gap="xs" justify="center" mt="md">
+              {badges.map((b) => (
+                <Badge key={b} variant="light">
+                  {b}
+                </Badge>
+              ))}
+            </Group>
+          </OpacityRevealOnVisible>
         </Group>
       </Group>
     </GridCol>
