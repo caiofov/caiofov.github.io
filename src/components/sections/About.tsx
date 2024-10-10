@@ -1,5 +1,7 @@
 import {
   Badge,
+  Grid,
+  GridCol,
   Group,
   Text,
   ThemeIcon,
@@ -26,27 +28,31 @@ const ItemAboutMobile: React.FC<{
     base: ["1.6", "lg"],
   });
   return (
-    <Group
-      w="70%"
-      align="center"
-      justify="center"
-      style={{ textAlign: "center", flexDirection: "column" }}
-    >
-      <ThemeIcon size="80" variant="transparent" c="inherit" radius="md">
-        <Icon size="80" />
-      </ThemeIcon>
-      <Title style={{ fontSize: titleSize }} order={4}>
-        {title}
-      </Title>
-      <Text size={textSize}>{text}</Text>
-      <Group gap="xs" justify="center">
-        {badges.map((b) => (
-          <Badge key={b} variant="light">
-            {b}
-          </Badge>
-        ))}
+    <GridCol span={12}>
+      <Group justify="center">
+        <Group
+          w="80%"
+          align="center"
+          justify="center"
+          style={{ textAlign: "center", flexDirection: "column" }}
+        >
+          <ThemeIcon size="80" variant="transparent" c="inherit" radius="md">
+            <Icon size="80" />
+          </ThemeIcon>
+          <Title style={{ fontSize: titleSize }} order={4}>
+            {title}
+          </Title>
+          <Text size={textSize}>{text}</Text>
+          <Group gap="xs" justify="center">
+            {badges.map((b) => (
+              <Badge key={b} variant="light">
+                {b}
+              </Badge>
+            ))}
+          </Group>
+        </Group>
       </Group>
-    </Group>
+    </GridCol>
   );
 };
 
@@ -58,14 +64,17 @@ const ItemAboutDesktop: React.FC<{
   alignLeft: boolean;
 }> = ({ Icon, title, text, badges, alignLeft }) => {
   const IconComponent = (
-    <ThemeIcon size="70" variant="transparent" c="inherit" radius="md">
-      <Icon size="70" />
-    </ThemeIcon>
+    <Group justify="center">
+      <ThemeIcon size="70" variant="transparent" c="inherit" radius="md">
+        <Icon size="70" />
+      </ThemeIcon>
+    </Group>
   );
   const textAlign = alignLeft ? "left" : "right";
+  const justify = alignLeft ? "flex-start" : "flex-end";
 
   const BodyComponent = (
-    <Group w="45%" gap="xs" justify={!alignLeft ? "flex-end" : "flex-start"}>
+    <Group w="100%" gap="xs" justify={justify}>
       <Title style={{ fontSize: "1.8rem", textAlign }} order={4}>
         {title}
       </Title>
@@ -81,22 +90,25 @@ const ItemAboutDesktop: React.FC<{
       </Group>
     </Group>
   );
+  const IconCell = <GridCol span={1}>{IconComponent}</GridCol>;
+  const EmptyCell = <GridCol span={5}></GridCol>;
+  const BodyCell = <GridCol span={5}>{BodyComponent}</GridCol>;
   return (
-    <Group
-      w="80%"
-      align="center"
-      justify={alignLeft ? "flex-end" : "flex-start"}
-    >
+    <>
       {alignLeft ? (
         <>
-          {IconComponent} {BodyComponent}
+          {EmptyCell}
+          {IconCell}
+          {BodyCell}
         </>
       ) : (
         <>
-          {BodyComponent} {IconComponent}
+          {BodyCell}
+          {IconCell}
+          {EmptyCell}
         </>
       )}
-    </Group>
+    </>
   );
 };
 
@@ -105,7 +117,7 @@ export const About = () => {
   const isMobile = useMatches({ md: false, base: true });
   return (
     <Section text={t("sections.about.name")} id="about">
-      <Group display="flex" justify="center" gap="xl">
+      <Grid w="100%" gutter={50} align="center" justify="center">
         {typedEntries(ABOUT_SECTIONS).map(([section, skills], idx) => {
           return isMobile ? (
             <ItemAboutMobile
@@ -126,7 +138,7 @@ export const About = () => {
             />
           );
         })}
-      </Group>
+      </Grid>
     </Section>
   );
 };
