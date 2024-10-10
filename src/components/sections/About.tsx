@@ -16,6 +16,11 @@ import { Icon } from "@tabler/icons-react";
 import { typedEntries } from "../../utils/functions";
 
 import { ABOUT_SECTIONS, SECTION_ICONS } from "../../utils/about";
+import {
+  OpacityReveal,
+  OpacityRevealOnVisible,
+} from "../animations/OpacityReveal";
+import { PopRevealOnVisible } from "../animations/PopReveal";
 
 const ItemAboutMobile: React.FC<{
   Icon: Icon;
@@ -65,9 +70,11 @@ const ItemAboutDesktop: React.FC<{
 }> = ({ Icon, title, text, badges, alignLeft }) => {
   const IconComponent = (
     <Group justify="center">
-      <ThemeIcon size="70" variant="transparent" c="inherit" radius="md">
-        <Icon size="70" />
-      </ThemeIcon>
+      <PopRevealOnVisible>
+        <ThemeIcon size="70" variant="transparent" c="inherit" radius="md">
+          <Icon size="70" />
+        </ThemeIcon>
+      </PopRevealOnVisible>
     </Group>
   );
   const textAlign = alignLeft ? "left" : "right";
@@ -75,19 +82,25 @@ const ItemAboutDesktop: React.FC<{
 
   const BodyComponent = (
     <Group w="100%" gap="xs" justify={justify}>
-      <Title style={{ fontSize: "1.8rem", textAlign }} order={4}>
-        {title}
-      </Title>
-      <Text size="xl" style={{ textAlign }}>
-        {text}
-      </Text>
-      <Group justify={!alignLeft ? "flex-end" : "flex-start"} gap="xs">
-        {badges.map((b) => (
-          <Badge key={b} variant="light">
-            {b}
-          </Badge>
-        ))}
-      </Group>
+      <OpacityRevealOnVisible>
+        <Title style={{ fontSize: "1.8rem", textAlign }} order={4}>
+          {title}
+        </Title>
+        <Text size="xl" style={{ textAlign }}>
+          {text}
+        </Text>
+        <Group
+          justify={!alignLeft ? "flex-end" : "flex-start"}
+          gap="xs"
+          mt="md"
+        >
+          {badges.map((b) => (
+            <Badge key={b} variant="light">
+              {b}
+            </Badge>
+          ))}
+        </Group>
+      </OpacityRevealOnVisible>
     </Group>
   );
   const IconCell = <GridCol span={1}>{IconComponent}</GridCol>;

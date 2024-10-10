@@ -29,12 +29,10 @@ export const PopRevealOnVisible: React.FC<{
       initial="hidden"
       animate={mainControls}
       transition={{
-        times: [0, 1],
         type: "spring",
         stiffness: stiffness,
         ease: "easeInOut",
         delay: delay,
-        duration: 0.5,
       }}
     >
       {children}
