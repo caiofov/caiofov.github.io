@@ -1,6 +1,46 @@
-import { motion } from "framer-motion";
-import React from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
+import React, { useEffect, useRef } from "react";
 import { v4 as uuidv4 } from "uuid";
+
+export const PopRevealOnVisible: React.FC<{
+  children: React.ReactNode;
+  delay?: number;
+  stiffness?: number;
+}> = ({ children, delay = 0, stiffness = 20 }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref);
+  const mainControls = useAnimation();
+
+  useEffect(() => {
+    mainControls.start(isInView ? "visible" : "hidden");
+  }, [isInView]);
+
+  return (
+    <motion.div
+      ref={ref}
+      variants={{
+        hidden: {
+          scale: 0,
+        },
+        visible: {
+          scale: 1,
+        },
+      }}
+      initial="hidden"
+      animate={mainControls}
+      transition={{
+        times: [0, 1],
+        type: "spring",
+        stiffness: stiffness,
+        ease: "easeInOut",
+        delay: delay,
+        duration: 0.5,
+      }}
+    >
+      {children}
+    </motion.div>
+  );
+};
 
 export const PopReveal: React.FC<{
   children: JSX.Element;
