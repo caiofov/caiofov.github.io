@@ -30,13 +30,9 @@ export const Navbar: React.FC<{
   const { t } = useTranslation();
 
   const [navbarOpened, { open, close }] = useDisclosure(false);
-  const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<SectionIDType>("home");
 
-  const { hovered, ref } = useHover();
   const [scroll, scrollTo] = useWindowScroll();
-
-  const headerOpacity = hovered || !isScrolled ? "100%" : "70%";
 
   const headerItemsGap = useMatches({
     lg: "md",
@@ -77,7 +73,6 @@ export const Navbar: React.FC<{
   }, []);
 
   useEffect(() => {
-    setIsScrolled(scroll.y > 50);
     for (const [id, { targetRef }] of typedEntries(sectionsScrolls)) {
       if (scroll.y >= targetRef.current.offsetTop - scrollParams.offset - 10) {
         setActiveSection(id);
@@ -116,10 +111,10 @@ export const Navbar: React.FC<{
         p="md"
         style={{
           transition: "all 0.5s ease-in-out",
+          backgroundColor: "rgba(0,0,0,0.0)",
+          backdropFilter: "blur(8px)",
         }}
         display="inline-flex"
-        opacity={headerOpacity}
-        ref={ref}
         withBorder={false}
       >
         <Container
