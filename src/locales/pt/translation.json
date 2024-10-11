@@ -76,7 +76,7 @@
         "projects": {
             "name": "Projetos",
             "propor": {
-                "title": "Gerador de animação para jogos Role-Playing a partir textos em linguagem natural",
+                "title": "Gerador de animação para jogos Role-Playing",
                 "text": "Sistema determinístico de geração de animações para jogos de RPG a partir do processamento de frases em português, utilizando Python com a biblioteca SpaCy e com o motor de jogos RPG Maker MV. Esse projeto foi selecionado para um congresso internacional de processamento de português."
             },
             "mel": {
@@ -93,7 +93,7 @@
             },
             "raw": {
                 "title": ".raw Mode",
-                "text": "Jogo de puzzle de plataforma desenvolvido em PhaserJS para uma game jam na plataforma Itch.io. Esse projeto conquistou o primeiro lugar na categoria de inovação da competição."
+                "text": "Este é um jogo de puzzle e plataforma desenvolvido com PhaserJS para uma game jam realizada na plataforma Itch.io. Esse projeto se destacou entre os demais participantes e conquistou o primeiro lugar na categoria de Inovação da competição."
             },
             "anchors": {
                 "repo": "Repositório",

@@ -57,24 +57,32 @@
         "projects": {
             "name": "Projects",
             "propor": {
-                "title": "A Natural Language Text to Role-Playing Game Animation Generator",
-                "text": ""
+                "title": "Role-Playing Game Animation Generator",
+                "text": "System for generating RPG game animations from sentence processing in Portuguese, using Python with the SpaCy library and the RPG Maker MV engine. This project was selected for an international Portuguese language processing conference."
             },
             "mel": {
                 "title": "Mel's Journey",
-                "text": ""
+                "text": "A narrative game designed to teach financial mathematics to high school students, focusing on topics such as percentages, simple interest, and compound interest. The game was developed using RPG Maker MV and JavaScript. It underwent student evaluation and received outstanding feedback."
             },
             "caronei": {
                 "title": "Caronei",
-                "text": ""
+                "text": "Carpool app for the university campus using React Native for the frontend and JavaScript with Express.js for the back-end, with PostgreSQL as the database. The project includes geolocation and route calculation using graph algorithms"
             },
             "climasync": {
                 "title": "ClimaSync",
-                "text": ""
+                "text": "weather-based IoT device management system using TypeScript with Node.js for the back-end, integrating the Tuya system API and a weather update system, with PostgreSQL as the database and Kotlin for the front-end."
             },
             "raw": {
                 "title": ".raw Mode",
-                "text": ""
+                "text": "This is a puzzle-platformer game developed with PhaserJS for a game jam held on the Itch.io platform. The project stood out among the other participants and won first place in the Innovation category of the competition."
+            },
+            "anchors": {
+                "repo": "Repository",
+                "front": "Front-End",
+                "back": "Back-End",
+                "game": "Game",
+                "site": "Website",
+                "paper": "Paper"
             }
         }
     }
