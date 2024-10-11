@@ -32,9 +32,7 @@ export const LanguageSelector = () => {
   return (
     <Combobox
       store={combobox}
-      withinPortal={true}
       onOptionSubmit={(val) => {
-        console.log(val);
         chooseLanguage(val as LanguageCode);
         combobox.closeDropdown();
       }}
@@ -44,30 +42,38 @@ export const LanguageSelector = () => {
     >
       <Combobox.Target>
         <Button
-          size="compact-sm"
+          size="compact-md"
           rightSection={<Combobox.Chevron />}
           onClick={() => combobox.toggleDropdown()}
           variant="subtle"
           style={{
-            justifyContent: "space-around",
             transition: "all 0.2s ease-in-out",
           }}
         >
-          <Image h="15px" w="22px" src={languages[value]["flag"]} />
+          <Group display="inline-flex">
+            <Image h="15px" w="22px" src={languages[value].flag} />
+            {/* <Text>{languages[value].name}</Text> */}
+          </Group>
         </Button>
       </Combobox.Target>
 
       <Combobox.Dropdown>
         <Combobox.Options w="100%">
           {Object.keys(languages).map((c) => (
-            <Combobox.Option key={"lang_" + c} value={c}>
+            <Combobox.Option
+              key={"lang_" + c}
+              value={c}
+              style={{
+                transition: "all 0.2s ease-in-out",
+              }}
+            >
               <Group display="inline-flex">
                 <Image
                   h="10px"
                   w="22px"
-                  src={languages[c as LanguageCode]["flag"]}
+                  src={languages[c as LanguageCode].flag}
                 />
-                <Text>{languages[c as LanguageCode]["name"]}</Text>
+                <Text>{languages[c as LanguageCode].name}</Text>
               </Group>
             </Combobox.Option>
           ))}
