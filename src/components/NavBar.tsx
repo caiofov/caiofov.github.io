@@ -20,13 +20,12 @@ import { LanguageSelector } from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
 import { OpacityRevealSequence } from "./animations/OpacityReveal";
 
-import { SectionIDType, SECTIONS } from "../utils/sections";
+import { SectionIDType, SECTIONS, sectionWidth } from "../utils/sections";
 import { typedEntries } from "../utils/functions";
 
 export const Navbar: React.FC<{
   DarkModeToggle: JSX.Element;
-  bodyContainerWidth: string;
-}> = ({ DarkModeToggle, bodyContainerWidth }) => {
+}> = ({ DarkModeToggle }) => {
   const { t } = useTranslation();
   const [navbarOpened, { open, close }] = useDisclosure(false);
   const [activeSection, setActiveSection] = useState<SectionIDType>("home");
@@ -36,6 +35,7 @@ export const Navbar: React.FC<{
   const headerHeight = useMatches({ md: 68, base: 65 });
   const logoSize = useMatches({ sm: "1.8rem", base: "1.2rem" });
 
+  const bodyContainerWidth = useMatches(sectionWidth);
   const scrollParams = {
     offset: headerHeight,
     duration: 500,

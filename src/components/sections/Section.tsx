@@ -1,9 +1,21 @@
-import { Anchor, Divider, Group, Title, useMatches } from "@mantine/core";
+import {
+  Anchor,
+  Divider,
+  Group,
+  Title,
+  useMantineColorScheme,
+  useMantineTheme,
+  useMatches,
+} from "@mantine/core";
 import React, { useEffect, useRef, useState } from "react";
 import { motion, useAnimation, useInView } from "framer-motion";
 import { ReactTyped, Typed } from "react-typed";
 
-import { SectionIDType } from "../../utils/sections";
+import {
+  getSectionBackground,
+  SectionIDType,
+  sectionPaddingX,
+} from "../../utils/sections";
 
 export const Section: React.FC<{
   text: string;
@@ -15,6 +27,7 @@ export const Section: React.FC<{
   const [typed, setTyped] = useState<Typed>();
   const isInView = useInView(ref);
   const mainControls = useAnimation();
+  const px = useMatches(sectionPaddingX);
 
   useEffect(() => {
     mainControls.start(isInView ? "visible" : "hidden");
@@ -25,10 +38,14 @@ export const Section: React.FC<{
     sm: ["3rem", "xl", "md"],
     base: ["2rem", "sm", "xs"],
   });
+  const background = getSectionBackground(
+    position == "right",
+    useMantineColorScheme().colorScheme
+  );
 
   return (
     <section>
-      <Group id={id} mb="xl" w="100%">
+      <Group id={id} m="0" pb="xl" px={px} bg={background}>
         <motion.div
           ref={ref}
           variants={{

@@ -10,6 +10,7 @@ import {
   ScrollArea,
   Text,
   Title,
+  useMantineColorScheme,
   useMatches,
 } from "@mantine/core";
 import { Section } from "./Section";
@@ -66,6 +67,7 @@ export const Experience = () => {
     setActiveId(typedKeys(EXPERIENCES)[idx]);
     setActiveIdx(idx);
   };
+  const { colorScheme } = useMantineColorScheme();
 
   return (
     <Section
@@ -84,11 +86,11 @@ export const Experience = () => {
 
         <Paper
           w={paperWidth}
-          withBorder
           radius="md"
           mt="xl"
           shadow="xl"
           p={paperPadding}
+          bg={colorScheme === "dark" ? "dark.8" : "gray.2"}
         >
           <ExperienceBodyTitle
             companyName={EXPERIENCES[activeId].name}

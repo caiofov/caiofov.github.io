@@ -4,7 +4,14 @@ import brazilFlag from "../../assets/brazil_flag.svg";
 import usaFlag from "../../assets/usa_flag.svg";
 import { PopRevealSequence } from "../animations/PopReveal";
 import { OpacityRevealSequence } from "../animations/OpacityReveal";
-import { Group, Text, Title, useMatches } from "@mantine/core";
+import {
+  Group,
+  Text,
+  Title,
+  useMantineColorScheme,
+  useMantineTheme,
+  useMatches,
+} from "@mantine/core";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -12,6 +19,7 @@ import {
 } from "@tabler/icons-react";
 import { CopyTooltip, IconTooltip, ImageTooltip } from "../IconTooltip";
 import { Typing } from "../animations/Typing";
+import { getSectionBackground, sectionPaddingX } from "../../utils/sections";
 
 const contactInfo = [
   {
@@ -51,9 +59,11 @@ export const Home = () => {
     sm: ["5rem", "1.5rem"],
     base: ["4.2rem", "1.5rem"],
   });
+  const px = useMatches(sectionPaddingX);
+  const bg = getSectionBackground(true, useMantineColorScheme().colorScheme);
   return (
     <section>
-      <Group id="home" align="center" my="xl" h="80vh">
+      <Group id="home" m="0" bg={bg} px={px} align="center" h="80vh">
         <Group display="block">
           <Group id="home-title" display="block" mb="lg">
             <Title style={{ fontSize: titleFontSize }}>
@@ -73,7 +83,7 @@ export const Home = () => {
             </Title>
           </Group>
 
-          <Group id="contact-info" mb="lg" gap="xs">
+          <Group id="contact-info" pb="lg" gap="xs">
             <PopRevealSequence>
               {contactInfo.map(({ href, icon, text }) => {
                 return href ? (

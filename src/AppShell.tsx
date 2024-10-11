@@ -5,11 +5,7 @@ import { Home } from "./components/sections/Home";
 import { About } from "./components/sections/About";
 import { Experience } from "./components/sections/Experience";
 import { Projects } from "./components/sections/Projects";
-import {
-  Container,
-  useMatches,
-  AppShell as AppShellMantine,
-} from "@mantine/core";
+import { AppShell as AppShellMantine } from "@mantine/core";
 
 export const AppShell: React.FC<{
   darkMode: boolean;
@@ -21,27 +17,19 @@ export const AppShell: React.FC<{
       onChange={() => setDarkMode(!darkMode)}
     />
   );
-  const containerWidth = useMatches({
-    lg: "80%",
-    base: "90%",
-  });
+
   return (
-    <AppShellMantine>
-      <Navbar
-        DarkModeToggle={ThemeToggle}
-        bodyContainerWidth={containerWidth}
-      />
+    <AppShellMantine m="0" p="0">
+      <Navbar DarkModeToggle={ThemeToggle} />
 
-      <AppShellMantine.Main p="0">
-        <Container p="0" w={containerWidth} fluid>
-          <Home />
+      <AppShellMantine.Main p="0" m="0">
+        <Home />
 
-          <About />
+        <About />
 
-          <Experience />
+        <Experience />
 
-          <Projects />
-        </Container>
+        <Projects />
       </AppShellMantine.Main>
     </AppShellMantine>
   );
