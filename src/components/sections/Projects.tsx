@@ -5,21 +5,12 @@ import {
   Image,
   Text,
   Badge,
-  Anchor,
   Grid,
   GridCol,
   useMatches,
 } from "@mantine/core";
 import React from "react";
 import { useTranslation } from "react-i18next";
-import {
-  IconCode,
-  IconDeviceGamepad,
-  IconFloatCenter,
-  IconPaperclip,
-  IconStackMiddle,
-  IconWorld,
-} from "@tabler/icons-react";
 import { Section } from "./Section";
 import { typedKeys } from "../../utils/functions";
 import {
@@ -30,22 +21,14 @@ import {
   ProjectType,
 } from "../../utils/projects";
 import { IconTooltip } from "../IconTooltip";
-
-const ProjectAnchor: React.FC<{
-  anchor: AnchorType;
-}> = ({ anchor }) => {
-  const AnchorIcon = ANCHOR_ICONS[anchor.type];
-  return (
-    <Group w="fit-content" gap="xs" mr="sm">
-      <AnchorIcon />
-      <Anchor href={anchor.link}>{anchor.text}</Anchor>
-    </Group>
-  );
-};
+import { useMantineColorScheme } from "@mantine/core";
 
 const ProjectItem: React.FC<{ project: CompleteProjectType }> = ({
   project,
 }) => {
+  const scheme = useMantineColorScheme();
+  const imgOpacity = scheme.colorScheme === "dark" ? "80%" : "100%";
+
   return (
     <Card
       p="xl"
@@ -61,7 +44,12 @@ const ProjectItem: React.FC<{ project: CompleteProjectType }> = ({
     >
       <Card.Section>
         {"img" in project && project["img"].length > 0 ? (
-          <Image radius="xl" src={project.img} height={300} />
+          <Image
+            radius="xl"
+            src={project.img}
+            height={300}
+            opacity={imgOpacity}
+          />
         ) : null}
         <Title mt="md" mb="sm" order={4}>
           {project.title}
