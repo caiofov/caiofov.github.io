@@ -29,6 +29,7 @@ import {
   PROJECTS,
   ProjectType,
 } from "../../utils/projects";
+import { IconTooltip } from "../IconTooltip";
 
 const ProjectAnchor: React.FC<{
   anchor: AnchorType;
@@ -76,18 +77,23 @@ const ProjectItem: React.FC<{ project: CompleteProjectType }> = ({
         </Group>
       </Card.Section>
 
-      <Card.Section mb="xl">
+      <Card.Section>
         <Text>{project.text}</Text>
       </Card.Section>
 
       <Card.Section>
-        <Title order={5} mb="sm">
-          Links:
-        </Title>
-        <Group display="flex">
-          {project.anchorsMapped.map((anchor) => (
-            <ProjectAnchor key={anchor.link} anchor={anchor} />
-          ))}
+        <Group display="flex" justify="flex-end">
+          {project.anchorsMapped.map((anchor) => {
+            const AnchorIcon = ANCHOR_ICONS[anchor.type];
+
+            return (
+              <IconTooltip
+                tooltip={anchor.text}
+                Icon={AnchorIcon}
+                href={anchor.link}
+              />
+            );
+          })}
         </Group>
       </Card.Section>
     </Card>
