@@ -53,16 +53,15 @@ export const Home = () => {
   });
   return (
     <section>
-      <Group id="home" justify="center" align="center" my="xl" h="80vh">
-        <Group display={"block"}>
+      <Group id="home" align="center" my="xl" h="80vh">
+        <Group display="block">
           <Group id="home-title" display="block" mb="lg">
-            <Title style={{ fontFamily: "monospace", fontSize: titleFontSize }}>
-              <Typing text={"Caio Oliveira"} duration={100} />
+            <Title style={{ fontSize: titleFontSize }}>
+              <Typing text="Caio Oliveira" duration={100} />
             </Title>
             <Title
               order={2}
               style={{
-                fontFamily: "monospace",
                 fontSize: subtitleFontSize,
               }}
             >
@@ -99,9 +98,7 @@ export const Home = () => {
 
           <OpacityRevealSequence delayInit={1}>
             <Group id="download-cv">
-              <Text style={{ fontFamily: "monospace" }}>
-                {t("sections.home.download-cv")}:
-              </Text>
+              <Text>{t("sections.home.download-cv")}:</Text>
               {languageInfo.map(({ code, href, image }) => (
                 <ImageTooltip
                   key={code}
@@ -111,7 +108,7 @@ export const Home = () => {
                 />
               ))}
             </Group>
-            <Text size="lg" w="90%" style={{ fontFamily: "monospace" }}>
+            <Text size="lg" w="90%">
               {t("sections.home.text")}
             </Text>
           </OpacityRevealSequence>
