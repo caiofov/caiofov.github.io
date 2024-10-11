@@ -50,22 +50,29 @@ export const IconTooltip: React.FC<IconTooltipProps> = ({
   actionIconProps,
   iconProps,
 }) => {
+  const IconComponent = <Icon {...iconProps} />;
   return (
     <Tooltip withArrow label={tooltip}>
-      <ActionIcon
-        size="md"
-        onClick={onClick}
-        variant="transparent"
-        {...actionIconProps}
-      >
-        {href ? (
-          <Anchor href={href} underline="never" c="inherit">
-            <Icon {...iconProps} />
-          </Anchor>
-        ) : (
-          <Icon {...iconProps} />
-        )}
-      </ActionIcon>
+      {href ? (
+        <ActionIcon
+          size="md"
+          component="a"
+          href={href}
+          variant="transparent"
+          {...actionIconProps}
+        >
+          {IconComponent}
+        </ActionIcon>
+      ) : (
+        <ActionIcon
+          size="md"
+          onClick={onClick}
+          variant="transparent"
+          {...actionIconProps}
+        >
+          {IconComponent}
+        </ActionIcon>
+      )}
     </Tooltip>
   );
 };
@@ -78,22 +85,29 @@ export const ImageTooltip: React.FC<ImageTooltipProps> = ({
   actionIconProps,
   imageProps,
 }) => {
+  const ImageComponent = <Image src={imageSrc} {...imageProps} />;
   return (
     <Tooltip withArrow label={tooltip}>
-      <ActionIcon
-        size="md"
-        onClick={onClick}
-        variant="transparent"
-        {...actionIconProps}
-      >
-        {href ? (
-          <Anchor href={href} underline="never" c="inherit">
-            <Image src={imageSrc} {...imageProps} />
-          </Anchor>
-        ) : (
-          <Image src={imageSrc} {...imageProps} />
-        )}
-      </ActionIcon>
+      {href ? (
+        <ActionIcon
+          size="md"
+          component="a"
+          href={href}
+          variant="transparent"
+          {...actionIconProps}
+        >
+          {ImageComponent}
+        </ActionIcon>
+      ) : (
+        <ActionIcon
+          size="md"
+          onClick={onClick}
+          variant="transparent"
+          {...actionIconProps}
+        >
+          {ImageComponent}
+        </ActionIcon>
+      )}
     </Tooltip>
   );
 };
