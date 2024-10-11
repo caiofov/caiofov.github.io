@@ -34,6 +34,8 @@ export const Navbar: React.FC<{
   const [scroll, scrollTo] = useWindowScroll();
 
   const headerHeight = useMatches({ md: 68, base: 65 });
+  const logoSize = useMatches({ sm: "1.8rem", base: "1.2rem" });
+
   const scrollParams = {
     offset: headerHeight,
     duration: 500,
@@ -104,13 +106,15 @@ export const Navbar: React.FC<{
     <>
       <AppShell.Header
         h="fit-content"
-        p="md"
+        px="0"
+        py="md"
         style={{
           transition: "all 0.5s ease-in-out",
           backgroundColor: "rgba(0,0,0,0)",
           backdropFilter: "blur(8px)",
         }}
         display="inline-flex"
+        w="100%"
         withBorder={false}
       >
         <Container
@@ -123,40 +127,33 @@ export const Navbar: React.FC<{
             alignItems: "center",
           }}
         >
-          <Burger
-            hiddenFrom="md"
-            opened={false}
-            onClick={() => (navbarOpened ? close() : open())}
-            size="sm"
-            p="0"
-          />
-
-          <Group visibleFrom="xs">
-            <Text size="xl" variant="gradient" fw="bold">
-              CaioOliveira
-            </Text>
-            <Group hiddenFrom="md">{DarkModeToggle}</Group>
-          </Group>
-          <Group hiddenFrom="xs">
-            <Text size="xl">
-              {"< "}
-              <b>C</b>O{" />"}
-            </Text>
-            {DarkModeToggle}
-          </Group>
-
-          <Group
-            visibleFrom="md"
-            gap="xs"
-            display="flex"
-            justify="space-between"
-          >
-            <Group gap="xs" display="flex" justify="space-between">
-              {navbarAnchors}
+          <Text style={{ fontSize: logoSize }} variant="gradient" fw="bold">
+            CaioOliveira
+          </Text>
+          <Group>
+            <Group
+              visibleFrom="md"
+              gap="xs"
+              display="flex"
+              justify="space-between"
+            >
+              <nav>
+                <Group gap="xs" display="flex" justify="space-between">
+                  {navbarAnchors}
+                </Group>
+              </nav>
             </Group>
+
             <Group gap="xs">
-              <LanguageSelector />
               {DarkModeToggle}
+              <LanguageSelector />
+              <Burger
+                hiddenFrom="md"
+                opened={false}
+                onClick={() => (navbarOpened ? close() : open())}
+                size="sm"
+                p="0"
+              />
             </Group>
           </Group>
         </Container>
@@ -165,24 +162,21 @@ export const Navbar: React.FC<{
       <Drawer
         opened={navbarOpened}
         onClose={close}
+        position="right"
         overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
-        size="xs"
-        styles={{
-          inner: {
-            width: "fit-content",
-          },
-        }}
+        size="fit-content"
       >
         <nav>
-          <Group mr="xl" style={{ flexDirection: "column" }} align="flex-start">
-            <OpacityRevealSequence
-              delayInit={0}
-              delayIncrease={0.2}
-              children={[
-                ...navbarAnchors,
-                <LanguageSelector key="lang-selector" />,
-              ]}
-            />
+          <Group
+            ml="md"
+            mr="sm"
+            style={{ flexDirection: "column" }}
+            align="flex-end"
+            gap="xl"
+          >
+            <OpacityRevealSequence delayInit={0} delayIncrease={0.2}>
+              {navbarAnchors}
+            </OpacityRevealSequence>
           </Group>
         </nav>
       </Drawer>
