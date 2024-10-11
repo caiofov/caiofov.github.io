@@ -27,7 +27,10 @@ export const AppShell: React.FC<{
   });
   return (
     <AppShellMantine navbar={{ width: "30%", breakpoint: "sm" }}>
-      <Navbar DarkModeToggle={ThemeToggle} />
+      <Navbar
+        DarkModeToggle={ThemeToggle}
+        bodyContainerWidth={containerWidth}
+      />
 
       <AppShellMantine.Main p="0">
         <Container p="0" w={containerWidth} fluid>

@@ -2,12 +2,19 @@ import {
   AppShell,
   Burger,
   Button,
+  Container,
+  Drawer,
   Group,
   Text,
   ThemeIcon,
   useMatches,
 } from "@mantine/core";
-import { useHover, useScrollIntoView, useWindowScroll } from "@mantine/hooks";
+import {
+  useDisclosure,
+  useHover,
+  useScrollIntoView,
+  useWindowScroll,
+} from "@mantine/hooks";
 import React, { useEffect, useState } from "react";
 import { LanguageSelector } from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
@@ -18,10 +25,11 @@ import { typedEntries } from "../utils/functions";
 
 export const Navbar: React.FC<{
   DarkModeToggle: JSX.Element;
-}> = ({ DarkModeToggle }) => {
+  bodyContainerWidth: string;
+}> = ({ DarkModeToggle, bodyContainerWidth }) => {
   const { t } = useTranslation();
 
-  const [isNavbarOpened, setIsNavbarOpened] = useState(false);
+  const [navbarOpened, { open, close }] = useDisclosure(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState<SectionIDType>("home");
 
@@ -31,8 +39,8 @@ export const Navbar: React.FC<{
   const headerOpacity = hovered || !isScrolled ? "100%" : "70%";
 
   const headerItemsGap = useMatches({
-    lg: "xl",
-    md: "sm",
+    lg: "md",
+    md: "xs",
     base: "xs",
   });
 
@@ -93,12 +101,10 @@ export const Navbar: React.FC<{
           scrollToSection(section.id);
         }}
         variant={isActive ? "light" : "subtle"}
-        radius="xl"
-        size="md"
+        radius="md"
+        style={{ transition: "all 0.3s ease-in-out" }}
       >
-        <Text fw={isActive ? "bold" : "normal"}>
-          {t(`sections.${section.id}.name`)}
-        </Text>
+        <Text>{t(`sections.${section.id}.name`)}</Text>
       </Button>
     );
   });
@@ -108,68 +114,74 @@ export const Navbar: React.FC<{
       <AppShell.Header
         h="fit-content"
         p="md"
-        px="xl"
         style={{
-          justifyContent: "space-between",
           transition: "all 0.5s ease-in-out",
-          alignItems: "center",
         }}
         display="inline-flex"
         opacity={headerOpacity}
         ref={ref}
+        withBorder={false}
       >
-        <Burger
-          hiddenFrom="md"
-          opened={isNavbarOpened}
-          onClick={() => setIsNavbarOpened((o) => !o)}
-          size="sm"
-        />
-
-        <Group visibleFrom="xs">
-          <Text size="xl">
-            {"< "}
-            <b>Caio</b>Oliveira{" />"}
-          </Text>
-          <Group hiddenFrom="md">{DarkModeToggle}</Group>
-        </Group>
-        <Group hiddenFrom="xs">
-          <Text size="xl">
-            {"< "}
-            <b>C</b>O{" />"}
-          </Text>
-          {DarkModeToggle}
-        </Group>
-
-        <Group
-          visibleFrom="md"
-          gap={headerItemsGap}
+        <Container
+          p="0"
+          w={bodyContainerWidth}
+          fluid
           display="flex"
-          justify="space-between"
+          style={{
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
         >
-          {navbarAnchors}
-          <Group gap="xs">
-            <LanguageSelector />
+          <Burger
+            hiddenFrom="md"
+            opened={false}
+            onClick={() => (navbarOpened ? close() : open())}
+            size="sm"
+            p="0"
+          />
+
+          <Group visibleFrom="xs">
+            <Text size="xl" variant="gradient" fw="bold">
+              CaioOliveira
+            </Text>
+            <Group hiddenFrom="md">{DarkModeToggle}</Group>
+          </Group>
+          <Group hiddenFrom="xs">
+            <Text size="xl">
+              {"< "}
+              <b>C</b>O{" />"}
+            </Text>
             {DarkModeToggle}
           </Group>
-        </Group>
+
+          <Group
+            visibleFrom="md"
+            gap={headerItemsGap}
+            display="flex"
+            justify="space-between"
+          >
+            {navbarAnchors}
+            <Group gap="xs">
+              <LanguageSelector />
+              {DarkModeToggle}
+            </Group>
+          </Group>
+        </Container>
       </AppShell.Header>
-      {isNavbarOpened ? (
-        <AppShell.Navbar
-          hidden={!isNavbarOpened}
-          w="fit-content"
-          px="xl"
-          pt="md"
-          h="100%"
-        >
-          <AppShell.Section display="block">
-            <Burger
-              opened={isNavbarOpened}
-              onClick={() => setIsNavbarOpened((o) => !o)}
-              size="sm"
-              style={{ alignSelf: "end" }}
-            />
-          </AppShell.Section>
-          <AppShell.Section display="block">
+
+      <Drawer
+        opened={navbarOpened}
+        onClose={close}
+        overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
+        size="xs"
+        styles={{
+          inner: {
+            width: "fit-content",
+          },
+        }}
+      >
+        <nav>
+          <Group mr="xl" style={{ flexDirection: "column" }} align="flex-start">
             <OpacityRevealSequence
               delayInit={0}
               delayIncrease={0.2}
@@ -177,10 +189,10 @@ export const Navbar: React.FC<{
                 ...navbarAnchors,
                 <LanguageSelector key="lang-selector" />,
               ]}
-            ></OpacityRevealSequence>
-          </AppShell.Section>
-        </AppShell.Navbar>
-      ) : null}
+            />
+          </Group>
+        </nav>
+      </Drawer>
     </>
   );
 };
