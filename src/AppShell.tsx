@@ -22,11 +22,11 @@ export const AppShell: React.FC<{
     />
   );
   const containerWidth = useMatches({
-    md: "80%",
+    lg: "80%",
     base: "90%",
   });
   return (
-    <AppShellMantine navbar={{ width: "30%", breakpoint: "sm" }}>
+    <AppShellMantine>
       <Navbar
         DarkModeToggle={ThemeToggle}
         bodyContainerWidth={containerWidth}

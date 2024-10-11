@@ -28,20 +28,15 @@ export const Navbar: React.FC<{
   bodyContainerWidth: string;
 }> = ({ DarkModeToggle, bodyContainerWidth }) => {
   const { t } = useTranslation();
-
   const [navbarOpened, { open, close }] = useDisclosure(false);
   const [activeSection, setActiveSection] = useState<SectionIDType>("home");
 
   const [scroll, scrollTo] = useWindowScroll();
 
-  const headerItemsGap = useMatches({
-    lg: "md",
-    md: "xs",
-    base: "xs",
-  });
-
+  const headerHeight = useMatches({ md: 68, base: 65 });
   const scrollParams = {
-    offset: 100,
+    offset: headerHeight,
+    duration: 500,
   };
 
   const sectionsScrolls: Record<
@@ -74,7 +69,7 @@ export const Navbar: React.FC<{
 
   useEffect(() => {
     for (const [id, { targetRef }] of typedEntries(sectionsScrolls)) {
-      if (scroll.y >= targetRef.current.offsetTop - scrollParams.offset - 10) {
+      if (scroll.y >= targetRef.current.offsetTop - 2 * headerHeight) {
         setActiveSection(id);
         break;
       }
@@ -94,6 +89,7 @@ export const Navbar: React.FC<{
         onClick={(e) => {
           e.preventDefault();
           scrollToSection(section.id);
+          close();
         }}
         variant={isActive ? "light" : "subtle"}
         radius="md"
@@ -111,7 +107,7 @@ export const Navbar: React.FC<{
         p="md"
         style={{
           transition: "all 0.5s ease-in-out",
-          backgroundColor: "rgba(0,0,0,0.0)",
+          backgroundColor: "rgba(0,0,0,0)",
           backdropFilter: "blur(8px)",
         }}
         display="inline-flex"
@@ -151,11 +147,13 @@ export const Navbar: React.FC<{
 
           <Group
             visibleFrom="md"
-            gap={headerItemsGap}
+            gap="xs"
             display="flex"
             justify="space-between"
           >
-            {navbarAnchors}
+            <Group gap="xs" display="flex" justify="space-between">
+              {navbarAnchors}
+            </Group>
             <Group gap="xs">
               <LanguageSelector />
               {DarkModeToggle}
