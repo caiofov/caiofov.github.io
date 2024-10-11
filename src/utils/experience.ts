@@ -26,6 +26,7 @@ export const EXPERIENCE_ICONS: { [K in CompanyIDType]: Icon } = {
 
 export const activeExperienceStyle: MantineStyleProp = {
   cursor: "pointer",
+  transition: "all 0.3s ease-in-out",
 };
 export const experienceStyle: MantineStyleProp = {
   transition: "all 0.3s ease-in-out",
@@ -40,4 +41,5 @@ export const bulletStyle: React.CSSProperties = {
 export const activeBulletStyle: React.CSSProperties = {
   cursor: "pointer",
   opacity: "100%",
+  transition: "all 0.3s ease-in-out",
 };
