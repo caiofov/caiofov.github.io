@@ -1,7 +1,7 @@
 import React from "react";
 
-import { Switch, ThemeIcon, useMantineTheme } from "@mantine/core";
-import { IconSun, IconMoonStars, IconMoon } from "@tabler/icons-react";
+import { Switch, ThemeIcon } from "@mantine/core";
+import { IconSun, IconMoon } from "@tabler/icons-react";
 
 export const DarkModeToggle: React.FC<{
   checked: boolean;
