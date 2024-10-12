@@ -43,5 +43,5 @@ export const sectionWidth = {
 
 export const sectionPaddingX = {
   lg: "10%",
-  md: "5%",
+  base: "5%",
 };
