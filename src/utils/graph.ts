@@ -52,10 +52,10 @@ export const generatePoints = (
 
   for (let y = 0; y < numY; y++) {
     let py = 0.5 / (y - lastY);
-    for (let x = 0; x < numX; x++) {
+    for (let x = 1; x < numX; x++) {
       let px = 0.5 / (x - lastX);
-      if (Math.random() > 0.45 + py + px) {
-        points.push([(x + 1) * c, (y + 1) * c]);
+      if (Math.random() > 0.5 + py + px) {
+        points.push([x * c, y * c]);
         lastX = x;
         lastY = y;
       }

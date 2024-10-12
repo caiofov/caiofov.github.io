@@ -5,19 +5,29 @@ import {
   generatePoints,
   randomIntFromInterval,
 } from "../../utils/graph";
+import { useMatches } from "@mantine/core";
 
 const Network: React.FC<{ color: string }> = ({ color }) => {
-  const radius = 15;
+  const [radius, strokeWidth] = useMatches({
+    lg: [15, 5],
+    md: [12, 3],
+    base: [8, 2],
+  });
   const circleProps = { fill: color, r: radius };
-  const lineProps = { stroke: color, strokeWidth: 5 };
+  const lineProps = { stroke: color, strokeWidth };
 
   const width = Math.floor(window.innerWidth * 0.85);
-  const height = Math.floor(window.innerHeight * 1.1);
+  const height = Math.floor(window.innerHeight * 0.9);
 
   const points = generatePoints(width, height, radius, radius * 2);
   const lines = generateLinesByPairs(points, width, height);
   return (
-    <motion.svg style={{ filter: "blur(2px)" }} width={width} height={height}>
+    <motion.svg
+      style={{ filter: "blur(5px)" }}
+      opacity="70%"
+      width={width}
+      height={height}
+    >
       {points.map(([x, y]) => {
         return (
           <motion.circle

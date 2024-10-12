@@ -74,7 +74,7 @@ export const Home = () => {
         h="100vh"
         display="flex"
       >
-        <Group display="block" w="50%" style={{ zIndex: "2" }}>
+        <Group display="block" style={{ zIndex: "2" }}>
           <Group id="home-title" display="block" mb="lg">
             <Title style={{ fontSize: titleFontSize }}>
               <Typing text="Caio Oliveira" duration={100} />
@@ -128,16 +128,10 @@ export const Home = () => {
                 />
               ))}
             </Group>
-            <Text size="lg" w="90%">
+            <Text size="lg" w="80%">
               {t("sections.home.text")}
             </Text>
           </OpacityRevealSequence>
-
-          {/* <div className="photo">
-        <PopReveal stiffness={20}>
-          <HIAnimation width={"100%"} />
-        </PopReveal>
-      </div> */}
         </Group>
         <Group
           justify="center"
