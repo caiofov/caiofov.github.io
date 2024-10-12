@@ -32,16 +32,24 @@ const ExperienceBodyTitle: React.FC<{
   companyName: string;
   ExperienceIcon: Icon;
 }> = ({ role, companyName, ExperienceIcon }) => {
+  const [titleSize, subTitleSize] = useMatches({
+    sm: ["xl", "lg"],
+    base: ["md", "sm"],
+  });
   return (
-    <Group>
+    <Group wrap="nowrap">
       <PopReveal>
         <ExperienceIcon />
       </PopReveal>
-      <Group display={"block"} mb="sm">
-        <Title order={4} size="xl">
+      <Group
+        mb="sm"
+        gap="0"
+        style={{ flexDirection: "column", alignItems: "flex-start" }}
+      >
+        <Title order={4} size={titleSize}>
           <Typing text={role} duration={25} />
         </Title>
-        <Text size="lg">
+        <Text size={subTitleSize}>
           <Typing text={companyName} duration={25} delay={500} />
         </Text>
       </Group>
