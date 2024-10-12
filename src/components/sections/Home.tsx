@@ -20,6 +20,7 @@ import {
 import { CopyTooltip, IconTooltip, ImageTooltip } from "../IconTooltip";
 import { Typing } from "../animations/Typing";
 import { getSectionBackground, sectionPaddingX } from "../../utils/sections";
+import Network from "../animations/Network";
 
 const contactInfo = [
   {
@@ -61,10 +62,19 @@ export const Home = () => {
   });
   const px = useMatches(sectionPaddingX);
   const bg = getSectionBackground(true, useMantineColorScheme().colorScheme);
+  const theme = useMantineTheme();
   return (
     <section>
-      <Group id="home" m="0" bg={bg} px={px} align="center" h="80vh">
-        <Group display="block">
+      <Group
+        id="home"
+        m="0"
+        bg={bg}
+        px={px}
+        align="center"
+        h="80vh"
+        display="flex"
+      >
+        <Group display="block" w="50%" style={{ zIndex: "2" }}>
           <Group id="home-title" display="block" mb="lg">
             <Title style={{ fontSize: titleFontSize }}>
               <Typing text="Caio Oliveira" duration={100} />
@@ -128,6 +138,15 @@ export const Home = () => {
           <HIAnimation width={"100%"} />
         </PopReveal>
       </div> */}
+        </Group>
+        <Group
+          justify="center"
+          ml="20%"
+          align="center"
+          pos="absolute"
+          style={{ zIndex: "1" }}
+        >
+          <Network color={theme.colors.blue[9]} />
         </Group>
       </Group>
     </section>

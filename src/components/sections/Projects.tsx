@@ -77,6 +77,7 @@ const ProjectItem: React.FC<{ project: CompleteProjectType }> = ({
 
             return (
               <IconTooltip
+                key={anchor.link}
                 tooltip={anchor.text}
                 Icon={AnchorIcon}
                 href={anchor.link}
