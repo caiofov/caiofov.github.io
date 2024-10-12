@@ -1,11 +1,11 @@
 import {
   ActionIcon,
-  Anchor,
   Tooltip,
   ActionIconProps,
   Image,
   ImageProps,
   CopyButton,
+  CopyButtonProps,
 } from "@mantine/core";
 import { useHover } from "@mantine/hooks";
 import React from "react";
@@ -40,6 +40,8 @@ type CopyTooltipProps = {
   copiedTooltip?: string;
   copyValue: string;
   actionIconProps?: ActionIconProps;
+  iconProps?: IconProps;
+  buttonProps?: CopyButtonProps;
 };
 
 export const IconTooltip: React.FC<IconTooltipProps> = ({
@@ -51,14 +53,20 @@ export const IconTooltip: React.FC<IconTooltipProps> = ({
   iconProps,
 }) => {
   const IconComponent = <Icon {...iconProps} />;
+  const { hovered, ref } = useHover();
+
   return (
-    <Tooltip withArrow label={tooltip}>
+    <Tooltip withArrow label={tooltip} ref={ref}>
       {href ? (
         <ActionIcon
           size="md"
           component="a"
           href={href}
-          variant="transparent"
+          radius="md"
+          variant={hovered ? "gradient" : "transparent"}
+          style={{
+            transition: "all 0.3s ease-in-out",
+          }}
           {...actionIconProps}
         >
           {IconComponent}
@@ -120,13 +128,15 @@ export const CopyTooltip: React.FC<CopyTooltipProps> = ({
   CopyIcon,
   Icon,
   actionIconProps,
+  iconProps,
+  buttonProps,
 }) => {
   const HoverIcon = CopyIcon ?? IconCopy;
   const CheckIcon = CopiedIcon ?? IconCopyCheck;
   const checkTooltip = copiedTooltip ?? tooltip;
   const { hovered, ref } = useHover();
   return (
-    <CopyButton value={copyValue} timeout={2000}>
+    <CopyButton value={copyValue} timeout={2000} {...buttonProps}>
       {({ copied, copy }) => (
         <Tooltip
           label={copied ? checkTooltip : tooltip}
@@ -141,11 +151,11 @@ export const CopyTooltip: React.FC<CopyTooltipProps> = ({
             {...actionIconProps}
           >
             {hovered && !copied ? (
-              <HoverIcon />
+              <HoverIcon {...iconProps} />
             ) : copied ? (
-              <CheckIcon />
+              <CheckIcon {...iconProps} />
             ) : (
-              <Icon />
+              <Icon {...iconProps} />
             )}
           </ActionIcon>
         </Tooltip>

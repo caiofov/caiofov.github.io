@@ -6,6 +6,7 @@ import { PopRevealSequence } from "../animations/PopReveal";
 import { OpacityRevealSequence } from "../animations/OpacityReveal";
 import {
   Group,
+  rem,
   Text,
   Title,
   useMantineColorScheme,
@@ -55,10 +56,10 @@ const languageInfo = [
 
 export const Home = () => {
   const { t } = useTranslation();
+  const iconSize = "2.3rem";
   const [titleFontSize, subtitleFontSize] = useMatches({
     md: ["6rem", "2rem"],
-    sm: ["5rem", "1.5rem"],
-    base: ["4.2rem", "1.5rem"],
+    base: ["5rem", "1.5rem"],
   });
   const px = useMatches(sectionPaddingX);
   const bg = getSectionBackground(true, useMantineColorScheme().colorScheme);
@@ -102,6 +103,8 @@ export const Home = () => {
                     href={href}
                     Icon={icon}
                     tooltip={text}
+                    iconProps={{ size: iconSize }}
+                    actionIconProps={{ size: iconSize }}
                   />
                 ) : (
                   <CopyTooltip
@@ -110,6 +113,8 @@ export const Home = () => {
                     tooltip={text}
                     copyValue={text}
                     copiedTooltip={`(${t("sections.home.copied")})`}
+                    iconProps={{ size: iconSize }}
+                    actionIconProps={{ size: iconSize }}
                   />
                 );
               })}
