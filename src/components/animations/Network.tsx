@@ -1,13 +1,9 @@
 import { motion } from "framer-motion";
 import * as React from "react";
 function randomIntFromInterval(min: number, max: number) {
-  // min and max included
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
-function randomItemFromList<T>(list: T[]) {
-  return list[Math.floor(Math.random() * list.length)];
-}
 const generatePoints = (
   maxX: number,
   maxY: number,
@@ -17,16 +13,15 @@ const generatePoints = (
   const c = radius * 2 + margin;
   const numX = Math.floor(maxX / c);
   const numY = Math.floor(maxY / c);
-  const points: number[][][] = [];
+  const points: number[][] = [];
   let lastX = 0;
   let lastY = 0;
   for (let y = 0; y < numY; y++) {
-    points.push([[]]);
-    let py = 0.6 / (y - lastY);
+    let py = 0.5 / (y - lastY);
     for (let x = 1; x < numX; x++) {
-      let px = 0.6 / (x - lastX);
-      if (Math.random() > 0.3 + py + px) {
-        points[y].push([x * c, y * c]);
+      let px = 0.5 / (x - lastX);
+      if (Math.random() > 0.5 + py + px) {
+        points.push([x * c, y * c]);
         lastX = x;
         lastY = y;
       }
@@ -35,41 +30,29 @@ const generatePoints = (
 
   return points;
 };
-const getNeighbors = (list: number[][][], idxY: number, idxX: number) => {
-  return [
-    idxY - 1 >= 0 && idxX - 1 >= 0 ? list[idxY - 1][idxX - 1] : undefined,
-    idxY - 1 >= 0 ? list[idxY - 1][idxX] : undefined,
-    idxY - 1 >= 0 && idxX + 1 < list[idxY - 1].length
-      ? list[idxY - 1][idxX + 1]
-      : undefined,
-    idxX - 1 >= 0 ? list[idxY][idxX - 1] : undefined,
-    idxX + 1 < list[idxY].length ? list[idxY][idxX + 1] : undefined,
-    idxY + 1 < list.length && idxX - 1 >= 0
-      ? list[idxY + 1][idxX - 1]
-      : undefined,
-    idxY + 1 < list.length ? list[idxY + 1][idxX] : undefined,
-    idxY + 1 < list.length && idxX + 1 < list[idxY + 1].length
-      ? list[idxY + 1][idxX + 1]
-      : undefined,
-  ].filter((i) => i !== undefined && i.length > 0);
-};
 
-const generateLines = (points: number[][][]) => {
+const generateLines = (points: number[][], maxX: number, maxY: number) => {
   const lines: number[][][] = [];
 
-  for (let idxY = 1; idxY < points.length; idxY++) {
-    const elements = points[idxY];
-    for (let idxX = 1; idxX < elements.length; idxX++) {
-      if (Math.random() > 0.7) {
-        const items = getNeighbors(points, idxY, idxX);
-
-        if (items.length) {
-          const item: number[] = randomItemFromList(items) as number[];
-          lines.push([points[idxY][idxX], item]);
-        }
+  for (let i = 0; i < points.length; i++) {
+    for (let j = i + 1; j < points.length; j++) {
+      const [x1, y1] = points[i];
+      const [x2, y2] = points[j];
+      const [px, py] = [Math.abs(x2 - x1) / maxX, Math.abs(y2 - y1) / maxY];
+      let pr = 0;
+      if (lines.length) {
+        if (lines[lines.length - 1].includes([x1, y1])) pr += 0.1;
+        if (lines[lines.length - 1].includes([x2, y2])) pr += 0.1;
+      }
+      if (Math.random() > 0.4 + px + py + pr) {
+        lines.push([
+          [x1, y1],
+          [x2, y2],
+        ]);
       }
     }
   }
+
   return lines;
 };
 
@@ -78,17 +61,17 @@ const Network: React.FC<{ color: string }> = ({ color }) => {
   const circleProps = { fill: color, r: radius };
   const lineProps = { stroke: color, strokeWidth: 5 };
 
-  const width = Math.floor(window.innerWidth * 0.65);
-  const height = Math.floor(window.innerHeight * 1.2);
+  const width = Math.floor(window.innerWidth * 0.85);
+  const height = Math.floor(window.innerHeight * 1.5);
 
   const points = generatePoints(width, height, radius, radius * 2);
-  const lines = generateLines(points);
+  const lines = generateLines(points, width, height);
   return (
     <motion.svg style={{ filter: "blur(2px)" }} width={width} height={height}>
       {points
         .slice(1)
-        .flat()
-        .filter((v) => v.length > 0)
+        // .flat()
+        // .filter((v) => v.length > 0)
         .map(([x, y]) => {
           return (
             <motion.circle

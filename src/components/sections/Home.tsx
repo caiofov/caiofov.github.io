@@ -71,7 +71,7 @@ export const Home = () => {
         bg={bg}
         px={px}
         align="center"
-        h="80vh"
+        h="100vh"
         display="flex"
       >
         <Group display="block" w="50%" style={{ zIndex: "2" }}>
@@ -141,7 +141,6 @@ export const Home = () => {
         </Group>
         <Group
           justify="center"
-          ml="20%"
           align="center"
           pos="absolute"
           style={{ zIndex: "1" }}
