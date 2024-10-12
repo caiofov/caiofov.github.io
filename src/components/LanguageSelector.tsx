@@ -5,15 +5,12 @@ import usaFlag from "../assets/usa_flag.svg";
 import {
   Combobox,
   Group,
-  InputBase,
   useCombobox,
   Text,
   Image,
-  ThemeIcon,
-  Popover,
   Button,
+  useMatches,
 } from "@mantine/core";
-import { IconChevronCompactDown, IconChevronDown } from "@tabler/icons-react";
 
 const languages = {
   pt: { name: "Português", flag: brazilFlag },
@@ -22,7 +19,10 @@ const languages = {
 
 export const LanguageSelector = () => {
   const [value, setValue] = useState<LanguageCode>("pt");
-
+  const textSize = useMatches({
+    md: "md",
+    base: "sm",
+  });
   const chooseLanguage = (code: LanguageCode) => {
     setValue(code);
     i18n.changeLanguage(code);
@@ -57,8 +57,8 @@ export const LanguageSelector = () => {
         </Button>
       </Combobox.Target>
 
-      <Combobox.Dropdown>
-        <Combobox.Options w="100%">
+      <Combobox.Dropdown p="0">
+        <Combobox.Options>
           {Object.keys(languages).map((c) => (
             <Combobox.Option
               key={"lang_" + c}
@@ -67,13 +67,13 @@ export const LanguageSelector = () => {
                 transition: "all 0.2s ease-in-out",
               }}
             >
-              <Group display="inline-flex">
+              <Group display="inline-flex" gap="xs">
                 <Image
                   h="10px"
                   w="22px"
                   src={languages[c as LanguageCode].flag}
                 />
-                <Text>{languages[c as LanguageCode].name}</Text>
+                <Text size={textSize}>{languages[c as LanguageCode].name}</Text>
               </Group>
             </Combobox.Option>
           ))}
