@@ -83,7 +83,7 @@ const ItemAboutDesktop: React.FC<{
 
   const BodyComponent = (
     <Group w="100%" gap="xs" justify={justify}>
-      <OpacityRevealOnVisible>
+      <OpacityRevealOnVisible delay={0.5}>
         <Title style={{ fontSize: "1.8rem", textAlign }} order={4}>
           {title}
         </Title>

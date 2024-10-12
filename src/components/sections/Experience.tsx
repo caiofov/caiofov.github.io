@@ -34,7 +34,7 @@ const ExperienceBodyTitle: React.FC<{
 }> = ({ role, companyName, ExperienceIcon }) => {
   const [titleSize, subTitleSize] = useMatches({
     sm: ["xl", "lg"],
-    base: ["md", "sm"],
+    base: ["lg", "sm"],
   });
   return (
     <Group wrap="nowrap">

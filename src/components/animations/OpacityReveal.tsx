@@ -4,9 +4,10 @@ import { v4 as uuidv4 } from "uuid";
 
 export const OpacityRevealOnVisible: React.FC<{
   children: React.ReactNode;
+  duration?: number;
   delay?: number;
   stiffness?: number;
-}> = ({ children, delay = 0, stiffness = 20 }) => {
+}> = ({ children, duration = 1, delay = 0, stiffness = 20 }) => {
   const ref = useRef(null);
   const isInView = useInView(ref);
   const mainControls = useAnimation();
@@ -29,7 +30,7 @@ export const OpacityRevealOnVisible: React.FC<{
       initial="hidden"
       animate={mainControls}
       transition={{
-        times: [0, 1],
+        duration: duration,
         type: "spring",
         stiffness: stiffness,
         ease: "easeInOut",
