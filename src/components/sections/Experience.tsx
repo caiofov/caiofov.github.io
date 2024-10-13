@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { OpacityRevealSequence } from "../animations/OpacityReveal";
 
 import {
+  alpha,
   Badge,
   Group,
   List,
@@ -11,6 +12,7 @@ import {
   Text,
   Title,
   useMantineColorScheme,
+  useMantineTheme,
   useMatches,
 } from "@mantine/core";
 import { Section } from "./Section";
@@ -76,6 +78,8 @@ export const Experience = () => {
     setActiveIdx(idx);
   };
   const { colorScheme } = useMantineColorScheme();
+  const theme = useMantineTheme();
+  console.log(theme);
 
   return (
     <Section
@@ -98,7 +102,8 @@ export const Experience = () => {
           mt="xl"
           shadow="xl"
           p={paperPadding}
-          bg={colorScheme === "dark" ? "dark.8" : "gray.2"}
+          withBorder
+          variant="custom-light"
         >
           <ExperienceBodyTitle
             companyName={EXPERIENCES[activeId].name}

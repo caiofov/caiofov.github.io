@@ -14,3 +14,8 @@
 .mantine-Combobox-option:where([data-variant="custom-light"]) {
   color: var(--mantine-primary-color-light-color);
 }
+
+.mantine-Paper-root:where([data-variant="custom-light"]) {
+  background-color: var(--mantine-color-blue-light);
+  border-color: var(--mantine-color-blue-light-hover);
+}
