@@ -1,4 +1,4 @@
-import { createTheme } from "@mantine/core";
+import { createTheme, Timeline } from "@mantine/core";
 
 const theme = createTheme({
   colors: {

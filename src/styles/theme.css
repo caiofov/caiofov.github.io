@@ -1,0 +1,16 @@
+.mantine-Popover-dropdown:where([data-variant="custom-light"]) {
+  background-color: var(--mantine-primary-color-light);
+  border-color: var(--mantine-primary-color-light-hover);
+}
+
+.mantine-Combobox-option:hover:where([data-variant="custom-light"]),
+.mantine-Combobox-option:where([data-combobox-selected]):where(
+    [data-variant="custom-light"]
+  ) {
+  background-color: var(--mantine-primary-color-light-hover);
+  color: var(--mantine-primary-color-light-color);
+}
+
+.mantine-Combobox-option:where([data-variant="custom-light"]) {
+  color: var(--mantine-primary-color-light-color);
+}

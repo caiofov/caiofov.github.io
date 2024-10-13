@@ -1,7 +1,7 @@
 import { MantineProvider } from "@mantine/core";
 import { useState } from "react";
 import { AppShell } from "./AppShell";
-import theme from "./theme";
+import theme from "./styles/theme";
 
 function App() {
   const [darkMode, setDarkMode] = useState(true);

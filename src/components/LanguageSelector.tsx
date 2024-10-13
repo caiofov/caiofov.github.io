@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import i18n, { LanguageCode } from "../i18n";
 import brazilFlag from "../assets/flags/brazil_flag.png";
 import usaFlag from "../assets/flags/usa_flag.png";
@@ -7,11 +7,11 @@ import {
   Group,
   useCombobox,
   Text,
-  Image,
   Button,
   useMatches,
 } from "@mantine/core";
-
+import { IconWorld } from "@tabler/icons-react";
+import { typedKeys } from "../utils/functions";
 const languages = {
   pt: { name: "Português", flag: brazilFlag },
   en: { name: "English", flag: usaFlag },
@@ -19,16 +19,16 @@ const languages = {
 
 export const LanguageSelector = () => {
   const [value, setValue] = useState<LanguageCode>("pt");
-  const textSize = useMatches({
-    md: "md",
-    base: "sm",
+  const isMobile = useMatches({
+    md: false,
+    base: true,
   });
   const chooseLanguage = (code: LanguageCode) => {
     setValue(code);
     i18n.changeLanguage(code);
   };
   const combobox = useCombobox();
-
+  const buttonRef = useRef<HTMLButtonElement>(null);
   return (
     <Combobox
       store={combobox}
@@ -43,38 +43,39 @@ export const LanguageSelector = () => {
       <Combobox.Target>
         <Button
           size="compact-md"
-          rightSection={<Combobox.Chevron />}
           onClick={() => combobox.toggleDropdown()}
-          variant="subtle"
+          variant={combobox.dropdownOpened ? "light" : "subtle"}
           style={{
             transition: "all 0.2s ease-in-out",
           }}
+          ref={buttonRef}
         >
-          <Group display="inline-flex">
-            <Image h="15px" w="22px" src={languages[value].flag} />
-            {/* <Text>{languages[value].name}</Text> */}
+          <Group display="inline-flex" gap="xs">
+            <IconWorld />
+            <Text>
+              {isMobile ? value.toUpperCase() : languages[value].name}
+            </Text>
           </Group>
         </Button>
       </Combobox.Target>
 
-      <Combobox.Dropdown p="0">
+      <Combobox.Dropdown
+        variant="custom-light"
+        miw={buttonRef.current?.clientWidth}
+      >
         <Combobox.Options>
-          {Object.keys(languages).map((c) => (
+          {typedKeys(languages).map((c, idx) => (
             <Combobox.Option
               key={"lang_" + c}
               value={c}
               style={{
                 transition: "all 0.2s ease-in-out",
               }}
+              variant="custom-light"
+              selected={value == c}
+              mb={idx + 1 != Object.keys(languages).length ? "xs" : 0}
             >
-              <Group display="inline-flex" gap="xs">
-                <Image
-                  h="10px"
-                  w="22px"
-                  src={languages[c as LanguageCode].flag}
-                />
-                <Text size={textSize}>{languages[c as LanguageCode].name}</Text>
-              </Group>
+              <Text size="md">{languages[c].name}</Text>
             </Combobox.Option>
           ))}
         </Combobox.Options>
