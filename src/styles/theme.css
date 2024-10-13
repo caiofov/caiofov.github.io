@@ -24,3 +24,34 @@
   background-color: var(--mantine-color-blue-light);
   border-color: var(--mantine-color-blue-light-hover);
 }
+
+.mantine-Timeline-root:where([data-variant="custom-light"])
+  .mantine-Timeline-item:hover {
+  cursor: pointer;
+}
+
+.mantine-Timeline-root:where([data-variant="custom-light"])
+  .mantine-Timeline-item:where([data-variant="selected"]),
+.mantine-Timeline-root:where([data-variant="custom-light"])
+  .mantine-Timeline-item:where([data-variant="deselected"]):hover {
+  opacity: 100%;
+}
+
+.mantine-Timeline-root:where([data-variant="custom-light"])
+  .mantine-Timeline-item:where([data-variant="deselected"]) {
+  opacity: 70%;
+  transition: all 0.3s ease-in-out;
+}
+
+.mantine-Timeline-root:where([data-variant="custom-light"])
+  .mantine-Timeline-itemBullet {
+  background-color: transparent;
+  border: none;
+}
+
+.mantine-Timeline-root:where([data-variant="custom-light"])
+  .mantine-Timeline-item::before {
+  border-color: var(--mantine-primary-color-light-color);
+  margin-top: var(--tl-bullet-size);
+  opacity: 100%;
+}

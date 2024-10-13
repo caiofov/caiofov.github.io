@@ -6,18 +6,12 @@ import {
   Title,
   ScrollArea,
 } from "@mantine/core";
-import {
-  Icon,
-  IconBrowser,
-  IconDeviceDesktop,
-  IconMessageChatbot,
-} from "@tabler/icons-react";
+import { Icon } from "@tabler/icons-react";
 import { useHover } from "@mantine/hooks";
 import {
   activeBulletStyle,
   activeExperienceStyle,
   bulletStyle,
-  CompanyIDType,
   EXPERIENCE_ICONS,
   EXPERIENCES,
   experienceStyle,
@@ -36,27 +30,23 @@ const ExperienceTitleDesktop: React.FC<{
   Bullet: Icon;
 }> = ({ company, start, end, role, active, onClick, Bullet }) => {
   const { hovered, ref } = useHover();
-  const isActiveOrHovered = hovered || active;
-  const style = isActiveOrHovered ? activeExperienceStyle : experienceStyle;
-  const bullet = isActiveOrHovered ? activeBulletStyle : bulletStyle;
 
   return (
     <Timeline.Item
       bullet={
         <ThemeIcon
-          variant={active ? "gradient" : "transparent"}
+          variant={active ? "gradient" : hovered ? "light" : "subtle"}
           size="40"
           radius="lg"
-          style={bullet}
         >
           <Bullet size="35" />
         </ThemeIcon>
       }
       onClick={onClick}
       ref={ref}
-      style={style}
       title={<Title order={3}>{role}</Title>}
       my="xl"
+      variant={active ? "selected" : "deselected"}
     >
       <Text size="xl">{company}</Text>
       <Text size="lg" c="dimmed">
@@ -120,7 +110,12 @@ const ExperienceTimelineDesktop: React.FC<{
   const { t } = useTranslation();
 
   return (
-    <Timeline bulletSize={40} lineWidth={4}>
+    <Timeline
+      active={activeIdx}
+      bulletSize={40}
+      lineWidth={4}
+      variant="custom-light"
+    >
       {typedKeys(EXPERIENCES).map((company, idx) => {
         return (
           <ExperienceTitleDesktop
