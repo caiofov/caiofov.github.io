@@ -1,12 +1,11 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-import brazilFlag from "../../assets/brazil_flag.svg";
-import usaFlag from "../../assets/usa_flag.svg";
+import brazilFlag from "../../assets/flags/brazil_flag.png";
+import usaFlag from "../../assets/flags/usa_flag.png";
 import { PopRevealSequence } from "../animations/PopReveal";
 import { OpacityRevealSequence } from "../animations/OpacityReveal";
 import {
   Group,
-  rem,
   Text,
   Title,
   useMantineColorScheme,

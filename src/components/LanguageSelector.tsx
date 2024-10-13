@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import i18n, { LanguageCode } from "../i18n";
-import brazilFlag from "../assets/brazil_flag.svg";
-import usaFlag from "../assets/usa_flag.svg";
+import brazilFlag from "../assets/flags/brazil_flag.png";
+import usaFlag from "../assets/flags/usa_flag.png";
 import {
   Combobox,
   Group,
