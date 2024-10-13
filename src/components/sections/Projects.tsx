@@ -28,7 +28,6 @@ const ProjectItem: React.FC<{ project: CompleteProjectType }> = ({
 }) => {
   const scheme = useMantineColorScheme();
   const imgOpacity = scheme.colorScheme === "dark" ? "80%" : "100%";
-  const { colorScheme } = useMantineColorScheme();
 
   return (
     <Card
@@ -41,7 +40,7 @@ const ProjectItem: React.FC<{ project: CompleteProjectType }> = ({
         justifyContent: "space-between",
       }}
       mt="lg"
-      bg={colorScheme === "dark" ? "dark.8" : "gray.2"}
+      variant="custom-light"
     >
       <Card.Section>
         {"img" in project && project["img"].length > 0 ? (

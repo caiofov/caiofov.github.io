@@ -19,3 +19,8 @@
   background-color: var(--mantine-color-blue-light);
   border-color: var(--mantine-color-blue-light-hover);
 }
+
+.mantine-Card-root:where([data-variant="custom-light"]) {
+  background-color: var(--mantine-color-blue-light);
+  border-color: var(--mantine-color-blue-light-hover);
+}
