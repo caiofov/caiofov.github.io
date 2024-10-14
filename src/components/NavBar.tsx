@@ -22,10 +22,9 @@ import { OpacityRevealSequence } from "./animations/OpacityReveal";
 
 import { SectionIDType, SECTIONS, sectionWidth } from "../utils/sections";
 import { typedEntries } from "../utils/functions";
+import { DarkModeToggle } from "./DarkModeToggle";
 
-export const Navbar: React.FC<{
-  DarkModeToggle: JSX.Element;
-}> = ({ DarkModeToggle }) => {
+export const Navbar = () => {
   const { t } = useTranslation();
   const [navbarOpened, { open, close }] = useDisclosure(false);
   const [activeSection, setActiveSection] = useState<SectionIDType>("home");
@@ -145,7 +144,7 @@ export const Navbar: React.FC<{
             </Group>
 
             <Group gap="xs">
-              {DarkModeToggle}
+              <DarkModeToggle />
               <LanguageSelector />
               <Burger
                 hiddenFrom="md"

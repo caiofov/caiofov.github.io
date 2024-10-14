@@ -1,18 +1,20 @@
 import React from "react";
 
-import { Switch, ThemeIcon } from "@mantine/core";
+import { Switch, ThemeIcon, useMantineColorScheme } from "@mantine/core";
 import { IconSun, IconMoon } from "@tabler/icons-react";
 
-export const DarkModeToggle: React.FC<{
-  checked: boolean;
-  onChange: () => void;
-}> = ({ checked, onChange }) => {
+export const DarkModeToggle = () => {
+  const colorScheme = useMantineColorScheme();
   return (
     <Switch
       size="md"
       color="dark.4"
-      checked={checked}
-      onChange={onChange}
+      checked={colorScheme.colorScheme === "dark"}
+      onChange={(event) =>
+        colorScheme.setColorScheme(
+          event.currentTarget.checked ? "dark" : "light"
+        )
+      }
       offLabel={
         <ThemeIcon size="sm" variant="transparent">
           <IconSun />
