@@ -37,7 +37,8 @@ export const Home = () => {
   const iconSize = "2.5rem";
   const [titleFontSize, subtitleFontSize] = useMatches({
     md: ["7rem", "2rem"],
-    base: ["6rem", "1.8rem"],
+    sm: ["6rem", "1.8rem"],
+    base: ["5rem", "1.5rem"],
   });
   const px = useMatches(sectionPaddingX);
   const theme = useMantineTheme();
