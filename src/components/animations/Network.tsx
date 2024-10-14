@@ -19,8 +19,17 @@ const Network: React.FC<{ color: string }> = ({ color }) => {
   const width = Math.floor(window.innerWidth * 0.85);
   const height = Math.floor(window.innerHeight * 0.9);
 
-  const points = generatePoints(width, height, radius, radius * 2);
-  const lines = generateLinesByPairs(points, width, height);
+  const getPoints = (): number[][] => {
+    let points = generatePoints(width, height, radius, radius * 2);
+    return points.length > 0 ? points : getPoints();
+  };
+  const points = getPoints();
+
+  const getLines = (): number[][][] => {
+    let lines = generateLinesByPairs(points, width, height);
+    return lines.length > 0 ? lines : getLines();
+  };
+  const lines = getLines();
   return (
     <motion.svg
       style={{ filter: "blur(5px)" }}
