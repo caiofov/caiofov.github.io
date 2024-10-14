@@ -2,11 +2,31 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import React, { PropsWithChildren, useEffect, useRef } from "react";
 import { MotionGroup, MotionGroupProps } from "../MotionGroup";
 
-export const PopRevealOnVisible: React.FC<{
-  children: React.ReactNode;
+type PopRevealProps = {
   delay?: number;
   stiffness?: number;
-}> = ({ children, delay = 0, stiffness = 20 }) => {
+  parentProps?: MotionGroupProps;
+};
+type PopRevealSequenceProps = {
+  staggerChildren?: number;
+  childProps?: MotionGroupProps;
+} & PopRevealProps;
+
+const popVariants = {
+  hidden: { scale: 0 },
+  visible: { scale: 1 },
+};
+
+const transitionBase = (delay: number, stiffness: number) => ({
+  type: "spring",
+  stiffness: stiffness,
+  ease: "easeInOut",
+  delay: delay,
+});
+
+export const PopRevealOnVisible: React.FC<
+  PropsWithChildren<PopRevealProps>
+> = ({ children, delay = 0, stiffness = 20, parentProps }) => {
   const ref = useRef(null);
   const isInView = useInView(ref);
   const mainControls = useAnimation();
@@ -16,59 +36,42 @@ export const PopRevealOnVisible: React.FC<{
   }, [isInView]);
 
   return (
-    <motion.div
+    <MotionGroup
+      component={motion.div}
       ref={ref}
-      variants={{
-        hidden: {
-          scale: 0,
-        },
-        visible: {
-          scale: 1,
-        },
-      }}
+      variants={popVariants}
       initial="hidden"
       animate={mainControls}
-      transition={{
-        type: "spring",
-        stiffness: stiffness,
-        ease: "easeInOut",
-        delay: delay,
-      }}
+      transition={{ ...transitionBase(delay, stiffness) }}
+      {...parentProps}
     >
       {children}
-    </motion.div>
+    </MotionGroup>
   );
 };
 
-export const PopReveal: React.FC<
-  PropsWithChildren<{
-    delay?: number;
-    stiffness?: number;
-  }>
-> = ({ children, delay = 0, stiffness = 100 }) => {
+export const PopReveal: React.FC<PropsWithChildren<PopRevealProps>> = ({
+  children,
+  delay = 0,
+  stiffness = 100,
+  parentProps,
+}) => {
   return (
-    <motion.div
-      animate={{ scale: [0, 1] }}
-      transition={{
-        type: "spring",
-        stiffness: stiffness,
-        ease: "easeInOut",
-        delay: delay,
-      }}
+    <MotionGroup
+      component={motion.div}
+      variants={popVariants}
+      initial="hidden"
+      animate="visible"
+      transition={{ ...transitionBase(delay, stiffness) }}
+      {...parentProps}
     >
       {children}
-    </motion.div>
+    </MotionGroup>
   );
 };
 
 export const PopRevealSequence: React.FC<
-  PropsWithChildren<{
-    staggerChildren?: number;
-    delay?: number;
-    stiffness?: number;
-    parentProps?: MotionGroupProps;
-    childProps?: MotionGroupProps;
-  }>
+  PropsWithChildren<PopRevealSequenceProps>
 > = ({
   children,
   staggerChildren = 0.5,
@@ -80,30 +83,19 @@ export const PopRevealSequence: React.FC<
   return (
     <MotionGroup
       component={motion.div}
-      variants={{
-        hidden: { scale: 0 },
-        show: {
-          scale: 1,
-          transition: {
-            type: "spring",
-            stiffness,
-            ease: "easeInOut",
-            delay,
-            staggerChildren,
-          },
-        },
+      variants={popVariants}
+      transition={{
+        ...transitionBase(delay, stiffness),
+        staggerChildren,
       }}
       initial="hidden"
-      animate="show"
+      animate="visible"
       {...parentProps}
     >
       {React.Children.map(children, (child) => (
         <MotionGroup
           component={motion.div}
-          variants={{
-            hidden: { scale: 0 },
-            show: { scale: 1 },
-          }}
+          variants={popVariants}
           {...childProps}
         >
           {child}
