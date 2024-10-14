@@ -41,6 +41,7 @@ const ProjectItem: React.FC<{ project: CompleteProjectType }> = ({
       }}
       mt="lg"
       variant="custom-light"
+      withBorder
     >
       <Card.Section>
         {"img" in project && project["img"].length > 0 ? (

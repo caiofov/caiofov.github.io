@@ -84,7 +84,7 @@ const ExperienceTitleMobile: React.FC<{
       style={style}
     >
       <ThemeIcon
-        variant={active ? "gradient" : "transparent"}
+        variant={active ? "gradient" : hovered ? "light" : "subtle"}
         size="lg"
         radius="lg"
         style={bullet}

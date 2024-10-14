@@ -70,6 +70,7 @@ export const Section: React.FC<{
             mb={dividerMargin}
             mx={dividerMargin}
             w="100%"
+            color="var(--mantine-primary-color-light-hover)"
             label={
               <Anchor href={"#" + id} underline="never" variant="gradient">
                 <Title

@@ -17,12 +17,12 @@
 }
 
 .mantine-Paper-root:where([data-variant="custom-light"]) {
-  background-color: var(--mantine-color-blue-light);
+  background-color: var(--mantine-primary-color-light-hover);
   border-color: var(--mantine-color-blue-light-hover);
 }
 
 .mantine-Card-root:where([data-variant="custom-light"]) {
-  background-color: var(--mantine-color-blue-light);
+  background-color: var(--mantine-primary-color-light-hover);
   border-color: var(--mantine-color-blue-light-hover);
 }
 
