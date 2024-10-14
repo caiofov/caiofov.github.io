@@ -1,6 +1,10 @@
 import { motion, useAnimation, useInView } from "framer-motion";
 import React, { PropsWithChildren, useEffect, useRef } from "react";
-import { MotionGroup, MotionGroupProps } from "../../MotionGroup";
+import { createPolymorphicComponent, Group, GroupProps } from "@mantine/core";
+import { MotionProps } from "framer-motion";
+
+const MotionGroup = createPolymorphicComponent<MotionProps, GroupProps>(Group);
+type MotionGroupProps = React.ComponentProps<typeof MotionGroup>;
 
 export type BaseRevealProps = {
   duration?: number;
