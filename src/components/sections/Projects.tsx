@@ -22,6 +22,7 @@ import {
 } from "../../utils/projects";
 import { IconTooltip } from "../IconTooltip";
 import { useMantineColorScheme } from "@mantine/core";
+import { OpacityRevealOnVisible } from "../animations/reveal/OpacityReveal";
 
 const ProjectItem: React.FC<{ project: CompleteProjectType }> = ({
   project,
@@ -114,14 +115,18 @@ export const Projects = () => {
           const proj = PROJECTS[key];
           return (
             <GridCol key={key} span={{ lg: 4, md: 6, xs: 10 }}>
-              <ProjectItem
-                project={{
-                  ...proj,
-                  title: t(`sections.projects.${key}.title`),
-                  text: t(`sections.projects.${key}.text`),
-                  anchorsMapped: getProjectAnchors(proj),
-                }}
-              />
+              <OpacityRevealOnVisible
+                parentProps={{ style: { height: "100%" } }}
+              >
+                <ProjectItem
+                  project={{
+                    ...proj,
+                    title: t(`sections.projects.${key}.title`),
+                    text: t(`sections.projects.${key}.text`),
+                    anchorsMapped: getProjectAnchors(proj),
+                  }}
+                />
+              </OpacityRevealOnVisible>
             </GridCol>
           );
         })}
