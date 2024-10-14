@@ -8,7 +8,7 @@ import {
   CopyButtonProps,
 } from "@mantine/core";
 import { useHover } from "@mantine/hooks";
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Icon as IconType,
   IconProps,
@@ -26,6 +26,7 @@ type TooltipProps = {
 type IconTooltipProps = TooltipProps & {
   Icon: IconType;
   iconProps?: IconProps;
+  variantFunc?: (hovered: boolean) => string;
 };
 type ImageTooltipProps = TooltipProps & {
   imageSrc: string;
@@ -51,6 +52,7 @@ export const IconTooltip: React.FC<IconTooltipProps> = ({
   onClick,
   actionIconProps,
   iconProps,
+  variantFunc = (hovered) => (hovered ? "gradient" : "transparent"),
 }) => {
   const IconComponent = <Icon {...iconProps} />;
   const { hovered, ref } = useHover();
@@ -63,7 +65,7 @@ export const IconTooltip: React.FC<IconTooltipProps> = ({
           component="a"
           href={href}
           radius="md"
-          variant={hovered ? "gradient" : "transparent"}
+          variant={variantFunc(hovered)}
           style={{
             transition: "all 0.3s ease-in-out",
           }}
@@ -75,7 +77,7 @@ export const IconTooltip: React.FC<IconTooltipProps> = ({
         <ActionIcon
           size="md"
           onClick={onClick}
-          variant="transparent"
+          variant={variantFunc(hovered)}
           {...actionIconProps}
         >
           {IconComponent}
