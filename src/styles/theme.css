@@ -56,3 +56,10 @@
   margin-top: var(--tl-bullet-size);
   opacity: 100%;
 }
+
+.mantine-Switch-root:where([data-variant="custom-light"])
+  .mantine-Switch-track {
+  --switch-bg: var(--mantine-primary-color-light) !important;
+  --switch-disabled-color: var(--mantine-primary-color-light) !important;
+  --switch-bd: var(--mantine-primary-color-light-hover) !important;
+}

@@ -23,6 +23,7 @@ export const DarkModeToggle: React.FC<{
           <IconMoon />
         </ThemeIcon>
       }
+      variant="custom-light"
     />
   );
 };
