@@ -164,19 +164,30 @@ export const Navbar = () => {
         position="right"
         overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
         size="fit-content"
+        styles={{
+          content: {
+            backdropFilter: "blur(8px)",
+            backgroundColor: "rgba(255,255,255,0.1)",
+            borderLeft: "var(--mantine-primary-color-light-hover) solid 2px",
+          },
+          header: {
+            backgroundColor: "transparent",
+          },
+        }}
       >
         <nav>
-          <Group
-            ml="md"
-            mr="sm"
-            style={{ flexDirection: "column" }}
-            align="flex-end"
-            gap="xl"
+          <OpacityRevealSequence
+            staggerChildren={0.2}
+            parentProps={{
+              style: { flexDirection: "column" },
+              gap: "xl",
+              align: "flex-end",
+              ml: "xs",
+              mr: "sm",
+            }}
           >
-            <OpacityRevealSequence staggerChildren={0.2}>
-              {navbarAnchors}
-            </OpacityRevealSequence>
-          </Group>
+            {navbarAnchors}
+          </OpacityRevealSequence>
         </nav>
       </Drawer>
     </>
