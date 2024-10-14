@@ -3,6 +3,7 @@ import React, { PropsWithChildren, useEffect, useRef } from "react";
 import { MotionGroup, MotionGroupProps } from "../../MotionGroup";
 
 export type BaseRevealProps = {
+  duration?: number;
   delay?: number;
   stiffness?: number;
   parentProps?: MotionGroupProps;
@@ -26,16 +27,21 @@ const BaseVariants = (property: string) => ({
   visible: { [property]: 1 },
 });
 
-const transitionBase = (delay: number, stiffness: number) => ({
+const transitionBase = (
+  delay?: number,
+  stiffness?: number,
+  duration?: number
+) => ({
   type: "spring",
-  stiffness: stiffness,
+  stiffness,
   ease: "easeInOut",
-  delay: delay,
+  delay,
+  duration,
 });
 
 export const BaseRevealOnVisible: React.FC<
   PropsWithChildren<BaseRevealComponentProps>
-> = ({ children, delay = 0, stiffness = 20, parentProps, property }) => {
+> = ({ children, delay, stiffness, duration, parentProps, property }) => {
   const ref = useRef(null);
   const isInView = useInView(ref);
   const mainControls = useAnimation();
@@ -51,7 +57,7 @@ export const BaseRevealOnVisible: React.FC<
       variants={BaseVariants(property)}
       initial="hidden"
       animate={mainControls}
-      transition={{ ...transitionBase(delay, stiffness) }}
+      transition={{ ...transitionBase(delay, stiffness, duration) }}
       {...parentProps}
     >
       {children}
@@ -61,14 +67,14 @@ export const BaseRevealOnVisible: React.FC<
 
 export const BaseReveal: React.FC<
   PropsWithChildren<BaseRevealComponentProps>
-> = ({ children, delay = 0, stiffness = 100, parentProps, property }) => {
+> = ({ children, delay, stiffness, duration, parentProps, property }) => {
   return (
     <MotionGroup
       component={motion.div}
       variants={BaseVariants(property)}
       initial="hidden"
       animate="visible"
-      transition={{ ...transitionBase(delay, stiffness) }}
+      transition={{ ...transitionBase(delay, stiffness, duration) }}
       {...parentProps}
     >
       {children}
@@ -80,9 +86,10 @@ export const BaseRevealSequence: React.FC<
   PropsWithChildren<BaseRevealSequenceComponentProps>
 > = ({
   children,
-  staggerChildren = 0.5,
-  delay = 0,
-  stiffness = 100,
+  staggerChildren,
+  delay,
+  stiffness,
+  duration,
   parentProps,
   childProps,
   property,
@@ -92,7 +99,7 @@ export const BaseRevealSequence: React.FC<
       component={motion.div}
       variants={BaseVariants(property)}
       transition={{
-        ...transitionBase(delay, stiffness),
+        ...transitionBase(delay, stiffness, duration),
         staggerChildren,
       }}
       initial="hidden"
