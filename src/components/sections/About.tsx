@@ -43,7 +43,9 @@ const ItemAboutMobile: React.FC<{
               <Icon size="80" />
             </ThemeIcon>
           </PopRevealOnVisible>
-          <OpacityRevealOnVisible>
+          <OpacityRevealOnVisible
+            parentProps={{ style: { justifyContent: "center" } }}
+          >
             <Title style={{ fontSize: titleSize }} order={4}>
               {title}
             </Title>
