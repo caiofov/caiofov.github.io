@@ -22,6 +22,7 @@ import { Typing } from "../animations/Typing";
 import { getSectionBackground, sectionPaddingX } from "../../utils/sections";
 import Network from "../animations/Network";
 import { DownloadCV } from "../DownloadCV";
+import { motion } from "framer-motion";
 
 const contactInfo = [
   {
@@ -95,33 +96,31 @@ export const Home = () => {
           </Group>
 
           <Group id="contact-info" pb="lg" gap="xs">
-            <PopRevealSequence
-              children={[
-                ...contactInfo.map(({ href, icon, text }) => {
-                  return href ? (
-                    <IconTooltip
-                      key={text}
-                      href={href}
-                      Icon={icon}
-                      tooltip={text}
-                      iconProps={{ size: iconSize }}
-                      actionIconProps={{ size: iconSize }}
-                    />
-                  ) : (
-                    <CopyTooltip
-                      key={text}
-                      Icon={icon}
-                      tooltip={text}
-                      copyValue={text}
-                      copiedTooltip={`(${t("sections.home.copied")})`}
-                      iconProps={{ size: iconSize }}
-                      actionIconProps={{ size: iconSize }}
-                    />
-                  );
-                }),
-                <DownloadCV iconSize={iconSize} />,
-              ]}
-            ></PopRevealSequence>
+            <PopRevealSequence parentProps={{ gap: "xs" }}>
+              {contactInfo.map(({ href, icon, text }) => {
+                return href ? (
+                  <IconTooltip
+                    key={text}
+                    href={href}
+                    Icon={icon}
+                    tooltip={text}
+                    iconProps={{ size: iconSize }}
+                    actionIconProps={{ size: iconSize }}
+                  />
+                ) : (
+                  <CopyTooltip
+                    key={text}
+                    Icon={icon}
+                    tooltip={text}
+                    copyValue={text}
+                    copiedTooltip={`(${t("sections.home.copied")})`}
+                    iconProps={{ size: iconSize }}
+                    actionIconProps={{ size: iconSize }}
+                  />
+                );
+              })}
+              <DownloadCV iconSize={iconSize} />
+            </PopRevealSequence>
           </Group>
 
           <OpacityRevealSequence delayInit={1}>
