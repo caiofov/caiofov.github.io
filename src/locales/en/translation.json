@@ -11,7 +11,22 @@
         },
         "about": {
             "name": "About me",
-            "text": "<strong>Bachelor's Degree in Computer Science at the Federal University of Ceará (UFC).</strong> I have solid experience building REST APIs with <strong>Python</strong> (mainly using <strong>FastAPI</strong>, and also with experience in <strong>Django</strong>) and <strong>TypeScript</strong>, and I’ve worked with front-end technologies like <strong>React</strong> and <strong>Svelte</strong>. I also have a good understanding of both relational (<strong>PostgreSQL</strong>, <strong>MySQL</strong>) and non-relational databases (<strong>MongoDB</strong>)."
+            "ufc": {
+                "title": "Bachelor in Computer Science",
+                "text": "I hold a degree from the Federal University of Ceará (UFC), where I studied from March 2020 to September 2024."
+            },
+            "backend": {
+                "title": "Back-End Development",
+                "text": "I develop automations and REST APIs. I also have experience with deploying applications."
+            },
+            "frontend": {
+                "title": "Front-End Development",
+                "text": "I am skilled in creating responsive websites, both for user-facing interfaces and data management."
+            },
+            "database": {
+                "title": "Database Management",
+                "text": "I have experience with modeling and working with both relational and non-relational databases."
+            }
         },
         "education": {
             "name": "Education"
