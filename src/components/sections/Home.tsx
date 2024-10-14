@@ -21,6 +21,7 @@ import { CopyTooltip, IconTooltip, ImageTooltip } from "../IconTooltip";
 import { Typing } from "../animations/Typing";
 import { getSectionBackground, sectionPaddingX } from "../../utils/sections";
 import Network from "../animations/Network";
+import { DownloadCV } from "../DownloadCV";
 
 const contactInfo = [
   {
@@ -55,10 +56,10 @@ const languageInfo = [
 
 export const Home = () => {
   const { t } = useTranslation();
-  const iconSize = "2.3rem";
+  const iconSize = "2.5rem";
   const [titleFontSize, subtitleFontSize] = useMatches({
-    md: ["6rem", "2rem"],
-    base: ["5rem", "1.5rem"],
+    md: ["7rem", "2rem"],
+    base: ["6rem", "1.8rem"],
   });
   const px = useMatches(sectionPaddingX);
   const bg = getSectionBackground(true, useMantineColorScheme().colorScheme);
@@ -118,23 +119,14 @@ export const Home = () => {
                 );
               })}
             </PopRevealSequence>
+            <DownloadCV iconSize={iconSize} />
           </Group>
 
           <OpacityRevealSequence delayInit={1}>
-            <Group id="download-cv">
-              <Text>{t("sections.home.download-cv")}:</Text>
-              {languageInfo.map(({ code, href, image }) => (
-                <ImageTooltip
-                  key={code}
-                  imageSrc={image}
-                  href={href}
-                  tooltip={t(`sections.home.download-${code}`)}
-                />
-              ))}
-            </Group>
             <Text size="lg" w="80%">
               {t("sections.home.text")}
             </Text>
+            <></>
           </OpacityRevealSequence>
         </Group>
         <Group

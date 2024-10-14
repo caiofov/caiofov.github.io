@@ -4,9 +4,9 @@
             "name": "Home",
             "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin pretium dignissim massa, eget volutpat velit elementum eget.",
             "role": "Full-Stack Developer",
-            "download-cv": "Download CV PDF",
-            "download-pt": "Download in Portuguese",
-            "download-en": "Download in English",
+            "download-cv": "Download CV",
+            "download-pt": "Portuguese",
+            "download-en": "English",
             "copied": "copied"
         },
         "about": {

@@ -4,6 +4,12 @@
   backdrop-filter: blur(8px);
 }
 
+.mantine-Popover-dropdown:where([data-variant="custom-light"])
+  .mantine-Combobox-header {
+  color: var(--mantine-primary-color-light-color);
+  border-color: var(--mantine-primary-color-light-hover);
+}
+
 .mantine-Combobox-option:hover:where([data-variant="custom-light"]),
 .mantine-Combobox-option:where([data-combobox-selected]):where(
     [data-variant="custom-light"]
