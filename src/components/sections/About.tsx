@@ -16,8 +16,8 @@ import { Icon } from "@tabler/icons-react";
 import { typedEntries } from "../../utils/functions";
 
 import { ABOUT_SECTIONS, SECTION_ICONS } from "../../utils/about";
-import { OpacityRevealOnVisible } from "../animations/OpacityReveal";
-import { PopRevealOnVisible } from "../animations/PopReveal";
+import { OpacityRevealOnVisible } from "../animations/reveal/OpacityReveal";
+import { PopRevealOnVisible } from "../animations/reveal/PopReveal";
 
 const ItemAboutMobile: React.FC<{
   Icon: Icon;

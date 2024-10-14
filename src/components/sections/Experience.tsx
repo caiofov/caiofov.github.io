@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { OpacityRevealSequence } from "../animations/OpacityReveal";
+import { OpacityRevealSequence } from "../animations/reveal/OpacityReveal";
 
 import {
   alpha,
@@ -17,7 +17,7 @@ import {
 } from "@mantine/core";
 import { Section } from "./Section";
 import { Icon } from "@tabler/icons-react";
-import { PopReveal } from "../animations/PopReveal";
+import { PopReveal } from "../animations/reveal/PopReveal";
 
 import { Typing } from "../animations/Typing";
 import { v4 as uuidv4 } from "uuid";
@@ -120,7 +120,7 @@ export const Experience = () => {
             scrollbars="y"
           >
             <List mr="lg">
-              <OpacityRevealSequence delayInit={0.5} delayIncrease={0.1}>
+              <OpacityRevealSequence delay={0.5} staggerChildren={0.1}>
                 {typedKeys(EXPERIENCES[activeId].activities).map((exp, idx) => {
                   const skills = EXPERIENCES[activeId]["activities"][exp];
                   const marginBottom =

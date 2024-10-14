@@ -18,7 +18,7 @@ import {
 import React, { useEffect, useState } from "react";
 import { LanguageSelector } from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
-import { OpacityRevealSequence } from "./animations/OpacityReveal";
+import { OpacityRevealSequence } from "./animations/reveal/OpacityReveal";
 
 import { SectionIDType, SECTIONS, sectionWidth } from "../utils/sections";
 import { typedEntries } from "../utils/functions";
@@ -173,7 +173,7 @@ export const Navbar = () => {
             align="flex-end"
             gap="xl"
           >
-            <OpacityRevealSequence delayInit={0} delayIncrease={0.2}>
+            <OpacityRevealSequence staggerChildren={0.2}>
               {navbarAnchors}
             </OpacityRevealSequence>
           </Group>

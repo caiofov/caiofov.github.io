@@ -2,8 +2,8 @@ import React from "react";
 import { useTranslation } from "react-i18next";
 import brazilFlag from "../../assets/flags/brazil_flag.png";
 import usaFlag from "../../assets/flags/usa_flag.png";
-import { PopRevealSequence } from "../animations/PopReveal";
-import { OpacityRevealSequence } from "../animations/OpacityReveal";
+import { PopRevealSequence } from "../animations/reveal/PopReveal";
+import { OpacityRevealSequence } from "../animations/reveal/OpacityReveal";
 import {
   Group,
   Text,
@@ -123,7 +123,7 @@ export const Home = () => {
             </PopRevealSequence>
           </Group>
 
-          <OpacityRevealSequence delayInit={1}>
+          <OpacityRevealSequence delay={1}>
             <Text size="lg" w="80%">
               {t("sections.home.text")}
             </Text>
