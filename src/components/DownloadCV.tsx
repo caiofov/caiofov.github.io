@@ -8,10 +8,12 @@ import {
   Button,
   Tooltip,
   Anchor,
+  ActionIcon,
 } from "@mantine/core";
 import { IconDownload } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 import { typedKeys } from "../utils/functions";
+import { IconTooltip } from "./IconTooltip";
 const languages = {
   pt: { name: "Português", anchor: "" },
   en: { name: "English", anchor: "" },
@@ -20,44 +22,47 @@ const languages = {
 export const DownloadCV: React.FC<{ iconSize: string }> = ({ iconSize }) => {
   const { t } = useTranslation();
   const combobox = useCombobox();
-  const buttonRef = useRef<HTMLButtonElement>(null);
   return (
     <Combobox
       store={combobox}
       onOptionSubmit={() => {
         combobox.closeDropdown();
-        alert("in development");
+        alert("in development"); //TODO
       }}
       transitionProps={{
         duration: 200,
         transition: "rotate-right",
       }}
-      width="fit-content"
       position="right-start"
+      width="fit-content"
     >
       <Combobox.Target>
-        <Button
-          onClick={() => {
-            combobox.toggleDropdown();
-          }}
-          variant={combobox.dropdownOpened ? "light" : "subtle"}
-          style={{
-            transition: "all 0.2s ease-in-out",
-          }}
-          ref={buttonRef}
-        >
-          <Group display="inline-flex" gap="xs">
-            <Tooltip label={t("sections.home.download-cv")}>
-              <IconDownload size={iconSize} />
-            </Tooltip>
-          </Group>
-        </Button>
+        <Group m="0" p="0">
+          <IconTooltip
+            onClick={() => {
+              combobox.toggleDropdown();
+            }}
+            Icon={IconDownload}
+            iconProps={{ size: iconSize }}
+            variantFunc={(hovered) => {
+              return combobox.dropdownOpened
+                ? "light"
+                : hovered
+                ? "gradient"
+                : "subtle";
+            }}
+            actionIconProps={{
+              size: iconSize,
+              style: {
+                transition: "all 0.2s ease-in-out",
+              },
+            }}
+            tooltip={t("sections.home.download-cv")}
+          />
+        </Group>
       </Combobox.Target>
 
-      <Combobox.Dropdown
-        variant="custom-light"
-        miw={buttonRef.current?.clientWidth}
-      >
+      <Combobox.Dropdown variant="custom-light">
         <Combobox.Header>{t("sections.home.download-cv")}:</Combobox.Header>
         <Combobox.Options>
           {typedKeys(languages).map((c, idx) => (
@@ -66,6 +71,7 @@ export const DownloadCV: React.FC<{ iconSize: string }> = ({ iconSize }) => {
               value={c}
               style={{
                 transition: "all 0.2s ease-in-out",
+                textWrap: "nowrap",
               }}
               variant="custom-light"
               mb={idx + 1 != Object.keys(languages).length ? "xs" : 0}
