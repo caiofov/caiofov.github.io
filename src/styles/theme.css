@@ -1,3 +1,29 @@
+:where([data-mantine-color-scheme="dark"])
+  section:where([data-variant="main-section"]) {
+  --custom-background-color-dark: var(--mantine-color-customDark-9);
+  --custom-background-color-light: var(--mantine-color-customDark-8);
+}
+:where([data-mantine-color-scheme="light"])
+  section:where([data-variant="main-section"]) {
+  --custom-background-color-dark: var(--mantine-color-customLight-2);
+  --custom-background-color-light: var(--mantine-color-customLight-1);
+}
+
+section:where([data-variant="main-section"]):nth-child(odd) {
+  background: linear-gradient(
+    180deg,
+    var(--custom-background-color-dark) 45%,
+    var(--custom-background-color-light) 97%
+  );
+}
+section:where([data-variant="main-section"]):nth-child(even) {
+  background: linear-gradient(
+    360deg,
+    var(--custom-background-color-dark) 45%,
+    var(--custom-background-color-light) 97%
+  );
+}
+
 .mantine-Popover-dropdown:where([data-variant="custom-light"]) {
   background-color: var(--mantine-primary-color-light);
   border-color: var(--mantine-primary-color-light-hover);
