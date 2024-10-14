@@ -1,6 +1,6 @@
 import { motion, useAnimation, useInView } from "framer-motion";
-import React, { useEffect, useRef } from "react";
-import { v4 as uuidv4 } from "uuid";
+import React, { PropsWithChildren, useEffect, useRef } from "react";
+import { MotionGroup, MotionGroupProps } from "../MotionGroup";
 
 export const PopRevealOnVisible: React.FC<{
   children: React.ReactNode;
@@ -40,16 +40,16 @@ export const PopRevealOnVisible: React.FC<{
   );
 };
 
-export const PopReveal: React.FC<{
-  children: JSX.Element;
-  delay?: number;
-  stiffness?: number;
-}> = ({ children, delay = 0, stiffness = 100 }) => {
+export const PopReveal: React.FC<
+  PropsWithChildren<{
+    delay?: number;
+    stiffness?: number;
+  }>
+> = ({ children, delay = 0, stiffness = 100 }) => {
   return (
     <motion.div
       animate={{ scale: [0, 1] }}
       transition={{
-        times: [0, 1],
         type: "spring",
         stiffness: stiffness,
         ease: "easeInOut",
@@ -61,22 +61,54 @@ export const PopReveal: React.FC<{
   );
 };
 
-export const PopRevealSequence: React.FC<{
-  children: JSX.Element[];
-  delayIncrease?: number;
-  delayInit?: number;
-}> = ({ children, delayIncrease = 0.5, delayInit = 0 }) => {
-  let delay = delayInit;
+export const PopRevealSequence: React.FC<
+  PropsWithChildren<{
+    staggerChildren?: number;
+    delay?: number;
+    stiffness?: number;
+    parentProps?: MotionGroupProps;
+    childProps?: MotionGroupProps;
+  }>
+> = ({
+  children,
+  staggerChildren = 0.5,
+  delay = 0,
+  stiffness = 100,
+  parentProps,
+  childProps,
+}) => {
   return (
-    <>
-      {children.map((child, idx) => {
-        delay += delayIncrease;
-        return (
-          <PopReveal key={uuidv4()} delay={delay}>
-            {child}
-          </PopReveal>
-        );
-      })}
-    </>
+    <MotionGroup
+      component={motion.div}
+      variants={{
+        hidden: { scale: 0 },
+        show: {
+          scale: 1,
+          transition: {
+            type: "spring",
+            stiffness,
+            ease: "easeInOut",
+            delay,
+            staggerChildren,
+          },
+        },
+      }}
+      initial="hidden"
+      animate="show"
+      {...parentProps}
+    >
+      {React.Children.map(children, (child) => (
+        <MotionGroup
+          component={motion.div}
+          variants={{
+            hidden: { scale: 0 },
+            show: { scale: 1 },
+          }}
+          {...childProps}
+        >
+          {child}
+        </MotionGroup>
+      ))}
+    </MotionGroup>
   );
 };
