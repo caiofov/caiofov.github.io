@@ -4,6 +4,7 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import { ReactTyped, Typed } from "react-typed";
 
 import { SectionIDType, sectionPaddingX } from "../../utils/sections";
+import { OpacityRevealOnVisible } from "../animations/reveal/OpacityReveal";
 
 export const Section: React.FC<{
   text: string;
@@ -36,23 +37,13 @@ export const Section: React.FC<{
       pb="xl"
       px={px}
     >
-      <motion.div
-        ref={ref}
-        variants={{
-          hidden: {
-            opacity: 0,
+      <OpacityRevealOnVisible
+        parentProps={{
+          style: {
+            display: "flex",
+            flexDirection: "column",
+            alignContent: "center",
           },
-          visible: {
-            opacity: 1,
-          },
-        }}
-        initial="hidden"
-        animate={mainControls}
-        transition={{ duration: 1 }}
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
         }}
       >
         <Divider
@@ -86,7 +77,7 @@ export const Section: React.FC<{
           labelPosition={position}
         />
         {children}
-      </motion.div>
+      </OpacityRevealOnVisible>
     </Group>
   );
 };
