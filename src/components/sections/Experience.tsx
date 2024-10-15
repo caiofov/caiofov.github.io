@@ -76,11 +76,7 @@ export const Experience = () => {
   };
 
   return (
-    <Section
-      id="experiences"
-      position="right"
-      text={t("sections.experiences.name")}
-    >
+    <Section id="experiences" position="right">
       <Group display="flex" justify="space-evenly">
         <Group w={timelineWidth} justify="center">
           <ExperienceTimeline

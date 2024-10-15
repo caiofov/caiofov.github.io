@@ -109,7 +109,7 @@ export const Projects = () => {
   });
 
   return (
-    <Section id="projects" text={t("sections.projects.name")}>
+    <Section id="projects">
       <Grid gutter="xl" align="stretch" justify={justify}>
         {typedKeys(PROJECTS).map((key) => {
           const proj = PROJECTS[key];

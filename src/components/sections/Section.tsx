@@ -1,25 +1,25 @@
 import { Anchor, Divider, Group, Title, useMatches } from "@mantine/core";
-import React, { useEffect, useRef, useState } from "react";
-import { useAnimation, useInView } from "framer-motion";
+import React, { PropsWithChildren, useEffect, useRef, useState } from "react";
+import { useInView } from "framer-motion";
 import { ReactTyped, Typed } from "react-typed";
 
 import { SectionIDType, sectionPaddingX } from "../../utils/sections";
 import { OpacityRevealOnVisible } from "../animations/reveal/OpacityReveal";
+import { useTranslation } from "react-i18next";
 
-export const Section: React.FC<{
-  text: string;
-  id: SectionIDType;
-  position?: "left" | "right";
-  children: JSX.Element;
-}> = ({ text, children, id, position = "left" }) => {
+export const Section: React.FC<
+  PropsWithChildren<{
+    id: SectionIDType;
+    position?: "left" | "right";
+  }>
+> = ({ children, id, position = "left" }) => {
+  const { t, i18n } = useTranslation();
   const ref = useRef(null);
   const [typed, setTyped] = useState<Typed>();
   const isInView = useInView(ref);
-  const mainControls = useAnimation();
   const px = useMatches(sectionPaddingX);
 
   useEffect(() => {
-    mainControls.start(isInView ? "visible" : "hidden");
     if (isInView) typed?.reset(true);
   }, [isInView]);
 
@@ -52,6 +52,7 @@ export const Section: React.FC<{
           mx={dividerMargin}
           w="100%"
           color="var(--mantine-primary-color-light-hover)"
+          ref={ref}
           label={
             <Anchor href={"#" + id} underline="never" variant="gradient">
               <Title
@@ -60,16 +61,17 @@ export const Section: React.FC<{
                 mr={titleMargin}
               >
                 <ReactTyped
-                  strings={[text]}
+                  key={i18n.language}
+                  strings={[t(`sections.${id}.name`)]}
                   typedRef={setTyped}
-                  typeSpeed={text.length * 10}
+                  typeSpeed={t(`sections.${id}.name`).length * 10}
                   onComplete={(self) => {
                     if (self.cursor) self.cursor.hidden = true;
                   }}
                   onStart={(_, self) => {
                     if (self.cursor) self.cursor.hidden = false;
                   }}
-                  startWhenVisible
+                  startWhenVisible={true}
                 />
               </Title>
             </Anchor>

@@ -135,7 +135,7 @@ export const About = () => {
   const { t } = useTranslation();
   const isMobile = useMatches({ md: false, base: true });
   return (
-    <Section text={t("sections.about.name")} id="about">
+    <Section id="about">
       <Grid w="100%" gutter={50} align="center" justify="center">
         {typedEntries(ABOUT_SECTIONS).map(([section, skills], idx) => {
           return isMobile ? (
