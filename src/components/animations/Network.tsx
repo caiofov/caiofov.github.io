@@ -35,10 +35,10 @@ const Network: React.FC<{ color: string; width: number; height: number }> = ({
   width,
   height,
 }) => {
-  const [radius, strokeWidth] = useMatches({
-    lg: [10, 4],
-    md: [9, 3],
-    base: [8, 2],
+  const [radius, strokeWidth, [coefP, coefXY]] = useMatches({
+    lg: [10, 4, [0.2, 0.3]],
+    md: [9, 3, [0.2, 0.3]],
+    base: [8, 2, [0.4, 0.4]],
   });
   const circleProps = { fill: color, r: radius };
   const lineProps = { stroke: color, strokeWidth };
@@ -63,7 +63,7 @@ const Network: React.FC<{ color: string; width: number; height: number }> = ({
     setCellNumY(Math.floor(height / cellSizeY));
   }, [cellSizeY]);
   useEffect(() => {
-    const gen = generatePoints(cellNumX, cellNumY, 0.4, 0.4, 0.4);
+    const gen = generatePoints(cellNumX, cellNumY, coefP, coefXY, coefXY);
     setPoints(gen.length > 6 ? gen : safePoints(cellNumX, cellNumY));
   }, [cellNumX, cellNumY]);
   useEffect(() => {
