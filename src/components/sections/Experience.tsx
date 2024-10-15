@@ -77,9 +77,6 @@ export const Experience = () => {
     setActiveId(typedKeys(EXPERIENCES)[idx]);
     setActiveIdx(idx);
   };
-  const { colorScheme } = useMantineColorScheme();
-  const theme = useMantineTheme();
-  console.log(theme);
 
   return (
     <Section
