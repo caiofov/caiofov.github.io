@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/caiofov.github.io/static/css/main.04a7bfcd.css",
+    "main.js": "/caiofov.github.io/static/js/main.e9a2106c.js",
+    "static/js/453.12b8cf33.chunk.js": "/caiofov.github.io/static/js/453.12b8cf33.chunk.js",
+    "static/media/usa_flag.png": "/caiofov.github.io/static/media/usa_flag.2f4e11438b2bd90def48.png",
+    "index.html": "/caiofov.github.io/index.html",
+    "main.04a7bfcd.css.map": "/caiofov.github.io/static/css/main.04a7bfcd.css.map",
+    "main.e9a2106c.js.map": "/caiofov.github.io/static/js/main.e9a2106c.js.map",
+    "453.12b8cf33.chunk.js.map": "/caiofov.github.io/static/js/453.12b8cf33.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.04a7bfcd.css",
+    "static/js/main.e9a2106c.js"
+  ]
+}
