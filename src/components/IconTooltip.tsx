@@ -64,6 +64,7 @@ export const IconTooltip: React.FC<IconTooltipProps> = ({
           size="md"
           component="a"
           href={href}
+          target="_blank"
           radius="md"
           variant={variantFunc(hovered)}
           style={{
@@ -103,6 +104,7 @@ export const ImageTooltip: React.FC<ImageTooltipProps> = ({
           size="md"
           component="a"
           href={href}
+          target="_blank"
           variant="transparent"
           {...actionIconProps}
         >
