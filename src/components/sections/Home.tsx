@@ -2,7 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { PopRevealSequence } from "../animations/reveal/PopReveal";
 import { OpacityRevealSequence } from "../animations/reveal/OpacityReveal";
-import { Group, Text, Title, useMantineTheme, useMatches } from "@mantine/core";
+import {
+  Group,
+  Text,
+  Title,
+  Tooltip,
+  useMantineTheme,
+  useMatches,
+} from "@mantine/core";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -14,6 +21,25 @@ import { sectionPaddingX } from "../../utils/sections";
 import Network from "../animations/Network";
 import { DownloadCV } from "../DownloadCV";
 import useWindowDimensions from "../../hooks/windowDimension";
+import {
+  Css3Plain,
+  DjangoPlain,
+  ExpressOriginal,
+  FastapiOriginal,
+  FastapiPlain,
+  Html5Plain,
+  JavascriptPlain,
+  MongodbPlain,
+  MysqlOriginal,
+  NodejsPlain,
+  PostgresqlOriginal,
+  PostgresqlPlain,
+  PythonOriginal,
+  PythonPlain,
+  ReactOriginal,
+  SveltePlain,
+  TypescriptPlain,
+} from "devicons-react";
 
 const contactInfo = [
   {
@@ -31,6 +57,23 @@ const contactInfo = [
     icon: IconMail,
     ariaLabel: "email",
   },
+];
+
+const skillIcons = [
+  { tooltip: "Python", Icon: PythonPlain },
+  { tooltip: "FastAPI", Icon: FastapiPlain },
+  { tooltip: "Django", Icon: DjangoPlain },
+  { tooltip: "TypeScript", Icon: TypescriptPlain },
+  { tooltip: "JavaScript", Icon: JavascriptPlain },
+  { tooltip: "NodeJS", Icon: NodejsPlain },
+  // { tooltip: "ExpressJS", Icon: ExpressOriginal }, //TODO: find icon
+  { tooltip: "MongoDB", Icon: MongodbPlain },
+  { tooltip: "PostgreSQL", Icon: PostgresqlPlain },
+  { tooltip: "MySQL", Icon: MysqlOriginal }, //TODO: fix fill for this icon
+  { tooltip: "React", Icon: ReactOriginal },
+  { tooltip: "Svelte", Icon: SveltePlain },
+  { tooltip: "HTML", Icon: Html5Plain },
+  { tooltip: "CSS", Icon: Css3Plain },
 ];
 
 export const Home = () => {
@@ -62,6 +105,7 @@ export const Home = () => {
           flexDirection: "column",
           alignItems: "flex-start",
         }}
+        gap="xs"
       >
         <Group
           id="home-title"
@@ -112,11 +156,20 @@ export const Home = () => {
           </PopRevealSequence>
         </Group>
 
-        <OpacityRevealSequence delay={1}>
+        {/* <OpacityRevealSequence delay={1}>
           <Text size="lg" w="80%">
             {t("sections.home.text")}
           </Text>
-        </OpacityRevealSequence>
+        </OpacityRevealSequence> */}
+        <PopRevealSequence staggerChildren={0.2}>
+          {skillIcons.map(({ tooltip, Icon }) => (
+            <Tooltip label={tooltip} key={tooltip} position="bottom" withArrow>
+              <Group className="devicon">
+                <Icon size="25" />
+              </Group>
+            </Tooltip>
+          ))}
+        </PopRevealSequence>
       </Group>
       <Group
         pos="absolute"

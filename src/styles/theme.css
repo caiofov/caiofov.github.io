@@ -95,3 +95,17 @@ section:where([data-variant="main-section"]):nth-child(even) {
   --switch-disabled-color: var(--mantine-primary-color-light) !important;
   --switch-bd: var(--mantine-primary-color-light-hover) !important;
 }
+
+.devicon {
+  opacity: 80%;
+  transition: all 0.3s ease-in-out;
+}
+.devicon:hover {
+  opacity: 100%;
+  scale: 1.1;
+}
+.devicon path {
+  fill: var(--mantine-primary-color-light-color);
+  opacity: 80%;
+  transition: all 0.3s ease-in-out;
+}
