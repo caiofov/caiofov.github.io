@@ -36,14 +36,13 @@ const contactInfo = [
 export const Home = () => {
   const { t } = useTranslation();
   const iconSize = "2.5rem";
-  const [titleFontSize, subtitleFontSize] = useMatches({
-    md: ["7rem", "2rem"],
-    sm: ["6rem", "1.8rem"],
+  const [titleFontSize, subtitleFontSize, animationLeft] = useMatches({
+    md: ["7rem", "2rem", "20%"],
+    sm: ["6rem", "1.8rem", "5%"],
     base: ["5rem", "1.5rem"],
   });
   const px = useMatches(sectionPaddingX);
   const theme = useMantineTheme();
-  const sectionRef = useRef<HTMLDivElement>(null);
   const { height, width } = useWindowDimensions();
 
   return (
@@ -125,8 +124,7 @@ export const Home = () => {
         justify="flex-end"
         style={{ zIndex: "1" }}
         w="80%"
-        h="100%"
-        left="20%"
+        left={animationLeft}
       >
         <Network
           color={theme.colors.blue[9]}

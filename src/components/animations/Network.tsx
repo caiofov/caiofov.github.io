@@ -11,14 +11,19 @@ import { useMatches } from "@mantine/core";
 function safePoints(maxX: number, maxY: number) {
   return [
     [0.2, 0.2],
-    [0.2, 0.8],
+    [0.2, 0.5],
     [0.3, 0.6],
     [0.4, 0.3],
+    [0.5, 0.2],
     [0.5, 0.5],
+    [0.5, 0.8],
+    [0.6, 0.3],
     [0.6, 0.9],
     [0.7, 0.5],
     [0.8, 0.8],
     [0.8, 0.2],
+    [0.9, 0.3],
+    [0.9, 0.6],
   ].map(([x, y]) => {
     const xReal = Math.round(x * maxX);
     const yReal = Math.round(y * maxY);
@@ -32,15 +37,15 @@ const Network: React.FC<{ color: string; width: number; height: number }> = ({
   height,
 }) => {
   const [radius, strokeWidth] = useMatches({
-    lg: [12, 5],
-    md: [12, 3],
+    lg: [10, 4],
+    md: [9, 3],
     base: [8, 2],
   });
   const circleProps = { fill: color, r: radius };
   const lineProps = { stroke: color, strokeWidth };
-  console.log(width, height);
-  const [cellSizeX, setCellSizeX] = useState(Math.floor(width / 15));
-  const [cellSizeY, setCellSizeY] = useState(Math.floor(height / 10));
+  const c = radius * 4;
+  const [cellSizeX, setCellSizeX] = useState(Math.floor(width / c));
+  const [cellSizeY, setCellSizeY] = useState(Math.floor(height / c));
   const [cellNumX, setCellNumX] = useState(Math.floor(width / cellSizeX));
   const [cellNumY, setCellNumY] = useState(Math.floor(height / cellSizeY));
 
@@ -59,7 +64,7 @@ const Network: React.FC<{ color: string; width: number; height: number }> = ({
     setCellNumY(Math.floor(height / cellSizeY));
   }, [cellSizeY]);
   useEffect(() => {
-    const gen = generatePoints(cellNumX, cellNumY);
+    const gen = generatePoints(cellNumX, cellNumY, 0.4, 0.4, 0.4);
     setPoints(gen.length > 6 ? gen : safePoints(cellNumX, cellNumY));
   }, [cellNumX, cellNumY]);
   useEffect(() => {
