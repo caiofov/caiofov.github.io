@@ -36,26 +36,18 @@ export const generatePointsGrid = (
 
   return points;
 };
-export const generatePoints = (
-  maxX: number,
-  maxY: number,
-  radius: number,
-  margin: number
-) => {
-  const c = radius * 2 + margin;
-  const numX = Math.floor(maxX / c);
-  const numY = Math.floor(maxY / c);
+export const generatePoints = (maxX: number, maxY: number) => {
   const points: number[][] = [];
 
   let lastX = 0;
   let lastY = 0;
 
-  for (let y = 0; y < numY; y++) {
+  for (let y = 0; y < maxY; y++) {
     let py = 0.5 / (y - lastY);
-    for (let x = 1; x < numX; x++) {
+    for (let x = 1; x < maxX; x++) {
       let px = 0.5 / (x - lastX);
       if (Math.random() > 0.5 + py + px) {
-        points.push([x * c, y * c]);
+        points.push([x, y]);
         lastX = x;
         lastY = y;
       }
@@ -97,6 +89,32 @@ export const generateLinesByDistance = (points: number[][]) => {
   for (let idx = 0; idx < flatted.length; idx++) {
     if (idx == flatted.length - 1) break;
     lines.push(flatted.slice(idx, idx + 2));
+  }
+
+  return lines;
+};
+
+export const pickLinePairs = (points: number[][]) => {
+  const lines: number[][][] = [];
+  const keys: string[] = [];
+
+  const includes = (p1: number[], p2: number[]) =>
+    keys.includes(`${p1}-${p2}`) || keys.includes(`${p2}-${p1}`);
+
+  const add = (p1: number[], p2: number[]) => {
+    lines.push([p1, p2]);
+    keys.push(`${p1}-${p2}`);
+  };
+
+  const sortedPoints = points.slice();
+  for (let i = 0; i < points.length; i++) {
+    const point = points[i];
+    sortedPoints.sort(
+      (a, b) => distBetweenPoints(a, point) - distBetweenPoints(b, point)
+    );
+
+    if (!includes(point, sortedPoints[1])) add(point, sortedPoints[1]);
+    else if (!includes(point, sortedPoints[2])) add(point, sortedPoints[2]);
   }
 
   return lines;
