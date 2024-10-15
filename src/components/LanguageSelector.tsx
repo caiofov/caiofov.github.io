@@ -18,7 +18,9 @@ const languages = {
 };
 
 export const LanguageSelector = () => {
-  const [value, setValue] = useState<LanguageCode>("pt");
+  const [value, setValue] = useState<LanguageCode>(
+    i18n.language as LanguageCode
+  );
   const isMobile = useMatches({
     md: false,
     base: true,
