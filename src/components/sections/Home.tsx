@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { PopRevealSequence } from "../animations/reveal/PopReveal";
-import { Group, Title, Tooltip, useMatches } from "@mantine/core";
+import { Group, Title, useMatches } from "@mantine/core";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -28,6 +28,7 @@ import {
   SveltePlain,
   TypescriptPlain,
 } from "devicons-react";
+import { CustomTooltip } from "../CustomTooltip";
 
 const contactInfo = [
   {
@@ -150,16 +151,11 @@ export const Home = () => {
         </OpacityRevealSequence> */}
         <PopRevealSequence staggerChildren={0.2}>
           {skillIcons.map(({ tooltip, Icon }) => (
-            <Tooltip
-              events={{ hover: true, focus: true, touch: true }}
-              label={tooltip}
-              position="bottom"
-              withArrow
-            >
+            <CustomTooltip key={tooltip} label={tooltip} position="bottom">
               <Group className="devicon">
                 <Icon size="25" />
               </Group>
-            </Tooltip>
+            </CustomTooltip>
           ))}
         </PopRevealSequence>
       </Group>

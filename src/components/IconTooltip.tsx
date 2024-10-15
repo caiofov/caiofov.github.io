@@ -1,6 +1,5 @@
 import {
   ActionIcon,
-  Tooltip,
   ActionIconProps,
   Image,
   ImageProps,
@@ -15,6 +14,7 @@ import {
   IconCopy,
   IconCopyCheck,
 } from "@tabler/icons-react";
+import { CustomTooltip } from "./CustomTooltip";
 
 type TooltipProps = {
   tooltip: string;
@@ -58,7 +58,7 @@ export const IconTooltip: React.FC<IconTooltipProps> = ({
   const { hovered, ref } = useHover();
 
   return (
-    <Tooltip withArrow label={tooltip} ref={ref}>
+    <CustomTooltip label={tooltip} innerRef={ref}>
       {href ? (
         <ActionIcon
           size="md"
@@ -84,7 +84,7 @@ export const IconTooltip: React.FC<IconTooltipProps> = ({
           {IconComponent}
         </ActionIcon>
       )}
-    </Tooltip>
+    </CustomTooltip>
   );
 };
 
@@ -98,7 +98,7 @@ export const ImageTooltip: React.FC<ImageTooltipProps> = ({
 }) => {
   const ImageComponent = <Image src={imageSrc} {...imageProps} />;
   return (
-    <Tooltip withArrow label={tooltip}>
+    <CustomTooltip label={tooltip}>
       {href ? (
         <ActionIcon
           size="md"
@@ -120,7 +120,7 @@ export const ImageTooltip: React.FC<ImageTooltipProps> = ({
           {ImageComponent}
         </ActionIcon>
       )}
-    </Tooltip>
+    </CustomTooltip>
   );
 };
 
@@ -142,12 +142,7 @@ export const CopyTooltip: React.FC<CopyTooltipProps> = ({
   return (
     <CopyButton value={copyValue} timeout={2000} {...buttonProps}>
       {({ copied, copy }) => (
-        <Tooltip
-          label={copied ? checkTooltip : tooltip}
-          withArrow
-          position="right"
-          ref={ref}
-        >
+        <CustomTooltip label={copied ? checkTooltip : tooltip} innerRef={ref}>
           <ActionIcon
             size="md"
             variant="transparent"
@@ -162,7 +157,7 @@ export const CopyTooltip: React.FC<CopyTooltipProps> = ({
               <Icon {...iconProps} />
             )}
           </ActionIcon>
-        </Tooltip>
+        </CustomTooltip>
       )}
     </CopyButton>
   );

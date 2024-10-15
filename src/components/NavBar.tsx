@@ -151,6 +151,7 @@ export const Navbar = () => {
                 opened={false}
                 onClick={() => (navbarOpened ? close() : open())}
                 size="sm"
+                w="fit-content"
                 p="0"
               />
             </Group>

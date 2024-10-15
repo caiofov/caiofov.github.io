@@ -133,3 +133,9 @@ section:where([data-variant="main-section"]):nth-child(even) {
   opacity: 80%;
   transition: all 0.3s ease-in-out;
 }
+
+.mantine-Tooltip-tooltip:where([data-variant="custom-light"]) {
+  background-color: var(--mantine-color-blue-light-hover);
+  color: var(--mantine-color-blue-light-color);
+  backdrop-filter: blur(8px);
+}
