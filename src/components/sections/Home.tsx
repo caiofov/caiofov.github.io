@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { PopRevealSequence } from "../animations/reveal/PopReveal";
 import { OpacityRevealSequence } from "../animations/reveal/OpacityReveal";
@@ -13,6 +13,7 @@ import { Typing } from "../animations/Typing";
 import { sectionPaddingX } from "../../utils/sections";
 import Network from "../animations/Network";
 import { DownloadCV } from "../DownloadCV";
+import useWindowDimensions from "../../hooks/windowDimension";
 
 const contactInfo = [
   {
@@ -42,6 +43,9 @@ export const Home = () => {
   });
   const px = useMatches(sectionPaddingX);
   const theme = useMantineTheme();
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const { height, width } = useWindowDimensions();
+
   return (
     <Group
       component="section"
@@ -50,11 +54,24 @@ export const Home = () => {
       m="0"
       px={px}
       align="center"
-      h="100vh"
+      mih="100vh"
       display="flex"
     >
-      <Group display="block" style={{ zIndex: "2" }}>
-        <Group id="home-title" display="block" mb="lg">
+      <Group
+        style={{
+          zIndex: "2",
+          flexDirection: "column",
+          alignItems: "flex-start",
+        }}
+      >
+        <Group
+          id="home-title"
+          style={{
+            flexDirection: "column",
+            alignItems: "flex-start",
+          }}
+          mb="md"
+        >
           <Title style={{ fontSize: titleFontSize }}>
             <Typing text="Caio Oliveira" duration={100} />
           </Title>
@@ -100,16 +117,22 @@ export const Home = () => {
           <Text size="lg" w="80%">
             {t("sections.home.text")}
           </Text>
-          <></>
         </OpacityRevealSequence>
       </Group>
       <Group
-        justify="center"
-        align="center"
         pos="absolute"
+        display="flex"
+        justify="flex-end"
         style={{ zIndex: "1" }}
+        w="80%"
+        h="100%"
+        left="20%"
       >
-        <Network color={theme.colors.blue[9]} />
+        <Network
+          color={theme.colors.blue[9]}
+          width={width * 0.8}
+          height={height}
+        />
       </Group>
     </Group>
   );
