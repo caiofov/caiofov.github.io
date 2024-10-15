@@ -147,6 +147,7 @@ export const Navbar = () => {
               <LanguageSelector />
               <Burger
                 hiddenFrom="md"
+                color="var(--mantine-primary-color-light-color)"
                 opened={false}
                 onClick={() => (navbarOpened ? close() : open())}
                 size="sm"
@@ -161,12 +162,12 @@ export const Navbar = () => {
         opened={navbarOpened}
         onClose={close}
         position="right"
-        overlayProps={{ backgroundOpacity: 0.5, blur: 4 }}
+        overlayProps={{ backgroundOpacity: 0, blur: 4 }}
         size="fit-content"
         styles={{
           content: {
             backdropFilter: "blur(8px)",
-            backgroundColor: "rgba(255,255,255,0.1)",
+            backgroundColor: "rgba(0,0,0,0)",
             borderLeft: "var(--mantine-primary-color-light-hover) solid 2px",
           },
           header: {
