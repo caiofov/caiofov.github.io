@@ -93,7 +93,7 @@ export const generateLinesByDistance = (points: number[][]) => {
 
   const lines = [];
   for (let idx = 0; idx < flatted.length; idx++) {
-    if (idx == flatted.length - 1) break;
+    if (idx === flatted.length - 1) break;
     lines.push(flatted.slice(idx, idx + 2));
   }
 

@@ -1,6 +1,6 @@
 import { Anchor, Divider, Group, Title, useMatches } from "@mantine/core";
 import React, { useEffect, useRef, useState } from "react";
-import { motion, useAnimation, useInView } from "framer-motion";
+import { useAnimation, useInView } from "framer-motion";
 import { ReactTyped, Typed } from "react-typed";
 
 import { SectionIDType, sectionPaddingX } from "../../utils/sections";

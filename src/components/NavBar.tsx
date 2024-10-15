@@ -11,7 +11,6 @@ import {
 } from "@mantine/core";
 import {
   useDisclosure,
-  useHover,
   useScrollIntoView,
   useWindowScroll,
 } from "@mantine/hooks";
@@ -61,7 +60,7 @@ export const Navbar = () => {
       scrollToSection(activeSection);
     }
 
-    Object.entries(sectionsScrolls).map(([id, scrollHook]) => {
+    Object.entries(sectionsScrolls).forEach(([id, scrollHook]) => {
       scrollHook.targetRef.current = document.getElementById(
         id
       ) as HTMLDivElement;

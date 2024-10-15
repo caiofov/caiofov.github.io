@@ -72,8 +72,8 @@ export const LanguageSelector = () => {
                 transition: "all 0.2s ease-in-out",
               }}
               variant="custom-light"
-              selected={value == c}
-              mb={idx + 1 != Object.keys(languages).length ? "xs" : 0}
+              selected={value === c}
+              mb={idx + 1 !== Object.keys(languages).length ? "xs" : 0}
             >
               <Text size="md">{languages[c].name}</Text>
             </Combobox.Option>

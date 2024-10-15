@@ -1,15 +1,6 @@
-import React, { useRef, useState } from "react";
+import React from "react";
 
-import {
-  Combobox,
-  Group,
-  useCombobox,
-  Text,
-  Button,
-  Tooltip,
-  Anchor,
-  ActionIcon,
-} from "@mantine/core";
+import { Combobox, Group, useCombobox, Text } from "@mantine/core";
 import { IconDownload } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 import { typedKeys } from "../utils/functions";

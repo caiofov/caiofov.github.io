@@ -3,7 +3,6 @@ import { useTranslation } from "react-i18next";
 import { OpacityRevealSequence } from "../animations/reveal/OpacityReveal";
 
 import {
-  alpha,
   Badge,
   Group,
   List,
@@ -11,8 +10,6 @@ import {
   ScrollArea,
   Text,
   Title,
-  useMantineColorScheme,
-  useMantineTheme,
   useMatches,
 } from "@mantine/core";
 import { Section } from "./Section";

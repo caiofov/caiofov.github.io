@@ -1,16 +1,7 @@
-import React, { useEffect, useRef, useState } from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import { PopRevealSequence } from "../animations/reveal/PopReveal";
-import { OpacityRevealSequence } from "../animations/reveal/OpacityReveal";
-import {
-  Group,
-  Text,
-  ThemeIcon,
-  Title,
-  Tooltip,
-  useMantineTheme,
-  useMatches,
-} from "@mantine/core";
+import { Group, Title, Tooltip, useMatches } from "@mantine/core";
 import {
   IconBrandGithub,
   IconBrandLinkedin,
@@ -25,17 +16,13 @@ import useWindowDimensions from "../../hooks/windowDimension";
 import {
   Css3Plain,
   DjangoPlain,
-  ExpressOriginal,
-  FastapiOriginal,
   FastapiPlain,
   Html5Plain,
   JavascriptPlain,
   MongodbPlain,
   MysqlOriginal,
   NodejsPlain,
-  PostgresqlOriginal,
   PostgresqlPlain,
-  PythonOriginal,
   PythonPlain,
   ReactOriginal,
   SveltePlain,

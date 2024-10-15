@@ -8,7 +8,7 @@ import {
   CopyButtonProps,
 } from "@mantine/core";
 import { useHover } from "@mantine/hooks";
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Icon as IconType,
   IconProps,

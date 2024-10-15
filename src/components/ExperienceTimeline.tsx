@@ -17,7 +17,7 @@ import {
   experienceStyle,
 } from "../utils/experience";
 import { useTranslation } from "react-i18next";
-import { useEffect, useRef, useState } from "react";
+import { useRef } from "react";
 import { typedKeys } from "../utils/functions";
 import useWindowDimensions from "../hooks/windowDimension";
 
