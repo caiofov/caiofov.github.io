@@ -84,9 +84,9 @@ const Network: React.FC<{ color: string; width: number; height: number }> = ({
             key={`${x}-${y}`}
             cx={x * cellSizeX}
             cy={y * cellSizeY}
-            animate={{ scale: [1, 1.5, 1], opacity: [0.8, 1, 0.8] }}
+            animate={{ scale: [1, 1.5, 1], opacity: [0.5, 1, 0.5] }}
             transition={{
-              duration: 5,
+              duration: randomIntFromInterval(0, 5),
               repeat: Infinity,
               delay: randomIntFromInterval(0, 5),
               type: "spring",
@@ -115,7 +115,7 @@ const Network: React.FC<{ color: string; width: number; height: number }> = ({
             y2={y2 - radius * uy}
             animate={{ opacity: [0, 1, 0] }}
             transition={{
-              duration: 5,
+              duration: randomIntFromInterval(3, 7),
               repeat: Infinity,
               delay: randomIntFromInterval(0, 5) + idx / 10,
             }}

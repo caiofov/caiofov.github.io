@@ -5,6 +5,7 @@ import { OpacityRevealSequence } from "../animations/reveal/OpacityReveal";
 import {
   Group,
   Text,
+  ThemeIcon,
   Title,
   Tooltip,
   useMantineTheme,
@@ -85,7 +86,6 @@ export const Home = () => {
     base: ["5rem", "1.5rem"],
   });
   const px = useMatches(sectionPaddingX);
-  const theme = useMantineTheme();
   const { height, width } = useWindowDimensions();
 
   return (
@@ -180,7 +180,7 @@ export const Home = () => {
         left={animationLeft}
       >
         <Network
-          color={theme.colors.blue[9]}
+          color="var(--mantine-primary-color-light-color)"
           width={width * 0.8}
           height={height}
         />

@@ -1,7 +1,7 @@
 :where([data-mantine-color-scheme="dark"])
   section:where([data-variant="main-section"]) {
-  --custom-background-color-dark: var(--mantine-color-customDark-9);
-  --custom-background-color-light: var(--mantine-color-customDark-8);
+  --custom-background-color-dark: var(--mantine-color-customDark-8);
+  --custom-background-color-light: var(--mantine-color-customDark-7);
 }
 :where([data-mantine-color-scheme="light"])
   section:where([data-variant="main-section"]) {
@@ -9,18 +9,48 @@
   --custom-background-color-light: var(--mantine-color-customLight-1);
 }
 
+:where([data-mantine-color-scheme="light"]) {
+  --mantine-color-blue-light-color: var(--mantine-color-blue-9) !important;
+  --gradient-color: linear-gradient(
+    45deg,
+    var(--mantine-color-blue-9) 0%,
+    var(--mantine-color-blue-7) 100%
+  );
+}
+:where([data-mantine-color-scheme="dark"]) {
+  --gradient-color: linear-gradient(
+    45deg,
+    var(--mantine-color-blue-filled) 0%,
+    var(--mantine-color-cyan-filled) 100%
+  );
+}
+
+a:where([data-variant="gradient"]),
+p:where([data-variant="gradient"]) {
+  --text-gradient: var(--gradient-color) !important;
+}
+
+.mantine-ThemeIcon-root:where([data-variant="gradient"]) {
+  --ti-bg: var(--gradient-color) !important;
+}
+
+.mantine-ActionIcon-root:where([data-variant="gradient"]) {
+  --ai-bg: var(--gradient-color) !important;
+  --ai-hover: var(--gradient-color) !important;
+}
+
 section:where([data-variant="main-section"]):nth-child(odd) {
   background: linear-gradient(
     180deg,
     var(--custom-background-color-dark) 45%,
-    var(--custom-background-color-light) 97%
+    var(--custom-background-color-light) 90%
   );
 }
 section:where([data-variant="main-section"]):nth-child(even) {
   background: linear-gradient(
     360deg,
     var(--custom-background-color-dark) 45%,
-    var(--custom-background-color-light) 97%
+    var(--custom-background-color-light) 90%
   );
 }
 
@@ -48,14 +78,10 @@ section:where([data-variant="main-section"]):nth-child(even) {
   color: var(--mantine-primary-color-light-color);
 }
 
-.mantine-Paper-root:where([data-variant="custom-light"]) {
-  background-color: var(--mantine-primary-color-light-hover);
-  border-color: var(--mantine-color-blue-light-hover);
-}
-
+.mantine-Paper-root:where([data-variant="custom-light"]),
 .mantine-Card-root:where([data-variant="custom-light"]) {
-  background-color: var(--mantine-primary-color-light-hover);
-  border-color: var(--mantine-color-blue-light-hover);
+  background-color: var(--mantine-primary-color-light);
+  border-color: var(--mantine-primary-color-light-hover);
 }
 
 .mantine-Timeline-root:where([data-variant="custom-light"])
@@ -97,15 +123,13 @@ section:where([data-variant="main-section"]):nth-child(even) {
 }
 
 .devicon {
-  opacity: 80%;
   transition: all 0.3s ease-in-out;
 }
 .devicon:hover {
-  opacity: 100%;
   scale: 1.1;
 }
 .devicon path {
-  fill: var(--mantine-primary-color-light-color);
+  fill: var(--mantine-color-blue-light-color);
   opacity: 80%;
   transition: all 0.3s ease-in-out;
 }
