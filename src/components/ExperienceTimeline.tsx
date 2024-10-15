@@ -17,8 +17,9 @@ import {
   experienceStyle,
 } from "../utils/experience";
 import { useTranslation } from "react-i18next";
-import { useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { typedKeys } from "../utils/functions";
+import useWindowDimensions from "../hooks/windowDimension";
 
 const ExperienceTitleDesktop: React.FC<{
   company: string;
@@ -143,14 +144,16 @@ const ExperienceTimelineMobile: React.FC<{
 }> = ({ changeActive, activeIdx }) => {
   const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
+  const { height, width } = useWindowDimensions();
 
   return (
     <ScrollArea
       viewportRef={ref}
-      w={window.innerWidth * 0.9}
+      w={width * 0.9}
       scrollbars="x"
       type="always"
-      p="md"
+      py="md"
+      pt="md"
       pb="xl"
     >
       <Group display="inline-flex" wrap="nowrap">
