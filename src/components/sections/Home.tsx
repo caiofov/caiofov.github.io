@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { PopRevealSequence } from "../animations/reveal/PopReveal";
 import { Group, Title, Tooltip, useMatches } from "@mantine/core";
@@ -54,7 +54,7 @@ const skillIcons = [
   { tooltip: "TypeScript", Icon: TypescriptPlain },
   { tooltip: "JavaScript", Icon: JavascriptPlain },
   { tooltip: "NodeJS", Icon: NodejsPlain },
-  // { tooltip: "ExpressJS", Icon: ExpressOriginal }, //TODO: find icon
+  // { tooltip: "ExpressJS", Icon: ? }, //TODO: find icon
   { tooltip: "MongoDB", Icon: MongodbPlain },
   { tooltip: "PostgreSQL", Icon: PostgresqlPlain },
   { tooltip: "MySQL", Icon: MysqlOriginal }, //TODO: fix fill for this icon
@@ -150,7 +150,12 @@ export const Home = () => {
         </OpacityRevealSequence> */}
         <PopRevealSequence staggerChildren={0.2}>
           {skillIcons.map(({ tooltip, Icon }) => (
-            <Tooltip label={tooltip} key={tooltip} position="bottom" withArrow>
+            <Tooltip
+              events={{ hover: true, focus: true, touch: true }}
+              label={tooltip}
+              position="bottom"
+              withArrow
+            >
               <Group className="devicon">
                 <Icon size="25" />
               </Group>
