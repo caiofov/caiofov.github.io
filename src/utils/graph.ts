@@ -36,17 +36,23 @@ export const generatePointsGrid = (
 
   return points;
 };
-export const generatePoints = (maxX: number, maxY: number) => {
+export const generatePoints = (
+  maxX: number,
+  maxY: number,
+  coefP: number,
+  coefX: number,
+  coefY: number
+) => {
   const points: number[][] = [];
 
   let lastX = 0;
   let lastY = 0;
 
   for (let y = 0; y < maxY; y++) {
-    let py = 0.5 / (y - lastY);
+    let py = coefY / (y - lastY);
     for (let x = 1; x < maxX; x++) {
-      let px = 0.5 / (x - lastX);
-      if (Math.random() > 0.5 + py + px) {
+      let px = coefX / (x - lastX);
+      if (Math.random() > coefP + py + px) {
         points.push([x, y]);
         lastX = x;
         lastY = y;
