@@ -1,7 +1,6 @@
 import React, { useRef, useState } from "react";
 import i18n, { LanguageCode } from "../i18n";
-import brazilFlag from "../assets/flags/brazil_flag.png";
-import usaFlag from "../assets/flags/usa_flag.png";
+
 import {
   Combobox,
   Group,
@@ -12,10 +11,8 @@ import {
 } from "@mantine/core";
 import { IconWorld } from "@tabler/icons-react";
 import { typedKeys } from "../utils/functions";
-const languages = {
-  pt: { name: "Português", flag: brazilFlag },
-  en: { name: "English", flag: usaFlag },
-};
+
+const languages = { pt: { name: "Português" }, en: { name: "English" } };
 
 export const LanguageSelector = () => {
   const [value, setValue] = useState<LanguageCode>(
