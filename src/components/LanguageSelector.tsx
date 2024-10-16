@@ -72,7 +72,7 @@ export const LanguageSelector = () => {
               }}
               variant="custom-light"
               selected={value === c}
-              mb={idx + 1 !== Object.keys(languages).length ? "xs" : 0}
+              mb={idx + 1 !== Object.keys(languages).length ? "5px" : 0}
             >
               <Text size="md">{languages[c].name}</Text>
             </Combobox.Option>
