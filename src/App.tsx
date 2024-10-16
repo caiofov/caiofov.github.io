@@ -2,7 +2,7 @@ import React from "react";
 import { MantineProvider } from "@mantine/core";
 import theme from "./styles/theme";
 import { localStorageColorSchemeManager } from "./stores/schemeManager";
-import { Navbar } from "./components/Navbar";
+import { Navbar } from "./components/NavBar";
 import { Home } from "./components/sections/Home";
 import { About } from "./components/sections/About";
 import { Experience } from "./components/sections/Experience";
