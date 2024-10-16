@@ -36,7 +36,8 @@
                 "CSS"
             ],
             "automations": [
-                "Python"
+                "Python",
+                "PyInstaller"
             ],
             "powerbi": [
                 "Python",
@@ -48,6 +49,7 @@
                 "Python",
                 "TypeScript",
                 "React",
+                "Mantine",
                 "Docker",
                 "Back-End",
                 "Front-End",
@@ -55,7 +57,21 @@
             ],
             "unit-test": [
                 "Python",
+                "PyTest",
                 "TypeScript"
+            ],
+            "logs": [
+                "Kibana",
+                "ElasticSearch"
+            ],
+            "s3": [
+                "Python",
+                "S3",
+                "Docker"
+            ],
+            "docs": [
+                "Writing",
+                "English"
             ]
         }
     },
@@ -64,13 +80,20 @@
         "name": "Code Kids Love",
         "activities": {
             "classes": [
-                "Python"
+                "Python",
+                "Writing",
+                "Education"
             ],
             "sheets": [
-                "Google Sheets",
+                "Spreadsheets",
                 "JavaScript"
             ],
-            "courses": []
+            "meetings": [
+                "English"
+            ],
+            "courses": [
+                "Sales"
+            ]
         }
     },
     "codijr": {

@@ -42,12 +42,15 @@
                 "role": "Development Intern",
                 "texts": {
                     "rest-api": "Developed REST APIs utilizing Python (FastAPI), TypeScript (Node.js), and containerized the applications with Docker.",
-                    "gantt": "Implemented an internal system for visualizing GitLab activities in a Gantt chart format using TypeScript, Node.js, and Redis, significantly improving project tracking for the technology team.",
-                    "feedback": "Built an employee evaluation application using Python, FastAPI, MongoDB, and RSA/SHA encryption, containerized with Docker. Also contributed to front-end development, implementing features like data visualization, forms, and data editing with Svelte and TypeScript.",
-                    "automations": "Automated manual processes in Python, replacing the need for large spreadsheet manipulation.",
-                    "powerbi": "Developed a metric monitoring system for PowerBI in Python, with automated notifications integrated into Microsoft Teams, improving communication and result tracking.",
+                    "gantt": "Implemented an internal system for tracking team activities in GitLab, periodically collecting information and displaying it in a Gantt chart format using TypeScript with Node.js and Redis.",
+                    "feedback": "Developed an internal employee evaluation application using Python, FastAPI, MongoDB, and RSA/SHA encryption, with containerization via Docker. I also contributed to the front-end by implementing charts, forms, and data editing features using Svelte, Mantine, and TypeScript",
+                    "automations": "Automated several tasks using Python and converted them into Windows executables with PyInstaller, replacing manual manipulation of large spreadsheets.",
+                    "powerbi": "Developed a custom Python-based system to track PowerBI metrics, enabling instant alerts via Microsoft Teams",
                     "management": "Created an internal data management system using Python (FastAPI) and MySQL, with a React front-end, allowing users to view and edit data in a spreadsheet-like format.",
-                    "unit-test": "Conducted unit testing for systems, including APIs and other Python-based systems, as well as TypeScript applications."
+                    "unit-test": "Performed unit testing on systems, including APIs and other Python-based applications, as well as applications built with TypeScript",
+                    "logs": "Monitored production application logs using Kibana and ElasticSearch.",
+                    "s3": "Contributed to the development of a system that managed file allocation on S3.",
+                    "docs": "Authored technical documentation in English for various internal libraries and systems."
                 }
             },
             "ckl": {
@@ -57,6 +60,7 @@
                 "texts": {
                     "classes": "Developed educational materials and taught programming to children aged 7 to 17 using Snap! and Python. Incorporated Minecraft as a playful learning tool to make the educational process more engaging and accessible.",
                     "sheets": "Automated and optimized spreadsheet processing, significantly reducing manual effort and improving efficiency.",
+                    "meetings": "Regularly participated in meetings conducted entirely in English with company leadership and also assisted in translating platforms and materials.",
                     "courses": "Managed customer service and assisted with course sales, providing support and guidance to enhance the customer experience."
                 }
             },
