@@ -1,10 +1,32 @@
 :where([data-mantine-color-scheme="dark"]) {
   --custom-background-color-dark: var(--mantine-color-customDark-8);
   --custom-background-color-light: var(--mantine-color-customDark-7);
+  --gradient-color: linear-gradient(
+    45deg,
+    var(--mantine-color-blue-filled) 0%,
+    var(--mantine-color-cyan-filled) 100%
+  );
 }
 :where([data-mantine-color-scheme="light"]) {
   --custom-background-color-dark: var(--mantine-color-customLight-2);
   --custom-background-color-light: var(--mantine-color-customLight-1);
+  --mantine-color-blue-light-color: var(--mantine-color-blue-9) !important;
+  --gradient-color: linear-gradient(
+    45deg,
+    var(--mantine-color-blue-9) 0%,
+    var(--mantine-color-blue-7) 100%
+  );
+}
+
+.mantine-AppShell-header,
+.mantine-Drawer-content {
+  transition: all 0.5s ease-in-out;
+  background-color: rgba(from var(--custom-background-color-dark) r g b / 0.7);
+  backdrop-filter: blur(10px);
+}
+
+.mantine-Drawer-content {
+  border-left: var(--mantine-primary-color-light-hover) solid 2px;
 }
 
 section:where([data-variant="main-section"]):nth-child(odd) {
@@ -19,22 +41,6 @@ section:where([data-variant="main-section"]):nth-child(even) {
     360deg,
     var(--custom-background-color-dark) 45%,
     var(--custom-background-color-light) 90%
-  );
-}
-
-:where([data-mantine-color-scheme="light"]) {
-  --mantine-color-blue-light-color: var(--mantine-color-blue-9) !important;
-  --gradient-color: linear-gradient(
-    45deg,
-    var(--mantine-color-blue-9) 0%,
-    var(--mantine-color-blue-7) 100%
-  );
-}
-:where([data-mantine-color-scheme="dark"]) {
-  --gradient-color: linear-gradient(
-    45deg,
-    var(--mantine-color-blue-filled) 0%,
-    var(--mantine-color-cyan-filled) 100%
   );
 }
 
@@ -147,3 +153,27 @@ p:where([data-variant="gradient"]) {
 ::selection {
   background: var(--mantine-primary-color-light-color);
 }
+
+/* SCROLLBAR */
+/* width */
+/* ::-webkit-scrollbar {
+  width: 10px;
+} */
+
+/* Track */
+/* ::-webkit-scrollbar-track,
+::-webkit-scrollbar-track-piece { */
+/* border-radius: 10px; */
+/* background: var(--custom-background-color-light); */
+/* } */
+/* Handle */
+/* ::-webkit-scrollbar-thumb { */
+/* background-color: var(--mantine-primary-color-light);*/
+
+/* border-radius: 10px;
+} */
+
+/* Handle on hover */
+/* ::-webkit-scrollbar-thumb:hover { */
+/* background: var(--mantine-primary-color-light-color); */
+/* } */

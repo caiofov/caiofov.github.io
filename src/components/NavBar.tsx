@@ -26,7 +26,16 @@ import { DarkModeToggle } from "./DarkModeToggle";
 export const Navbar = () => {
   const { t } = useTranslation();
   const [navbarOpened, { open, close }] = useDisclosure(false);
-  const [activeSection, setActiveSection] = useState<SectionIDType>("home");
+
+  const [activeSection, setActiveSection] = useState<SectionIDType>(() => {
+    const splittedUrl = window.location.href.split("#");
+
+    if (splittedUrl.length > 1) {
+      const section = splittedUrl.pop()! as SectionIDType;
+      if (SECTIONS.map((value) => value.id).includes(section)) return section;
+    }
+    return "home";
+  });
 
   const [scroll, scrollTo] = useWindowScroll();
 
@@ -54,13 +63,8 @@ export const Navbar = () => {
   };
 
   useEffect(() => {
-    const splittedUrl = window.location.href.split("#");
-    if (splittedUrl.length > 1) {
-      setActiveSection(splittedUrl.pop()! as SectionIDType);
-      scrollToSection(activeSection);
-    }
-
-    Object.entries(sectionsScrolls).forEach(([id, scrollHook]) => {
+    scrollToSection(activeSection);
+    typedEntries(sectionsScrolls).forEach(([id, scrollHook]) => {
       scrollHook.targetRef.current = document.getElementById(
         id
       ) as HTMLDivElement;
@@ -106,11 +110,6 @@ export const Navbar = () => {
         h="fit-content"
         px="0"
         py="md"
-        style={{
-          transition: "all 0.5s ease-in-out",
-          backgroundColor: "rgba(0,0,0,0)",
-          backdropFilter: "blur(8px)",
-        }}
         display="inline-flex"
         w="100%"
         withBorder={false}
@@ -166,14 +165,7 @@ export const Navbar = () => {
         overlayProps={{ backgroundOpacity: 0, blur: 4 }}
         size="fit-content"
         styles={{
-          content: {
-            backdropFilter: "blur(8px)",
-            backgroundColor: "rgba(0,0,0,0)",
-            borderLeft: "var(--mantine-primary-color-light-hover) solid 2px",
-          },
-          header: {
-            backgroundColor: "transparent",
-          },
+          header: { backgroundColor: "transparent" },
         }}
       >
         <nav>
