@@ -1,24 +1,25 @@
 {
     "ufc": [],
     "backend": [
-        "Python",
-        "TypeScript",
-        "Docker",
-        "FastAPI",
-        "Django",
-        "NodeJS",
-        "ExpressJS"
+        "python",
+        "ts",
+        "js",
+        "docker",
+        "fastapi",
+        "django",
+        "node",
+        "express"
     ],
     "frontend": [
-        "React",
-        "Svelte",
-        "Mantine",
-        "HTML",
-        "CSS"
+        "react",
+        "svelte",
+        "mantine",
+        "html",
+        "css"
     ],
     "database": [
-        "MongoDB",
-        "PostgreSQL",
-        "MySQL"
+        "mongo",
+        "postgres",
+        "mysql"
     ]
 }

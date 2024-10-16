@@ -4,74 +4,74 @@
         "name": "Milenio Capital",
         "activities": {
             "rest-api": [
-                "FastAPI",
-                "Python",
-                "TypeScript",
-                "Node",
-                "Docker",
-                "Git",
-                "Back-End",
-                "Rest API"
+                "fastapi",
+                "python",
+                "ts",
+                "node",
+                "docker",
+                "git",
+                "back",
+                "api"
             ],
             "gantt": [
-                "TypeScript",
-                "Node",
-                "Redis",
-                "Back-End",
-                "Front-End",
-                "HTML",
-                "CSS"
+                "ts",
+                "node",
+                "redis",
+                "back",
+                "front",
+                "html",
+                "css"
             ],
             "feedback": [
-                "FastAPI",
-                "Python",
-                "MongoDB",
-                "TypeScript",
-                "React",
-                "Svelte",
-                "Docker",
-                "Back-End",
-                "Front-End",
-                "HTML",
-                "CSS"
+                "fastapi",
+                "python",
+                "mongo",
+                "ts",
+                "react",
+                "svelte",
+                "docker",
+                "back",
+                "front",
+                "html",
+                "css"
             ],
             "automations": [
-                "Python",
-                "PyInstaller"
+                "python",
+                "pyinstaller"
             ],
             "powerbi": [
-                "Python",
-                "PowerBI",
-                "Microsoft Teams"
+                "python",
+                "powerbi",
+                "teams"
             ],
             "management": [
-                "FastAPI",
-                "Python",
-                "TypeScript",
-                "React",
-                "Mantine",
-                "Docker",
-                "Back-End",
-                "Front-End",
-                "MySQL"
+                "fastapi",
+                "python",
+                "ts",
+                "react",
+                "mantine",
+                "docker",
+                "back",
+                "front",
+                "mysql"
             ],
             "unit-test": [
-                "Python",
-                "PyTest",
-                "TypeScript"
+                "python",
+                "pytest",
+                "ts"
             ],
             "logs": [
-                "Kibana",
-                "ElasticSearch"
+                "kibana",
+                "elasticsearch"
             ],
             "s3": [
-                "Python",
-                "S3",
-                "Docker"
+                "python",
+                "s3",
+                "docker"
             ],
             "docs": [
-                "Writing",
-                "English"
+                "writing",
+                "english"
             ]
         }
     },
@@ -80,19 +80,19 @@
         "name": "Code Kids Love",
         "activities": {
             "classes": [
-                "Python",
-                "Writing",
-                "Education"
+                "python",
+                "writing",
+                "education"
             ],
             "sheets": [
-                "Spreadsheets",
-                "JavaScript"
+                "sheets",
+                "js"
             ],
             "meetings": [
-                "English"
+                "english"
             ],
             "courses": [
-                "Sales"
+                "sales"
             ]
         }
     },
@@ -101,11 +101,11 @@
         "name": "Container Digital Jr.",
         "activities": {
             "dev": [
-                "PHP",
-                "Front-End",
-                "HTML",
-                "CSS",
-                "WordPress"
+                "php",
+                "front",
+                "html",
+                "css",
+                "wordpress"
             ]
         }
     }

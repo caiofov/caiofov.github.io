@@ -49,20 +49,20 @@ const contactInfo = [
 ];
 
 const skillIcons = [
-  { tooltip: "Python", Icon: PythonPlain },
-  { tooltip: "FastAPI", Icon: FastapiPlain },
-  { tooltip: "Django", Icon: DjangoPlain },
-  { tooltip: "TypeScript", Icon: TypescriptPlain },
-  { tooltip: "JavaScript", Icon: JavascriptPlain },
-  { tooltip: "NodeJS", Icon: NodejsPlain },
-  // { tooltip: "ExpressJS", Icon: ? }, //TODO: find icon
-  { tooltip: "MongoDB", Icon: MongodbPlain },
-  { tooltip: "PostgreSQL", Icon: PostgresqlPlain },
-  { tooltip: "MySQL", Icon: MysqlOriginal }, //TODO: fix fill for this icon
-  { tooltip: "React", Icon: ReactOriginal },
-  { tooltip: "Svelte", Icon: SveltePlain },
-  { tooltip: "HTML", Icon: Html5Plain },
-  { tooltip: "CSS", Icon: Css3Plain },
+  { id: "python", Icon: PythonPlain },
+  { id: "fastapi", Icon: FastapiPlain },
+  { id: "django", Icon: DjangoPlain },
+  { id: "ts", Icon: TypescriptPlain },
+  { id: "js", Icon: JavascriptPlain },
+  { id: "node", Icon: NodejsPlain },
+  // { id: "ExpressJS", Icon: ? }, //TODO: find icon
+  { id: "mongo", Icon: MongodbPlain },
+  { id: "postgres", Icon: PostgresqlPlain },
+  { id: "mysql", Icon: MysqlOriginal }, //TODO: fix fill for this icon
+  { id: "react", Icon: ReactOriginal },
+  { id: "svelte", Icon: SveltePlain },
+  { id: "html", Icon: Html5Plain },
+  { id: "css", Icon: Css3Plain },
 ];
 
 export const Home = () => {
@@ -150,8 +150,8 @@ export const Home = () => {
           </Text>
         </OpacityRevealSequence> */}
         <PopRevealSequence staggerChildren={0.2}>
-          {skillIcons.map(({ tooltip, Icon }) => (
-            <CustomTooltip key={tooltip} label={tooltip} position="bottom">
+          {skillIcons.map(({ id, Icon }) => (
+            <CustomTooltip key={id} label={t(`skills.${id}`)} position="bottom">
               <Group className="devicon">
                 <Icon size="25" />
               </Group>

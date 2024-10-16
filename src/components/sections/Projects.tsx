@@ -29,7 +29,7 @@ const ProjectItem: React.FC<{ project: CompleteProjectType }> = ({
 }) => {
   const scheme = useMantineColorScheme();
   const imgOpacity = scheme.colorScheme === "dark" ? "80%" : "100%";
-
+  const { t } = useTranslation();
   return (
     <Card
       p="xl"
@@ -60,7 +60,7 @@ const ProjectItem: React.FC<{ project: CompleteProjectType }> = ({
           {project.techs.sort().map((tech) => {
             return (
               <Badge key={tech} radius="sm" mr="xs" size="sm" variant="light">
-                {tech}
+                {t(`skills.${tech}`)}
               </Badge>
             );
           })}

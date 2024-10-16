@@ -128,7 +128,7 @@ export const Experience = () => {
                         <Group display="flex" gap="xs" mt="sm">
                           {skills.map((skill) => (
                             <Badge key={skill} variant="light">
-                              {skill}
+                              {t(`skills.${skill}`)}
                             </Badge>
                           ))}
                         </Group>

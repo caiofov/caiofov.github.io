@@ -6,10 +6,11 @@
             "game": "https://caiofov.itch.io/animation-generator-dataset"
         },
         "techs": [
-            "Python",
-            "SpaCy",
-            "RPG Maker MV",
-            "JavaScript"
+            "python",
+            "spacy",
+            "rpgmaker",
+            "js",
+            "svelte"
         ],
         "img": "https://img.itch.zone/aW1nLzE4MDMwNTMyLnBuZw==/315x250%23c/C6O9r%2B.png"
     },
@@ -19,8 +20,8 @@
         },
         "img": "https://img.itch.zone/aW1nLzEwMDczODEzLnBuZw==/315x250%23c/DmHByF.png",
         "techs": [
-            "RPG Maker MV",
-            "JavaScript"
+            "rpgmaker",
+            "js"
         ]
     },
     "caronei": {
@@ -29,12 +30,12 @@
         },
         "img": "https://github.com/caiofov/Caronei/blob/main/img.png?raw=true",
         "techs": [
-            "React Native",
-            "JavaScript",
-            "ExpressJS",
-            "PostgreSQL",
-            "CSS",
-            "HTML"
+            "react-native",
+            "js",
+            "express",
+            "postgres",
+            "css",
+            "html"
         ]
     },
     "climasync": {
@@ -44,12 +45,12 @@
         },
         "img": "https://github.com/caiofov/ClimaSync-FrontEnd/blob/main/img.png?raw=true",
         "techs": [
-            "TypeScript",
-            "ExpressJS",
-            "Kotlin",
-            "TuyaAPI",
-            "Firebase",
-            "PostgreSQL"
+            "ts",
+            "express",
+            "kotlin",
+            "tuya",
+            "firebase",
+            "postgres"
         ]
     },
     "raw": {
@@ -59,8 +60,8 @@
         },
         "img": "https://img.itch.zone/aW1nLzg3Njc4MTkucG5n/315x250%23c/k8jR8p.png",
         "techs": [
-            "JavaScript",
-            "PhaserJS"
+            "js",
+            "phaser"
         ]
     }
 }

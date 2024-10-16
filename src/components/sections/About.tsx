@@ -82,7 +82,7 @@ const ItemAboutDesktop: React.FC<{
   );
   const textAlign = alignLeft ? "left" : "right";
   const justify = alignLeft ? "flex-start" : "flex-end";
-
+  const { t } = useTranslation();
   const BodyComponent = (
     <Group w="100%" gap="xs" justify={justify}>
       <OpacityRevealOnVisible
@@ -102,7 +102,7 @@ const ItemAboutDesktop: React.FC<{
         >
           {badges.map((b) => (
             <Badge key={b} variant="light">
-              {b}
+              {t(`skills.${b}`)}
             </Badge>
           ))}
         </Group>
