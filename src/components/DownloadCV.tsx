@@ -1,14 +1,9 @@
 import React from "react";
 
-import { Combobox, Group, useCombobox, Text } from "@mantine/core";
+import { Combobox, Group, useCombobox, Text, Anchor } from "@mantine/core";
 import { IconDownload } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
-import { typedKeys } from "../utils/functions";
 import { IconTooltip } from "./IconTooltip";
-const languages = {
-  pt: { name: "Português", anchor: "" },
-  en: { name: "English", anchor: "" },
-};
 
 export const DownloadCV: React.FC<{ iconSize: string }> = ({ iconSize }) => {
   const { t } = useTranslation();
@@ -18,7 +13,6 @@ export const DownloadCV: React.FC<{ iconSize: string }> = ({ iconSize }) => {
       store={combobox}
       onOptionSubmit={() => {
         combobox.closeDropdown();
-        alert("in development"); //TODO
       }}
       transitionProps={{
         duration: 200,
@@ -56,7 +50,7 @@ export const DownloadCV: React.FC<{ iconSize: string }> = ({ iconSize }) => {
       <Combobox.Dropdown variant="custom-light">
         <Combobox.Header>{t("sections.home.download-cv")}:</Combobox.Header>
         <Combobox.Options>
-          {typedKeys(languages).map((c, idx) => (
+          {["pt", "en"].map((c, idx) => (
             <Combobox.Option
               key={"download_" + c}
               value={c}
@@ -65,9 +59,16 @@ export const DownloadCV: React.FC<{ iconSize: string }> = ({ iconSize }) => {
                 textWrap: "nowrap",
               }}
               variant="custom-light"
-              mb={idx + 1 != Object.keys(languages).length ? "xs" : 0}
+              mb={idx === 0 ? "xs" : 0}
             >
-              <Text size="md">{t(`sections.home.download-${c}`)}</Text>
+              <Anchor
+                size="md"
+                href={`https://raw.githubusercontent.com/caiofov/caiofov/refs/heads/master/cv/CV_${c}_CaioDeFreitasOliveira.pdf`}
+                target="_blank"
+                underline="never"
+              >
+                {t(`sections.home.download-${c}`)}
+              </Anchor>
             </Combobox.Option>
           ))}
         </Combobox.Options>
