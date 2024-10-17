@@ -39,7 +39,7 @@ export const Navbar = () => {
 
   const [scroll, scrollTo] = useWindowScroll();
 
-  const headerHeight = useMatches({ md: 68, base: 65 });
+  const headerHeight = useMatches({ md: 68, sm: 65, base: 130 });
   const logoSize = useMatches({ sm: "1.8rem", base: "1.2rem" });
 
   const bodyContainerWidth = useMatches(sectionWidth);
