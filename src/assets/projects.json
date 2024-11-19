@@ -10,7 +10,10 @@
             "spacy",
             "rpgmaker",
             "js",
-            "svelte"
+            "ts",
+            "react",
+            "materialui",
+            "vite"
         ],
         "img": "https://img.itch.zone/aW1nLzE4MDMwNTMyLnBuZw==/315x250%23c/C6O9r%2B.png"
     },

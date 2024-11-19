@@ -124,6 +124,7 @@
         "kibana": "Kibana",
         "kotlin": "Kotlin",
         "mantine": "Mantine",
+        "materialui": "Material UI",
         "mongo": "MongoDB",
         "mysql": "MySQL",
         "node": "NodeJS",
@@ -146,6 +147,7 @@
         "teams": "Microsoft Teams",
         "ts": "TypeScript",
         "tuya": "TuyaAPI",
+        "vite": "Vite",
         "wordpress": "WordPress",
         "writing": "Writing"
     }
