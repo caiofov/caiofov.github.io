@@ -29,6 +29,7 @@ import {
   TypescriptPlain,
 } from "devicons-react";
 import { CustomTooltip } from "../CustomTooltip";
+import { LattesIcon } from "../icons/LattesIcon";
 
 const contactInfo = [
   {
@@ -40,6 +41,11 @@ const contactInfo = [
     href: "https://www.github.com/caiofov",
     icon: IconBrandGithub,
     text: "GitHub",
+  },
+  {
+    href: "http://lattes.cnpq.br/5552876897987921",
+    text: "Lattes",
+    icon: LattesIcon,
   },
   {
     text: "cfoviana@gmail.com",
@@ -67,7 +73,7 @@ const skillIcons = [
 
 export const Home = () => {
   const { t } = useTranslation();
-  const iconSize = "2.5rem";
+  const iconSize = (text: string) => (text === "Lattes" ? "2.18rem" : "2.5rem");
   const [titleFontSize, subtitleFontSize, animationLeft] = useMatches({
     md: ["7rem", "2rem", "20%"],
     sm: ["6rem", "1.8rem", "5%"],
@@ -119,14 +125,15 @@ export const Home = () => {
         <Group id="contact-info" pb="lg" gap="xs">
           <PopRevealSequence parentProps={{ gap: "xs" }}>
             {contactInfo.map(({ href, icon, text }) => {
+              const size = iconSize(text);
               return href ? (
                 <IconTooltip
                   key={text}
                   href={href}
                   Icon={icon}
                   tooltip={text}
-                  iconProps={{ size: iconSize }}
-                  actionIconProps={{ size: iconSize }}
+                  iconProps={{ size }}
+                  actionIconProps={{ size: iconSize("") }}
                 />
               ) : (
                 <CopyTooltip
@@ -135,12 +142,12 @@ export const Home = () => {
                   tooltip={text}
                   copyValue={text}
                   copiedTooltip={`(${t("sections.home.copied")})`}
-                  iconProps={{ size: iconSize }}
-                  actionIconProps={{ size: iconSize }}
+                  iconProps={{ size }}
+                  actionIconProps={{ size: iconSize("") }}
                 />
               );
             })}
-            <DownloadCV iconSize={iconSize} />
+            <DownloadCV iconSize={iconSize("")} />
           </PopRevealSequence>
         </Group>
 
