@@ -52,7 +52,7 @@ export const BaseRevealOnVisible: React.FC<
 
   useEffect(() => {
     mainControls.start(isInView ? "visible" : "hidden");
-  }, [isInView]);
+  }, [isInView, mainControls]);
 
   return (
     <MotionGroup
