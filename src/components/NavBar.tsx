@@ -37,7 +37,7 @@ export const Navbar = () => {
     return "home";
   });
 
-  const [scroll, scrollTo] = useWindowScroll();
+  const scroll = useWindowScroll()[0];
 
   const headerHeight = useMatches({ md: 68, sm: 65, base: 130 });
   const logoSize = useMatches({ sm: "1.8rem", base: "1.2rem" });
@@ -69,7 +69,7 @@ export const Navbar = () => {
         id
       ) as HTMLDivElement;
     });
-  }, []);
+  });
 
   useEffect(() => {
     for (const [id, { targetRef }] of typedEntries(sectionsScrolls)) {
@@ -78,7 +78,8 @@ export const Navbar = () => {
         break;
       }
     }
-  }, [scroll]);
+    // eslint-disable-next-line
+  }, [scroll, headerHeight]);
 
   const navbarAnchors = SECTIONS.map((section) => {
     const isActive = activeSection === section.id;

@@ -144,7 +144,7 @@ const ExperienceTimelineMobile: React.FC<{
 }> = ({ changeActive, activeIdx }) => {
   const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
-  const { height, width } = useWindowDimensions();
+  const { width } = useWindowDimensions();
 
   return (
     <ScrollArea
