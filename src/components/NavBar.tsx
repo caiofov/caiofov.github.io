@@ -69,7 +69,8 @@ export const Navbar = () => {
         id
       ) as HTMLDivElement;
     });
-  });
+    // eslint-disable-next-line
+  }, []);
 
   useEffect(() => {
     for (const [id, { targetRef }] of typedEntries(sectionsScrolls)) {
@@ -79,7 +80,7 @@ export const Navbar = () => {
       }
     }
     // eslint-disable-next-line
-  }, [scroll, headerHeight]);
+  }, [scroll]);
 
   const navbarAnchors = SECTIONS.map((section) => {
     const isActive = activeSection === section.id;
