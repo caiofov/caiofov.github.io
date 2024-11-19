@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Combobox, Group, useCombobox, Text, Anchor } from "@mantine/core";
+import { Combobox, Group, useCombobox, Anchor } from "@mantine/core";
 import { IconDownload } from "@tabler/icons-react";
 import { useTranslation } from "react-i18next";
 import { IconTooltip } from "./IconTooltip";
