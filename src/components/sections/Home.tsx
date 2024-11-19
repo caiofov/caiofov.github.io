@@ -73,7 +73,7 @@ const skillIcons = [
 
 export const Home = () => {
   const { t } = useTranslation();
-  const iconSize = (text: string) => (text === "Lattes" ? "2.18rem" : "2.5rem");
+  const iconSize = (text: string) => (text === "Lattes" ? "2.1rem" : "2.5rem");
   const [titleFontSize, subtitleFontSize, animationLeft] = useMatches({
     md: ["7rem", "2rem", "20%"],
     sm: ["6rem", "1.8rem", "5%"],
