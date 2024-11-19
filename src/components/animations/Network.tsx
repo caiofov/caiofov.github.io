@@ -58,14 +58,14 @@ const Network: React.FC<{ color: string; width: number; height: number }> = ({
   }, [height]);
   useEffect(() => {
     setCellNumX(Math.floor(width / cellSizeX));
-  }, [cellSizeX]);
+  }, [cellSizeX, width]);
   useEffect(() => {
     setCellNumY(Math.floor(height / cellSizeY));
-  }, [cellSizeY]);
+  }, [cellSizeY, height]);
   useEffect(() => {
     const gen = generatePoints(cellNumX, cellNumY, coefP, coefXY, coefXY);
     setPoints(gen.length > 6 ? gen : safePoints(cellNumX, cellNumY));
-  }, [cellNumX, cellNumY]);
+  }, [cellNumX, cellNumY, coefP, coefXY]);
   useEffect(() => {
     setLines(pickLinePairs(points));
   }, [points]);

@@ -21,7 +21,7 @@ export const Section: React.FC<
 
   useEffect(() => {
     if (isInView) typed?.reset(true);
-  }, [isInView]);
+  }, [isInView, typed]);
 
   const [titleSize, dividerMargin, titleMargin] = useMatches({
     sm: ["3rem", "xl", "md"],
