@@ -1,4 +1,3 @@
-import React from "react";
 import { useTranslation } from "react-i18next";
 import { PopRevealSequence } from "../animations/reveal/PopReveal";
 import { Group, Title, useMatches } from "@mantine/core";
@@ -73,7 +72,7 @@ const skillIcons = [
 
 export const Home = () => {
   const { t } = useTranslation();
-  const iconSize = (text: string) => (text === "Lattes" ? "2.1rem" : "2.5rem");
+  const iconSize = (text?: string) => (text === "Lattes" ? "2rem" : "2.5rem");
   const [titleFontSize, subtitleFontSize, animationLeft] = useMatches({
     md: ["7rem", "2rem", "20%"],
     sm: ["6rem", "1.8rem", "5%"],
@@ -133,7 +132,7 @@ export const Home = () => {
                   Icon={icon}
                   tooltip={text}
                   iconProps={{ size }}
-                  actionIconProps={{ size: iconSize("") }}
+                  actionIconProps={{ size: iconSize() }}
                 />
               ) : (
                 <CopyTooltip
@@ -143,19 +142,14 @@ export const Home = () => {
                   copyValue={text}
                   copiedTooltip={`(${t("sections.home.copied")})`}
                   iconProps={{ size }}
-                  actionIconProps={{ size: iconSize("") }}
+                  actionIconProps={{ size: iconSize() }}
                 />
               );
             })}
-            <DownloadCV iconSize={iconSize("")} />
+            <DownloadCV iconSize={iconSize()} />
           </PopRevealSequence>
         </Group>
 
-        {/* <OpacityRevealSequence delay={1}>
-          <Text size="lg" w="80%">
-            {t("sections.home.text")}
-          </Text>
-        </OpacityRevealSequence> */}
         <PopRevealSequence staggerChildren={0.2}>
           {skillIcons.map(({ id, Icon }) => (
             <CustomTooltip key={id} label={t(`skills.${id}`)} position="bottom">
