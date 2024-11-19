@@ -1,4 +1,3 @@
-import React from "react";
 import { MantineProvider } from "@mantine/core";
 import theme from "./styles/theme";
 import { localStorageColorSchemeManager } from "./stores/schemeManager";
@@ -13,7 +12,11 @@ const colorSchemeManager = localStorageColorSchemeManager();
 
 function App() {
   return (
-    <MantineProvider theme={theme} colorSchemeManager={colorSchemeManager}>
+    <MantineProvider
+      theme={theme}
+      colorSchemeManager={colorSchemeManager}
+      defaultColorScheme="dark"
+    >
       <AppShell m="0" p="0">
         <Navbar />
 
