@@ -1,4 +1,3 @@
-import React from "react";
 import { Icon } from "@tabler/icons-react";
 
 export const LattesIcon: Icon = (props) => {

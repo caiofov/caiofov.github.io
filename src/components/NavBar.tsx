@@ -14,7 +14,7 @@ import {
   useScrollIntoView,
   useWindowScroll,
 } from "@mantine/hooks";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { LanguageSelector } from "./LanguageSelector";
 import { useTranslation } from "react-i18next";
 import { OpacityRevealSequence } from "./animations/reveal/OpacityReveal";
