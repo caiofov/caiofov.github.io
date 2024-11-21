@@ -66,5 +66,19 @@
             "js",
             "phaser"
         ]
+    },
+    "cg": {
+        "anchors": {
+            "repo": "https://github.com/caiofov/CG-WebGL",
+            "game": "https://caiofov.github.io/CG-WebGL/"
+        },
+        "img": "https://github.com/caiofov/CG-WebGL/raw/main/img/thumb.png",
+        "techs": [
+            "js",
+            "webgl",
+            "html",
+            "css",
+            "bootstrap"
+        ]
     }
 }

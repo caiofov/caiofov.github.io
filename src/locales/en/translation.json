@@ -95,6 +95,10 @@
                 "title": ".raw Mode",
                 "text": "This is a puzzle-platformer game developed with PhaserJS for a game jam held on the Itch.io platform. The project stood out among the other participants and won first place in the Innovation category of the competition."
             },
+            "cg": {
+                "title": "Game with WebGL",
+                "text": "Inspired by the hit Subway Surfers, the game challenges the player to dodge trains while collecting coins to increase their total score. Developed with WebGL and JavaScript, the project is complemented by a website built with Bootstrap."
+            },
             "anchors": {
                 "repo": "Repository",
                 "front": "Front-End",
@@ -108,6 +112,7 @@
     "skills": {
         "api": "Rest API",
         "back": "Back-End",
+        "bootstrap": "Bootstrap",
         "css": "CSS",
         "django": "Django",
         "docker": "Docker",
@@ -148,6 +153,7 @@
         "ts": "TypeScript",
         "tuya": "TuyaAPI",
         "vite": "Vite",
+        "webgl": "WebGL",
         "wordpress": "WordPress",
         "writing": "Writing"
     }
