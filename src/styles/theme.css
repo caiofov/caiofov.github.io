@@ -132,7 +132,10 @@ p:where([data-variant="gradient"]) {
 .devicon:hover {
   scale: 1.1;
 }
-.devicon path {
+.devicon > svg > path,
+.devicon > svg > circle,
+.devicon > svg > g > path,
+.devicon > svg > g > circle {
   fill: var(--mantine-primary-color-light-color);
   opacity: 80%;
   transition: all 0.3s ease-in-out;
