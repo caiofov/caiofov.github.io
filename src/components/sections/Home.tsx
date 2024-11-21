@@ -26,6 +26,7 @@ import {
   ReactOriginal,
   SveltePlain,
   TypescriptPlain,
+  BootstrapPlain,
 } from "devicons-react";
 import { CustomTooltip } from "../CustomTooltip";
 import { LattesIcon } from "../icons/LattesIcon";
@@ -66,6 +67,7 @@ const skillIcons = [
   { id: "mysql", Icon: MysqlOriginal }, //TODO: fix fill for this icon
   { id: "react", Icon: ReactOriginal },
   { id: "svelte", Icon: SveltePlain },
+  { id: "bootstrap", Icon: BootstrapPlain },
   { id: "html", Icon: Html5Plain },
   { id: "css", Icon: Css3Plain },
 ];
