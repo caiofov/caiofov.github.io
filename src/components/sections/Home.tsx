@@ -5,6 +5,7 @@ import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconMail,
+  IconBrandMantine,
 } from "@tabler/icons-react";
 import { CopyTooltip, IconTooltip } from "../IconTooltip";
 import { Typing } from "../animations/Typing";
@@ -30,6 +31,7 @@ import {
 } from "devicons-react";
 import { CustomTooltip } from "../CustomTooltip";
 import { LattesIcon } from "../icons/LattesIcon";
+import { MantineIcon } from "../icons/MantineIcon";
 
 const contactInfo = [
   {
@@ -67,6 +69,7 @@ const skillIcons = [
   { id: "mysql", Icon: MysqlOriginal }, //TODO: fix fill for this icon
   { id: "react", Icon: ReactOriginal },
   { id: "svelte", Icon: SveltePlain },
+  { id: "mantine", Icon: MantineIcon },
   { id: "bootstrap", Icon: BootstrapPlain },
   { id: "html", Icon: Html5Plain },
   { id: "css", Icon: Css3Plain },
