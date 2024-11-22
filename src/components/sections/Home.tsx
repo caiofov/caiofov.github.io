@@ -26,9 +26,13 @@ import {
   ReactOriginal,
   SveltePlain,
   TypescriptPlain,
+  BootstrapPlain,
+  GitPlain,
 } from "devicons-react";
 import { CustomTooltip } from "../CustomTooltip";
 import { LattesIcon } from "../icons/LattesIcon";
+import { MantineIcon } from "../icons/MantineIcon";
+import { ExpressJSIcon } from "../icons/ExpressJSIcon";
 
 const contactInfo = [
   {
@@ -60,14 +64,17 @@ const skillIcons = [
   { id: "ts", Icon: TypescriptPlain },
   { id: "js", Icon: JavascriptPlain },
   { id: "node", Icon: NodejsPlain },
-  // { id: "ExpressJS", Icon: ? }, //TODO: find icon
+  { id: "express", Icon: ExpressJSIcon },
   { id: "mongo", Icon: MongodbPlain },
   { id: "postgres", Icon: PostgresqlPlain },
   { id: "mysql", Icon: MysqlOriginal }, //TODO: fix fill for this icon
   { id: "react", Icon: ReactOriginal },
   { id: "svelte", Icon: SveltePlain },
+  { id: "mantine", Icon: MantineIcon },
+  { id: "bootstrap", Icon: BootstrapPlain },
   { id: "html", Icon: Html5Plain },
   { id: "css", Icon: Css3Plain },
+  { id: "git", Icon: GitPlain },
 ];
 
 export const Home = () => {
@@ -153,8 +160,8 @@ export const Home = () => {
         <PopRevealSequence staggerChildren={0.2}>
           {skillIcons.map(({ id, Icon }) => (
             <CustomTooltip key={id} label={t(`skills.${id}`)} position="bottom">
-              <Group className="devicon">
-                <Icon size="25" />
+              <Group>
+                <Icon size="25" className="devicon" id={`icon-${id}`} />
               </Group>
             </CustomTooltip>
           ))}

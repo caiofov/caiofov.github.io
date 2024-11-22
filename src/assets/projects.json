@@ -13,7 +13,8 @@
             "ts",
             "react",
             "materialui",
-            "vite"
+            "vite",
+            "git"
         ],
         "img": "https://img.itch.zone/aW1nLzE4MDMwNTMyLnBuZw==/315x250%23c/C6O9r%2B.png"
     },
@@ -24,7 +25,8 @@
         "img": "https://img.itch.zone/aW1nLzEwMDczODEzLnBuZw==/315x250%23c/DmHByF.png",
         "techs": [
             "rpgmaker",
-            "js"
+            "js",
+            "git"
         ]
     },
     "caronei": {
@@ -38,7 +40,8 @@
             "express",
             "postgres",
             "css",
-            "html"
+            "html",
+            "git"
         ]
     },
     "climasync": {
@@ -53,7 +56,8 @@
             "kotlin",
             "tuya",
             "firebase",
-            "postgres"
+            "postgres",
+            "git"
         ]
     },
     "raw": {
@@ -64,7 +68,8 @@
         "img": "https://img.itch.zone/aW1nLzg3Njc4MTkucG5n/315x250%23c/k8jR8p.png",
         "techs": [
             "js",
-            "phaser"
+            "phaser",
+            "git"
         ]
     },
     "cg": {
@@ -78,7 +83,8 @@
             "webgl",
             "html",
             "css",
-            "bootstrap"
+            "bootstrap",
+            "git"
         ]
     }
 }
