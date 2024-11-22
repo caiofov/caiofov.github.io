@@ -27,6 +27,7 @@ import {
   SveltePlain,
   TypescriptPlain,
   BootstrapPlain,
+  GitPlain,
 } from "devicons-react";
 import { CustomTooltip } from "../CustomTooltip";
 import { LattesIcon } from "../icons/LattesIcon";
@@ -73,6 +74,7 @@ const skillIcons = [
   { id: "bootstrap", Icon: BootstrapPlain },
   { id: "html", Icon: Html5Plain },
   { id: "css", Icon: Css3Plain },
+  { id: "git", Icon: GitPlain },
 ];
 
 export const Home = () => {
