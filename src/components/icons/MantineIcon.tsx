@@ -1,8 +1,13 @@
 import { Aarch64Line } from "devicons-react";
 
-export const MantineIcon: typeof Aarch64Line = (props) => {
+export const MantineIcon: typeof Aarch64Line = ({ size, id, className }) => {
   return (
-    <svg viewBox="0 0 160 160" height={props.size} width={props.size}>
+    <svg
+      viewBox="0 0 160 160"
+      height={size}
+      width={size}
+      {...{ id, className }}
+    >
       <defs>
         <mask id="mask">
           <circle cx="80" cy="80" r="80" fill="white" />

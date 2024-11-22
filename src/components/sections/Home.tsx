@@ -5,7 +5,7 @@ import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconMail,
-  IconBrandMantine,
+  IconBrandMysql,
 } from "@tabler/icons-react";
 import { CopyTooltip, IconTooltip } from "../IconTooltip";
 import { Typing } from "../animations/Typing";
@@ -158,8 +158,8 @@ export const Home = () => {
         <PopRevealSequence staggerChildren={0.2}>
           {skillIcons.map(({ id, Icon }) => (
             <CustomTooltip key={id} label={t(`skills.${id}`)} position="bottom">
-              <Group className="devicon">
-                <Icon size="25" />
+              <Group>
+                <Icon size="25" className="devicon" id={`icon-${id}`} />
               </Group>
             </CustomTooltip>
           ))}

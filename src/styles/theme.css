@@ -132,13 +132,22 @@ p:where([data-variant="gradient"]) {
 .devicon:hover {
   scale: 1.1;
 }
-.devicon > svg > path,
-.devicon > svg > circle,
-.devicon > svg > g > path,
-.devicon > svg > g > circle {
+.devicon > path,
+.devicon > circle,
+.devicon > g > path,
+.devicon > g > circle {
   fill: var(--mantine-primary-color-light-color);
+  stroke: var(--mantine-primary-color-light-color);
   opacity: 80%;
   transition: all 0.3s ease-in-out;
+}
+
+#icon-mysql path {
+  stroke-width: 6;
+}
+
+#icon-react path {
+  stroke-width: 3;
 }
 
 .mantine-Tooltip-tooltip:where([data-variant="custom-light"]) {
