@@ -5,7 +5,6 @@ import {
   IconBrandGithub,
   IconBrandLinkedin,
   IconMail,
-  IconBrandMysql,
 } from "@tabler/icons-react";
 import { CopyTooltip, IconTooltip } from "../IconTooltip";
 import { Typing } from "../animations/Typing";
@@ -32,6 +31,7 @@ import {
 import { CustomTooltip } from "../CustomTooltip";
 import { LattesIcon } from "../icons/LattesIcon";
 import { MantineIcon } from "../icons/MantineIcon";
+import { ExpressJSIcon } from "../icons/ExpressJSIcon";
 
 const contactInfo = [
   {
@@ -63,7 +63,7 @@ const skillIcons = [
   { id: "ts", Icon: TypescriptPlain },
   { id: "js", Icon: JavascriptPlain },
   { id: "node", Icon: NodejsPlain },
-  // { id: "ExpressJS", Icon: ? }, //TODO: find icon
+  { id: "express", Icon: ExpressJSIcon },
   { id: "mongo", Icon: MongodbPlain },
   { id: "postgres", Icon: PostgresqlPlain },
   { id: "mysql", Icon: MysqlOriginal }, //TODO: fix fill for this icon

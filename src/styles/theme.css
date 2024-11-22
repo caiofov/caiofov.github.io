@@ -149,6 +149,10 @@ p:where([data-variant="gradient"]) {
 #icon-react path {
   stroke-width: 3;
 }
+#icon-express path {
+  stroke-width: 4;
+  transform: translate(2px);
+}
 
 .mantine-Tooltip-tooltip:where([data-variant="custom-light"]) {
   background-color: var(--mantine-primary-color-light-hover);
