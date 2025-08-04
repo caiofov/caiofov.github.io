@@ -1,4 +1,47 @@
 {
+    "lsbd": {
+        "id": "lsbd",
+        "name": "Laboratório de Sistemas e Banco de Dados",
+        "activities": {
+            "diagnostic-application": [
+                "cpp"
+            ],
+            "unif-sdk": [
+                "cpp"
+            ],
+            "front-end": [
+                "front",
+                "react",
+                "electron",
+                "ts",
+                "materialui"
+            ],
+            "documentation": [
+                "writing",
+                "latex",
+                "english"
+            ],
+            "version-control": [
+                "git"
+            ]
+        }
+    },
+    "psat": {
+        "id": "psat",
+        "name": "Fiocruz",
+        "activities": {
+            "web-pages": [
+                "svelte",
+                "ts",
+                "html",
+                "css"
+            ],
+            "proto": [
+                "figma"
+            ],
+            "form": []
+        }
+    },
     "milenio": {
         "id": "milenio",
         "name": "Milenio Capital",
@@ -105,7 +148,8 @@
                 "front",
                 "html",
                 "css",
-                "wordpress"
+                "wordpress",
+                "git"
             ]
         }
     }

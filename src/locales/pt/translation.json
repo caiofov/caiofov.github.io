@@ -12,8 +12,8 @@
         "about": {
             "name": "Sobre mim",
             "ufc": {
-                "title": "Bacharel em Ciência da Computação",
-                "text": "Sou formado pela Universidade Federal do Ceará (UFC), cursei de março de 2020 a setembro de 2024"
+                "title": "Mestrando e Bacharel em Ciência da Computação",
+                "text": "Sou formado pela Universidade Federal do Ceará (UFC), cursei a graduação de março de 2020 a setembro de 2024. Iniciei o mestrado em março de 2025."
             },
             "backend": {
                 "title": "Back-End",
@@ -40,6 +40,29 @@
         },
         "experiences": {
             "name": "Experiências",
+            "lsbd": {
+                "start": "janeiro 2024",
+                "end": "atual",
+                "role": "Desenvolvedor de Software",
+                "texts": {
+                    "diagnostic-application": "Participei do desenvolvimento de uma aplicação de diagnósticos de hardware para dispositivos IoT em C++.",
+                    "unif-sdk": "Atuei na unificação de SDKs de duas aplicações diagnósticos de hardware em C++ entre diferentes plataformas, estabelecendo padrões de arquitetura otimizados e reduzindo inconsistências de código.",
+                    "front-end": "Desenvolvi funcionalidades de front-end utilizando React, TypeScript, Material UI e Electron, modernizando a interface emelhorando performance e manutenibilidade da solução.",
+                    "documentation": "Redigi documentações técnicas em inglês com LaTeX, facilitando a compreensão de membros da equipe e reduzindo o tempo de integração de novos membros.",
+                    "scrum": "Colaborei em equipe utilizando práticas de Scrum para organização e entrega das tarefas.",
+                    "version-control": "Utilizei Git em fluxos colaborativos para versionamento de código, garantindo rastreabilidade e integração contínua entre diferentes branches de desenvolvimento."
+                }
+            },
+            "psat": {
+                "start": "abril 2024",
+                "end": "atual",
+                "role": "Bolsista de Desenvolvimento",
+                "texts": {
+                    "web-pages": "Implementei páginas web, utilizando Svelte com Typescript e Vite, que incluem formulários, rotas e listagem de elementos com filtros, gerenciando estados e mantendo boas práticas",
+                    "proto": "Desenvolvi um protótipo funcional de alta fidelidade no Figma, usando práticas de criação de componentes e variávieis.",
+                    "form": "Participei do planejamento e organização de formulários para coletas de dados."
+                }
+            },
             "milenio": {
                 "start": "junho 2022",
                 "end": "junho 2024",
@@ -73,7 +96,7 @@
                 "end": "abril 2022",
                 "role": "Desenvolvedor Web",
                 "texts": {
-                    "dev": "Desenvolvi temas personalizados para sites WordPress de empresas e projetos acadêmicos, utilizando HTML, CSS, Bootstrap, PHP e JavaScript."
+                    "dev": "Desenvolvi temas personalizados para sites WordPress de empresas e projetos acadêmicos, utilizando HTML, CSS, Bootstrap, PHP e JavaScript e Git para controle de versão."
                 }
             }
         },
@@ -117,14 +140,17 @@
         "api": "Rest API",
         "back": "Back-End",
         "bootstrap": "Bootstrap",
+        "cpp": "C++",
         "css": "CSS",
         "django": "Django",
         "docker": "Docker",
         "education": "Educação",
         "elasticsearch": "ElasticSearch",
+        "electron": "Electron",
         "express": "ExpressJS",
         "english": "Inglês",
         "fastapi": "FastAPI",
+        "figma": "Figma",
         "firebase": "Firebase",
         "front": "Front-End",
         "git": "Git",
@@ -132,6 +158,7 @@
         "js": "JavaScript",
         "kibana": "Kibana",
         "kotlin": "Kotlin",
+        "latex": "Latex",
         "mantine": "Mantine",
         "materialui": "Material UI",
         "mongo": "MongoDB",
