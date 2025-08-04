@@ -12,8 +12,8 @@
         "about": {
             "name": "About me",
             "ufc": {
-                "title": "Bachelor of Science in Computer Science",
-                "text": "I hold a degree from the Federal University of Ceará (UFC), where I studied from March 2020 to September 2024."
+                "title": "Master's Student and Bachelor in Computer Science",
+                "text": "I graduated from the Federal University of Ceará (UFC), where I pursued my undergraduate studies from March 2020 to September 2024. I began my master’s degree in March 2025."
             },
             "backend": {
                 "title": "Back-End Development",
@@ -36,6 +36,29 @@
         },
         "experiences": {
             "name": "Experiences",
+            "lsbd": {
+                "start": "January 2024",
+                "end": "Present",
+                "role": "Software Developer",
+                "texts": {
+                    "diagnostic-application": "Contributed to the development of a hardware diagnostic application for IoT devices using C++.",
+                    "unif-sdk": "Worked on unifying the SDKs of two hardware diagnostic applications in C++ across different platforms, establishing optimized architectural standards and reducing code inconsistencies.",
+                    "front-end": "Developed front-end features using React, TypeScript, Material UI, and Electron, modernizing the interface and improving performance and maintainability.",
+                    "documentation": "Authored technical documentation in English using LaTeX, facilitating team understanding and reducing onboarding time for new members.",
+                    "scrum": "Collaborated with the team using Scrum practices for task organization and delivery.",
+                    "version-control": "Used Git in collaborative workflows for version control, ensuring traceability and continuous integration across development branches."
+                }
+            },
+            "psat": {
+                "start": "April 2024",
+                "end": "Present",
+                "role": "Software Developer Fellow",
+                "texts": {
+                    "web-pages": "Implemented web pages using Svelte with TypeScript and Vite, including forms, routes, and filtered item listings, managing state and maintaining best practices.",
+                    "proto": "Designed a high-fidelity functional prototype in Figma, applying component creation practices and design variables.",
+                    "form": "Participated in the planning and structuring of data collection forms."
+                }
+            },
             "milenio": {
                 "start": "June 2022",
                 "end": "June 2024",
@@ -113,14 +136,17 @@
         "api": "Rest API",
         "back": "Back-End",
         "bootstrap": "Bootstrap",
+        "cpp": "C++",
         "css": "CSS",
         "django": "Django",
         "docker": "Docker",
         "education": "Education",
         "elasticsearch": "ElasticSearch",
+        "electron": "Electron",
         "english": "English",
         "express": "ExpressJS",
         "fastapi": "FastAPI",
+        "figma": "Figma",
         "firebase": "Firebase",
         "front": "Front-End",
         "git": "Git",
@@ -128,6 +154,7 @@
         "js": "JavaScript",
         "kibana": "Kibana",
         "kotlin": "Kotlin",
+        "latex": "Latex",
         "mantine": "Mantine",
         "materialui": "Material UI",
         "mongo": "MongoDB",

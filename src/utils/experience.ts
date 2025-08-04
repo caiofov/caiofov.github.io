@@ -5,6 +5,8 @@ import {
   IconBrowser,
   IconDeviceDesktop,
   IconMessageChatbot,
+  IconRobot,
+  IconUsers,
 } from "@tabler/icons-react";
 
 export type CompanyIDType = keyof typeof exp;
@@ -19,6 +21,8 @@ export const EXPERIENCES = exp as unknown as {
 };
 
 export const EXPERIENCE_ICONS: { [K in CompanyIDType]: Icon } = {
+  lsbd: IconRobot,
+  psat: IconUsers,
   milenio: IconDeviceDesktop,
   ckl: IconMessageChatbot,
   codijr: IconBrowser,
